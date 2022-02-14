@@ -190,7 +190,7 @@
                             <constraint firstItem="RQ4-lt-f2h" firstAttribute="leading" secondItem="n3k-yd-syY" secondAttribute="leading" id="q8D-2F-tF1"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" id="0Xb-VJ-iw6"/>
+                    <tabBarItem key="tabBarItem" title="" image="directcurrent" catalog="system" id="0Xb-VJ-iw6"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dzx-yt-9RC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -200,6 +200,7 @@
     <resources>
         <image name="calendar" catalog="system" width="128" height="106"/>
         <image name="digitalcrown.horizontal.arrow.counterclockwise" catalog="system" width="128" height="128"/>
+        <image name="directcurrent" catalog="system" width="128" height="45"/>
         <image name="gearshape" catalog="system" width="128" height="121"/>
         <image name="homekit" catalog="system" width="128" height="106"/>
         <systemColor name="systemBackgroundColor">
