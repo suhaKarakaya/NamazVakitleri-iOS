@@ -16,37 +16,75 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zWl-tU-KBr">
-                                <rect key="frame" x="157" y="423" width="100" height="50"/>
-                                <color key="backgroundColor" systemColor="labelColor"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="us3-1o-7ry">
+                                <rect key="frame" x="0.0" y="44" width="414" height="728"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="SO3-ek-Tff">
+                                        <rect key="frame" x="20" y="20" width="374" height="387"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="88C-7M-9vh" customClass="Picker" customModule="NamazVakitleri" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="125"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zQz-pg-6HO" customClass="Picker" customModule="NamazVakitleri" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="131" width="374" height="125"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lua-8F-hNe" customClass="Picker" customModule="NamazVakitleri" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="262" width="374" height="125"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="MzK-7d-Leh"/>
-                                    <constraint firstAttribute="width" constant="100" id="WHa-M5-aQZ"/>
+                                    <constraint firstItem="SO3-ek-Tff" firstAttribute="leading" secondItem="us3-1o-7ry" secondAttribute="leading" constant="20" id="2Bo-ND-XeY"/>
+                                    <constraint firstAttribute="trailing" secondItem="SO3-ek-Tff" secondAttribute="trailing" constant="20" id="E0N-7V-B4D"/>
+                                    <constraint firstAttribute="bottom" secondItem="SO3-ek-Tff" secondAttribute="bottom" constant="20" id="WrI-Oe-pcw"/>
+                                    <constraint firstItem="SO3-ek-Tff" firstAttribute="top" secondItem="us3-1o-7ry" secondAttribute="top" constant="20" id="eDf-B0-4NQ"/>
+                                    <constraint firstItem="SO3-ek-Tff" firstAttribute="centerX" secondItem="us3-1o-7ry" secondAttribute="centerX" id="vTx-Un-qVg"/>
                                 </constraints>
+                            </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O6c-lK-vLL">
+                                <rect key="frame" x="20" y="792" width="374" height="50"/>
+                                <color key="backgroundColor" systemColor="systemBrownColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Bz5-aO-KKj"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Kayıt var">
-                                    <fontDescription key="titleFontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
-                                    <color key="baseForegroundColor" systemColor="systemGreenColor"/>
-                                </buttonConfiguration>
+                                <buttonConfiguration key="configuration" style="plain" title="Kaydet"/>
                                 <connections>
-                                    <action selector="kayitVarActions:" destination="cEY-Lm-MzZ" eventType="touchUpInside" id="NPh-rz-qVc"/>
+                                    <action selector="btnSaveAction:" destination="cEY-Lm-MzZ" eventType="touchUpInside" id="cCi-5T-o9f"/>
                                 </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="EqX-N7-d7q"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="zWl-tU-KBr" firstAttribute="centerX" secondItem="yWz-3a-ZJH" secondAttribute="centerX" id="0cd-0F-lNY"/>
-                            <constraint firstItem="zWl-tU-KBr" firstAttribute="centerY" secondItem="yWz-3a-ZJH" secondAttribute="centerY" id="CcT-Ek-YpW"/>
+                            <constraint firstItem="O6c-lK-vLL" firstAttribute="leading" secondItem="EqX-N7-d7q" secondAttribute="leading" constant="20" id="IIw-lq-ETu"/>
+                            <constraint firstItem="us3-1o-7ry" firstAttribute="trailing" secondItem="EqX-N7-d7q" secondAttribute="trailing" id="hHY-Md-PiY"/>
+                            <constraint firstItem="O6c-lK-vLL" firstAttribute="top" secondItem="us3-1o-7ry" secondAttribute="bottom" constant="20" id="hnB-RZ-Ov3"/>
+                            <constraint firstItem="us3-1o-7ry" firstAttribute="leading" secondItem="EqX-N7-d7q" secondAttribute="leading" id="lIH-9l-41T"/>
+                            <constraint firstItem="EqX-N7-d7q" firstAttribute="trailing" secondItem="O6c-lK-vLL" secondAttribute="trailing" constant="20" id="ppE-lG-ctv"/>
+                            <constraint firstItem="us3-1o-7ry" firstAttribute="centerX" secondItem="yWz-3a-ZJH" secondAttribute="centerX" id="qLG-iU-CLF"/>
+                            <constraint firstItem="EqX-N7-d7q" firstAttribute="bottom" secondItem="O6c-lK-vLL" secondAttribute="bottom" constant="20" id="v9g-cq-I72"/>
+                            <constraint firstItem="us3-1o-7ry" firstAttribute="top" secondItem="EqX-N7-d7q" secondAttribute="top" id="yyu-qe-IvI"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="btnSave" destination="O6c-lK-vLL" id="JFS-Pz-ey7"/>
+                        <outlet property="stackView" destination="SO3-ek-Tff" id="SVi-QL-qF9"/>
+                        <outlet property="viewCityPicker" destination="zQz-pg-6HO" id="j7E-hJ-sjk"/>
+                        <outlet property="viewCountryPicker" destination="88C-7M-9vh" id="lPv-7e-yfC"/>
+                        <outlet property="viewDistrictPicker" destination="Lua-8F-hNe" id="yEW-Z8-Yup"/>
                         <segue destination="M3f-QG-A8B" kind="presentation" identifier="toTabbar" modalPresentationStyle="fullScreen" id="FOm-L5-1ma"/>
+                        <segue destination="qXA-0y-ekt" kind="presentation" identifier="sg_picker" modalPresentationStyle="overCurrentContext" id="Qh6-ew-OYG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9ev-Qt-Sxd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2216" y="-512"/>
+            <point key="canvasLocation" x="-2218.840579710145" y="-512.27678571428567"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hht-uS-MDN">
@@ -63,6 +101,57 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G3y-Bi-pyr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-767" y="-205"/>
+        </scene>
+        <!--Picker View Controller-->
+        <scene sceneID="OU0-Al-nNc">
+            <objects>
+                <viewController id="qXA-0y-ekt" customClass="PickerViewController" customModule="NamazVakitleri" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YtJ-bQ-C8x">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lqv-R0-kX9">
+                                <rect key="frame" x="0.0" y="646" width="414" height="216"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </pickerView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aW6-ad-obQ">
+                                <rect key="frame" x="0.0" y="602" width="414" height="44"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <items>
+                                    <barButtonItem title="Item" id="Y88-Dm-XdN">
+                                        <connections>
+                                            <action selector="pickerCancelClicked:" destination="qXA-0y-ekt" id="pVX-vt-vuv"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="SqA-Na-0fP"/>
+                                    <barButtonItem title="Item" id="OJs-vJ-eaf">
+                                        <connections>
+                                            <action selector="pickerTamamClicked:" destination="qXA-0y-ekt" id="yeH-Yp-d9Q"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="nAh-pf-j7J"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="aW6-ad-obQ" firstAttribute="trailing" secondItem="nAh-pf-j7J" secondAttribute="trailing" id="0if-Re-WMH"/>
+                            <constraint firstItem="Lqv-R0-kX9" firstAttribute="trailing" secondItem="nAh-pf-j7J" secondAttribute="trailing" id="CCL-DN-ud4"/>
+                            <constraint firstItem="Lqv-R0-kX9" firstAttribute="top" secondItem="aW6-ad-obQ" secondAttribute="bottom" id="Ea6-GN-WVC"/>
+                            <constraint firstItem="aW6-ad-obQ" firstAttribute="leading" secondItem="nAh-pf-j7J" secondAttribute="leading" id="YLF-1x-frw"/>
+                            <constraint firstItem="Lqv-R0-kX9" firstAttribute="leading" secondItem="nAh-pf-j7J" secondAttribute="leading" id="tMT-9W-pg5"/>
+                            <constraint firstItem="nAh-pf-j7J" firstAttribute="bottom" secondItem="Lqv-R0-kX9" secondAttribute="bottom" id="wPi-PZ-kgi"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="btnCancel" destination="Y88-Dm-XdN" id="DQT-hL-qgI"/>
+                        <outlet property="btnTamam" destination="OJs-vJ-eaf" id="4GM-qC-YLu"/>
+                        <outlet property="pickerView" destination="Lqv-R0-kX9" id="BjQ-2g-tce"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K2T-Ed-vsm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1039" y="-897"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Gii-kj-qHq">
@@ -243,17 +332,11 @@
         <image name="directcurrent" catalog="system" width="128" height="45"/>
         <image name="gearshape" catalog="system" width="128" height="121"/>
         <image name="homekit" catalog="system" width="128" height="106"/>
-        <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBrownColor">
             <color red="0.63529411764705879" green="0.51764705882352946" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

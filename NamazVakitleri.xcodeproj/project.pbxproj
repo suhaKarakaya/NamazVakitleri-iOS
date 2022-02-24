@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0251803E27BE5F5400C29F76 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0251803D27BE5F5400C29F76 /* ApiClient.swift */; };
+		0251804027BE98C000C29F76 /* FirebaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0251803F27BE98C000C29F76 /* FirebaseClient.swift */; };
+		02A3090327BD0394001CAFF9 /* Picker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02A3090227BD0394001CAFF9 /* Picker.xib */; };
+		02A3090527BD04B9001CAFF9 /* Picker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A3090427BD04B9001CAFF9 /* Picker.swift */; };
+		02A3090727BD1D40001CAFF9 /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A3090627BD1D40001CAFF9 /* PickerViewController.swift */; };
+		02A3090927BD73B4001CAFF9 /* ResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A3090827BD73B4001CAFF9 /* ResponseModel.swift */; };
+		02B0166827BFD290003DA1D2 /* Locations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B0166727BFD290003DA1D2 /* Locations.swift */; };
 		02D6823C27B9A40B009CE351 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D6823B27B9A40B009CE351 /* AppDelegate.swift */; };
 		02D6823E27B9A40B009CE351 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D6823D27B9A40B009CE351 /* SceneDelegate.swift */; };
 		02D6824027B9A40B009CE351 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D6823F27B9A40B009CE351 /* ViewController.swift */; };
@@ -19,6 +26,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0251803D27BE5F5400C29F76 /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
+		0251803F27BE98C000C29F76 /* FirebaseClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseClient.swift; sourceTree = "<group>"; };
+		02A3090227BD0394001CAFF9 /* Picker.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Picker.xib; sourceTree = "<group>"; };
+		02A3090427BD04B9001CAFF9 /* Picker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Picker.swift; sourceTree = "<group>"; };
+		02A3090627BD1D40001CAFF9 /* PickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
+		02A3090827BD73B4001CAFF9 /* ResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseModel.swift; sourceTree = "<group>"; };
+		02B0166727BFD290003DA1D2 /* Locations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Locations.swift; sourceTree = "<group>"; };
 		02D6823827B9A40B009CE351 /* NamazVakitleri.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NamazVakitleri.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02D6823B27B9A40B009CE351 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		02D6823D27B9A40B009CE351 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -76,6 +90,13 @@
 				02D6824F27B9AA42009CE351 /* GoogleService-Info.plist */,
 				02D6824927B9A40C009CE351 /* Info.plist */,
 				02EADC7927BAF14C00E5709A /* FirstSelectViewController.swift */,
+				02A3090227BD0394001CAFF9 /* Picker.xib */,
+				02A3090427BD04B9001CAFF9 /* Picker.swift */,
+				02A3090627BD1D40001CAFF9 /* PickerViewController.swift */,
+				02A3090827BD73B4001CAFF9 /* ResponseModel.swift */,
+				0251803D27BE5F5400C29F76 /* ApiClient.swift */,
+				0251803F27BE98C000C29F76 /* FirebaseClient.swift */,
+				02B0166727BFD290003DA1D2 /* Locations.swift */,
 			);
 			path = NamazVakitleri;
 			sourceTree = "<group>";
@@ -160,6 +181,7 @@
 				02D6824827B9A40C009CE351 /* LaunchScreen.storyboard in Resources */,
 				02D6825027B9AA42009CE351 /* GoogleService-Info.plist in Resources */,
 				02D6824527B9A40C009CE351 /* Assets.xcassets in Resources */,
+				02A3090327BD0394001CAFF9 /* Picker.xib in Resources */,
 				02D6824327B9A40B009CE351 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -213,9 +235,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02A3090927BD73B4001CAFF9 /* ResponseModel.swift in Sources */,
+				0251803E27BE5F5400C29F76 /* ApiClient.swift in Sources */,
+				02A3090727BD1D40001CAFF9 /* PickerViewController.swift in Sources */,
+				02A3090527BD04B9001CAFF9 /* Picker.swift in Sources */,
 				02D6824027B9A40B009CE351 /* ViewController.swift in Sources */,
+				0251804027BE98C000C29F76 /* FirebaseClient.swift in Sources */,
 				02EADC7A27BAF14C00E5709A /* FirstSelectViewController.swift in Sources */,
 				02D6823C27B9A40B009CE351 /* AppDelegate.swift in Sources */,
+				02B0166827BFD290003DA1D2 /* Locations.swift in Sources */,
 				02D6823E27B9A40B009CE351 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -410,11 +410,13 @@ PODS:
     - nanopb/encode (= 2.30908.0)
   - nanopb/decode (2.30908.0)
   - nanopb/encode (2.30908.0)
+  - ObjectMapper (3.5.3)
   - PromisesObjC (2.0.0)
 
 DEPENDENCIES:
   - Alamofire (~> 5.5)
   - Firebase/Firestore
+  - ObjectMapper (~> 3.5)
 
 SPEC REPOS:
   trunk:
@@ -431,6 +433,7 @@ SPEC REPOS:
     - gRPC-Core
     - leveldb-library
     - nanopb
+    - ObjectMapper
     - PromisesObjC
 
 SPEC CHECKSUMS:
@@ -447,8 +450,9 @@ SPEC CHECKSUMS:
   gRPC-Core: 4afa11bfbedf7cdecd04de535a9e046893404ed5
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
+  ObjectMapper: 97111c97e054a6ee25917662106689f0b4127b37
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
 
-PODFILE CHECKSUM: c0756620328941cc2a1d4ee61324a83f371ea16c
+PODFILE CHECKSUM: 761c671e22a28185cbeb9e5793ef934dd58d2cd5
 
 COCOAPODS: 1.11.2

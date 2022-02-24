@@ -6,6 +6,7 @@ target 'NamazVakitleri' do
   use_frameworks!
 pod 'Firebase/Firestore'
 pod 'Alamofire', '~> 5.5'
+pod 'ObjectMapper', '~> 3.5'
 
   # Pods for NamazVakitleri
 
