@@ -14,15 +14,15 @@ public class FirebaseClient {
     typealias firebaseCallBack = (Bool, String) -> Void
     
 
-    static func setVakitler(documentId: String, data: Dictionary<String, Any>, completion: @escaping firebaseCallBack){
+    static func setVakitler(documentName: String, tableName: String, data: [String:Any], completion: @escaping firebaseCallBack){
         
-        let ref = firestore.collection(documentId).document(UIDevice.current.identifierForVendor!.uuidString)
+        let ref = firestore.collection(tableName).document(documentName)
         
         ref.setData(data) { err in
             if let err = err {
-                completion(true, "Success")
+                completion(false, "Failure")
             } else {
-                completion(true, "Failure")
+                completion(true, "Success")
             }
         }
         

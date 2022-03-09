@@ -7,6 +7,7 @@ target 'NamazVakitleri' do
 pod 'Firebase/Firestore'
 pod 'Alamofire', '~> 5.5'
 pod 'ObjectMapper', '~> 3.5'
+pod 'MBProgressHUD', '~> 1.2.0'
 
   # Pods for NamazVakitleri
 
