@@ -10,14 +10,6 @@
 		020219E527D13A3C00706ECF /* MySplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020219E427D13A3C00706ECF /* MySplashViewController.swift */; };
 		02156B9627D3803E00679FA2 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02156B9527D3803E00679FA2 /* HomeViewController.swift */; };
 		02156B9827D3812200679FA2 /* colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02156B9727D3812200679FA2 /* colors.xcassets */; };
-		02156BA427D38A7300679FA2 /* Comfortaa-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 02156B9B27D38A7300679FA2 /* Comfortaa-VariableFont_wght.ttf */; };
-		02156BA527D38A7300679FA2 /* Comfortaa-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 02156B9D27D38A7300679FA2 /* Comfortaa-Light.ttf */; };
-		02156BA627D38A7300679FA2 /* Comfortaa-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 02156B9E27D38A7300679FA2 /* Comfortaa-SemiBold.ttf */; };
-		02156BA727D38A7300679FA2 /* Comfortaa-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 02156B9F27D38A7300679FA2 /* Comfortaa-Medium.ttf */; };
-		02156BA827D38A7300679FA2 /* Comfortaa-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 02156BA027D38A7300679FA2 /* Comfortaa-Regular.ttf */; };
-		02156BA927D38A7300679FA2 /* Comfortaa-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 02156BA127D38A7300679FA2 /* Comfortaa-Bold.ttf */; };
-		02156BAA27D38A7300679FA2 /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = 02156BA227D38A7300679FA2 /* OFL.txt */; };
-		02156BAB27D38A7300679FA2 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 02156BA327D38A7300679FA2 /* README.txt */; };
 		02156BAD27D39A6700679FA2 /* TimeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02156BAC27D39A6700679FA2 /* TimeViewCell.swift */; };
 		02156BAF27D39C1500679FA2 /* TimeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02156BAE27D39C1500679FA2 /* TimeTableViewController.swift */; };
 		0251803E27BE5F5400C29F76 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0251803D27BE5F5400C29F76 /* ApiClient.swift */; };
@@ -45,14 +37,6 @@
 		020219E427D13A3C00706ECF /* MySplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySplashViewController.swift; sourceTree = "<group>"; };
 		02156B9527D3803E00679FA2 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		02156B9727D3812200679FA2 /* colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = colors.xcassets; sourceTree = "<group>"; };
-		02156B9B27D38A7300679FA2 /* Comfortaa-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Comfortaa-VariableFont_wght.ttf"; sourceTree = "<group>"; };
-		02156B9D27D38A7300679FA2 /* Comfortaa-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Comfortaa-Light.ttf"; sourceTree = "<group>"; };
-		02156B9E27D38A7300679FA2 /* Comfortaa-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Comfortaa-SemiBold.ttf"; sourceTree = "<group>"; };
-		02156B9F27D38A7300679FA2 /* Comfortaa-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Comfortaa-Medium.ttf"; sourceTree = "<group>"; };
-		02156BA027D38A7300679FA2 /* Comfortaa-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Comfortaa-Regular.ttf"; sourceTree = "<group>"; };
-		02156BA127D38A7300679FA2 /* Comfortaa-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Comfortaa-Bold.ttf"; sourceTree = "<group>"; };
-		02156BA227D38A7300679FA2 /* OFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
-		02156BA327D38A7300679FA2 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
 		02156BAC27D39A6700679FA2 /* TimeViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeViewCell.swift; sourceTree = "<group>"; };
 		02156BAE27D39C1500679FA2 /* TimeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableViewController.swift; sourceTree = "<group>"; };
 		0251803D27BE5F5400C29F76 /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
@@ -92,37 +76,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		02156B9927D38A6800679FA2 /* Fonts */ = {
-			isa = PBXGroup;
-			children = (
-				02156B9A27D38A7300679FA2 /* Comfortaa */,
-			);
-			path = Fonts;
-			sourceTree = "<group>";
-		};
-		02156B9A27D38A7300679FA2 /* Comfortaa */ = {
-			isa = PBXGroup;
-			children = (
-				02156B9B27D38A7300679FA2 /* Comfortaa-VariableFont_wght.ttf */,
-				02156B9C27D38A7300679FA2 /* static */,
-				02156BA227D38A7300679FA2 /* OFL.txt */,
-				02156BA327D38A7300679FA2 /* README.txt */,
-			);
-			path = Comfortaa;
-			sourceTree = "<group>";
-		};
-		02156B9C27D38A7300679FA2 /* static */ = {
-			isa = PBXGroup;
-			children = (
-				02156B9D27D38A7300679FA2 /* Comfortaa-Light.ttf */,
-				02156B9E27D38A7300679FA2 /* Comfortaa-SemiBold.ttf */,
-				02156B9F27D38A7300679FA2 /* Comfortaa-Medium.ttf */,
-				02156BA027D38A7300679FA2 /* Comfortaa-Regular.ttf */,
-				02156BA127D38A7300679FA2 /* Comfortaa-Bold.ttf */,
-			);
-			path = static;
-			sourceTree = "<group>";
-		};
 		02D6822F27B9A40B009CE351 = {
 			isa = PBXGroup;
 			children = (
@@ -144,7 +97,6 @@
 		02D6823A27B9A40B009CE351 /* NamazVakitleri */ = {
 			isa = PBXGroup;
 			children = (
-				02156B9927D38A6800679FA2 /* Fonts */,
 				02D6823B27B9A40B009CE351 /* AppDelegate.swift */,
 				02D6823D27B9A40B009CE351 /* SceneDelegate.swift */,
 				02D6823F27B9A40B009CE351 /* ViewController.swift */,
@@ -250,20 +202,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				02156BA527D38A7300679FA2 /* Comfortaa-Light.ttf in Resources */,
 				02D6824827B9A40C009CE351 /* LaunchScreen.storyboard in Resources */,
-				02156BA627D38A7300679FA2 /* Comfortaa-SemiBold.ttf in Resources */,
-				02156BA427D38A7300679FA2 /* Comfortaa-VariableFont_wght.ttf in Resources */,
 				02D6825027B9AA42009CE351 /* GoogleService-Info.plist in Resources */,
 				02D6824527B9A40C009CE351 /* Assets.xcassets in Resources */,
-				02156BA727D38A7300679FA2 /* Comfortaa-Medium.ttf in Resources */,
 				02156B9827D3812200679FA2 /* colors.xcassets in Resources */,
-				02156BAA27D38A7300679FA2 /* OFL.txt in Resources */,
-				02156BA927D38A7300679FA2 /* Comfortaa-Bold.ttf in Resources */,
 				02A3090327BD0394001CAFF9 /* Picker.xib in Resources */,
 				02D6824327B9A40B009CE351 /* Main.storyboard in Resources */,
-				02156BAB27D38A7300679FA2 /* README.txt in Resources */,
-				02156BA827D38A7300679FA2 /* Comfortaa-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
