@@ -7,13 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		020219E527D13A3C00706ECF /* MySplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020219E427D13A3C00706ECF /* MySplashViewController.swift */; };
+		02156B9627D3803E00679FA2 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02156B9527D3803E00679FA2 /* HomeViewController.swift */; };
+		02156B9827D3812200679FA2 /* colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02156B9727D3812200679FA2 /* colors.xcassets */; };
+		02156BAD27D39A6700679FA2 /* TimeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02156BAC27D39A6700679FA2 /* TimeViewCell.swift */; };
+		02156BAF27D39C1500679FA2 /* TimeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02156BAE27D39C1500679FA2 /* TimeTableViewController.swift */; };
 		0251803E27BE5F5400C29F76 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0251803D27BE5F5400C29F76 /* ApiClient.swift */; };
 		0251804027BE98C000C29F76 /* FirebaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0251803F27BE98C000C29F76 /* FirebaseClient.swift */; };
 		02A3090327BD0394001CAFF9 /* Picker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02A3090227BD0394001CAFF9 /* Picker.xib */; };
 		02A3090527BD04B9001CAFF9 /* Picker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A3090427BD04B9001CAFF9 /* Picker.swift */; };
 		02A3090727BD1D40001CAFF9 /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A3090627BD1D40001CAFF9 /* PickerViewController.swift */; };
 		02A3090927BD73B4001CAFF9 /* ResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A3090827BD73B4001CAFF9 /* ResponseModel.swift */; };
-		02B0166827BFD290003DA1D2 /* Locations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B0166727BFD290003DA1D2 /* Locations.swift */; };
+		02C8600227D6909F00EEE8B2 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C8600127D6909F00EEE8B2 /* SettingsViewController.swift */; };
+		02C8600427D6953E00EEE8B2 /* SettingsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C8600327D6953E00EEE8B2 /* SettingsViewCell.swift */; };
 		02D6823C27B9A40B009CE351 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D6823B27B9A40B009CE351 /* AppDelegate.swift */; };
 		02D6823E27B9A40B009CE351 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D6823D27B9A40B009CE351 /* SceneDelegate.swift */; };
 		02D6824027B9A40B009CE351 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D6823F27B9A40B009CE351 /* ViewController.swift */; };
@@ -21,18 +27,26 @@
 		02D6824527B9A40C009CE351 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02D6824427B9A40C009CE351 /* Assets.xcassets */; };
 		02D6824827B9A40C009CE351 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02D6824627B9A40C009CE351 /* LaunchScreen.storyboard */; };
 		02D6825027B9AA42009CE351 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 02D6824F27B9AA42009CE351 /* GoogleService-Info.plist */; };
+		02E3BDC427D0E303001DE910 /* FirebaseResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E3BDC327D0E303001DE910 /* FirebaseResponseModel.swift */; };
+		02E3BDC627D0E3D3001DE910 /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E3BDC527D0E3D3001DE910 /* DateManager.swift */; };
 		02EADC7A27BAF14C00E5709A /* FirstSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EADC7927BAF14C00E5709A /* FirstSelectViewController.swift */; };
 		8818C56B295D70A5424A7971 /* Pods_NamazVakitleri.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D63B79B030D0E25A39B32B01 /* Pods_NamazVakitleri.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		020219E427D13A3C00706ECF /* MySplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySplashViewController.swift; sourceTree = "<group>"; };
+		02156B9527D3803E00679FA2 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		02156B9727D3812200679FA2 /* colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = colors.xcassets; sourceTree = "<group>"; };
+		02156BAC27D39A6700679FA2 /* TimeViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeViewCell.swift; sourceTree = "<group>"; };
+		02156BAE27D39C1500679FA2 /* TimeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableViewController.swift; sourceTree = "<group>"; };
 		0251803D27BE5F5400C29F76 /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 		0251803F27BE98C000C29F76 /* FirebaseClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseClient.swift; sourceTree = "<group>"; };
 		02A3090227BD0394001CAFF9 /* Picker.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Picker.xib; sourceTree = "<group>"; };
 		02A3090427BD04B9001CAFF9 /* Picker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Picker.swift; sourceTree = "<group>"; };
 		02A3090627BD1D40001CAFF9 /* PickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
 		02A3090827BD73B4001CAFF9 /* ResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseModel.swift; sourceTree = "<group>"; };
-		02B0166727BFD290003DA1D2 /* Locations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Locations.swift; sourceTree = "<group>"; };
+		02C8600127D6909F00EEE8B2 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		02C8600327D6953E00EEE8B2 /* SettingsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewCell.swift; sourceTree = "<group>"; };
 		02D6823827B9A40B009CE351 /* NamazVakitleri.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NamazVakitleri.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02D6823B27B9A40B009CE351 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		02D6823D27B9A40B009CE351 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -42,6 +56,8 @@
 		02D6824727B9A40C009CE351 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		02D6824927B9A40C009CE351 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		02D6824F27B9AA42009CE351 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		02E3BDC327D0E303001DE910 /* FirebaseResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseResponseModel.swift; sourceTree = "<group>"; };
+		02E3BDC527D0E3D3001DE910 /* DateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateManager.swift; sourceTree = "<group>"; };
 		02EADC7927BAF14C00E5709A /* FirstSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstSelectViewController.swift; sourceTree = "<group>"; };
 		32558494ED2F32F7E725CFD1 /* Pods-NamazVakitleri.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NamazVakitleri.release.xcconfig"; path = "Target Support Files/Pods-NamazVakitleri/Pods-NamazVakitleri.release.xcconfig"; sourceTree = "<group>"; };
 		8912DE91746EDE4780F76151 /* Pods-NamazVakitleri.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NamazVakitleri.debug.xcconfig"; path = "Target Support Files/Pods-NamazVakitleri/Pods-NamazVakitleri.debug.xcconfig"; sourceTree = "<group>"; };
@@ -96,7 +112,15 @@
 				02A3090827BD73B4001CAFF9 /* ResponseModel.swift */,
 				0251803D27BE5F5400C29F76 /* ApiClient.swift */,
 				0251803F27BE98C000C29F76 /* FirebaseClient.swift */,
-				02B0166727BFD290003DA1D2 /* Locations.swift */,
+				02E3BDC327D0E303001DE910 /* FirebaseResponseModel.swift */,
+				02E3BDC527D0E3D3001DE910 /* DateManager.swift */,
+				020219E427D13A3C00706ECF /* MySplashViewController.swift */,
+				02156B9527D3803E00679FA2 /* HomeViewController.swift */,
+				02156B9727D3812200679FA2 /* colors.xcassets */,
+				02156BAC27D39A6700679FA2 /* TimeViewCell.swift */,
+				02156BAE27D39C1500679FA2 /* TimeTableViewController.swift */,
+				02C8600127D6909F00EEE8B2 /* SettingsViewController.swift */,
+				02C8600327D6953E00EEE8B2 /* SettingsViewCell.swift */,
 			);
 			path = NamazVakitleri;
 			sourceTree = "<group>";
@@ -181,6 +205,7 @@
 				02D6824827B9A40C009CE351 /* LaunchScreen.storyboard in Resources */,
 				02D6825027B9AA42009CE351 /* GoogleService-Info.plist in Resources */,
 				02D6824527B9A40C009CE351 /* Assets.xcassets in Resources */,
+				02156B9827D3812200679FA2 /* colors.xcassets in Resources */,
 				02A3090327BD0394001CAFF9 /* Picker.xib in Resources */,
 				02D6824327B9A40B009CE351 /* Main.storyboard in Resources */,
 			);
@@ -238,13 +263,20 @@
 				02A3090927BD73B4001CAFF9 /* ResponseModel.swift in Sources */,
 				0251803E27BE5F5400C29F76 /* ApiClient.swift in Sources */,
 				02A3090727BD1D40001CAFF9 /* PickerViewController.swift in Sources */,
+				02156BAD27D39A6700679FA2 /* TimeViewCell.swift in Sources */,
 				02A3090527BD04B9001CAFF9 /* Picker.swift in Sources */,
 				02D6824027B9A40B009CE351 /* ViewController.swift in Sources */,
 				0251804027BE98C000C29F76 /* FirebaseClient.swift in Sources */,
+				02C8600227D6909F00EEE8B2 /* SettingsViewController.swift in Sources */,
 				02EADC7A27BAF14C00E5709A /* FirstSelectViewController.swift in Sources */,
+				02E3BDC627D0E3D3001DE910 /* DateManager.swift in Sources */,
+				02E3BDC427D0E303001DE910 /* FirebaseResponseModel.swift in Sources */,
 				02D6823C27B9A40B009CE351 /* AppDelegate.swift in Sources */,
-				02B0166827BFD290003DA1D2 /* Locations.swift in Sources */,
 				02D6823E27B9A40B009CE351 /* SceneDelegate.swift in Sources */,
+				02C8600427D6953E00EEE8B2 /* SettingsViewCell.swift in Sources */,
+				02156B9627D3803E00679FA2 /* HomeViewController.swift in Sources */,
+				020219E527D13A3C00706ECF /* MySplashViewController.swift in Sources */,
+				02156BAF27D39C1500679FA2 /* TimeTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

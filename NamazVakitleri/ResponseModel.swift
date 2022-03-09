@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import ObjectMapper
 
 struct Country: Codable {
     let UlkeAdi: String?
@@ -25,24 +26,60 @@ struct District: Codable {
     let IlceID: String?
 }
 
-struct Vakit: Codable {
+class Vakit: Mappable,Codable {
+    var Aksam: String?
+    var Gunes: String?
+    var GunesBatis: String?
+    var GunesDogus: String?
+    var HicriTarihKisa: String?
+    var HicriTarihUzun: String?
+    var Ikindi: String?
+    var Imsak: String?
+    var KibleSaati: String?
+    var MiladiTarihKisa: String?
+    var MiladiTarihUzun: String?
+    var Ogle: String?
+    var Yatsi: String?
+    
+    required init(map: Map) {
+        
+    }
+    
+    func mapping(map: Map) {
+        Aksam <- map["Aksam"]
+        Gunes <- map["Gunes"]
+        GunesBatis <- map["GunesBatis"]
+        GunesDogus <- map["GunesDogus"]
+        HicriTarihKisa <- map["HicriTarihKisa"]
+        HicriTarihUzun <- map["HicriTarihUzun"]
+        Ikindi <- map["Ikindi"]
+        Imsak <- map["Imsak"]
+        KibleSaati <- map["KibleSaati"]
+        KibleSaati <- map["KibleSaati"]
+        MiladiTarihKisa <- map["MiladiTarihKisa"]
+        MiladiTarihUzun <- map["MiladiTarihUzun"]
+        Ogle <- map["Ogle"]
+        Yatsi <- map["Yatsi"]
+    }
+}
+
+struct VakitStr: Codable {
     let Aksam: String?
-    let AyinSekliURL: String?
     let Gunes: String?
     let GunesBatis: String?
     let GunesDogus: String?
-    let HicriTarihKisav: String?
-    let HicriTarihKisaIso8601: String?
+    let HicriTarihKisa: String?
     let HicriTarihUzun: String?
-    let HicriTarihUzunIso8601: String?
     let Ikindi: String?
     let Imsak: String?
     let KibleSaati: String?
     let MiladiTarihKisa: String?
-    let MiladiTarihKisaIso8601: String?
     let MiladiTarihUzun: String?
-    let MiladiTarihUzunIso8601: String?
     let Ogle: String?
     let Yatsi: String?
 }
+
+
+
+
 

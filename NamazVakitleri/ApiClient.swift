@@ -7,6 +7,7 @@
 
 import Foundation
 import Alamofire
+import ObjectMapper
 
 public class ApiClient {
     
@@ -75,13 +76,25 @@ public class ApiClient {
     
     static func getVakitler(districtId: String, completion: @escaping vakitlerCallBack){
         var param:[String:Any] = [:]
-        param["vakitler"] = districtId
-        AF.request(baseUrl, method: .get, parameters: param, encoding: URLEncoding.default, headers: nil, interceptor: nil).response { (responseData) in
+//        param["vakitler"] = districtId
+        AF.request(String(format: "%@%@/%@", baseUrl, "vakitler", districtId), method: .get, encoding: URLEncoding.default, headers: nil, interceptor: nil).response { (responseData) in
+            
+//            debugPrint(String(format: "%@%@/%@", baseUrl, "vakitler", districtId))
             
             guard let data = responseData.data else { return }
             
+     
+            
             do{
                 let data = try JSONDecoder().decode([Vakit].self, from: data)
+//                var arr: [Vakit] = []
+//                data.forEach { (value) in
+//                if let record = Mapper<Vakit>().map(JSON: value as? [String: Any] ?? [:]) {
+//                    arr.append(record)
+//                    }
+//                }
+                
+                
                 completion(data, true, "Success")
             } catch {
                 completion([], false, "Failure")

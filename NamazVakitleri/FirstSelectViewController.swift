@@ -18,6 +18,7 @@ class FirstSelectViewController: UIViewController {
     @IBOutlet weak var viewCountryPicker: Picker!
     @IBOutlet weak var viewCityPicker: Picker!
     @IBOutlet weak var viewDistrictPicker: Picker!
+    @IBOutlet weak var buttonBack: UIButton!
     let countryPickerView = Picker.instance()
     let cityPickerView = Picker.instance()
     let districtPickerView = Picker.instance()
@@ -29,9 +30,14 @@ class FirstSelectViewController: UIViewController {
     var countrySelect: SelectObje?
     var citySelect: SelectObje?
     var districtSelect: SelectObje?
+    var location = ""
+    var backVisible: Bool = false
+    static var deviceId: String = UIDevice.current.identifierForVendor!.uuidString
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        buttonBack.isHidden = !backVisible
 
         
         stackView.addArrangedSubview(countryPickerView)
@@ -58,6 +64,9 @@ class FirstSelectViewController: UIViewController {
     }
     
     
+    @IBAction func buttonBackAction(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
     
     func getCountyListHandler(list: [Country]?, status: Bool, message: String){
         guard status, let responseList = list else { return }
@@ -86,89 +95,66 @@ class FirstSelectViewController: UIViewController {
         }
         performSegue(withIdentifier: "sg_picker", sender: PickerType.district)
     }
+        
+    func getLocation(){
+        let firestore = Firestore.firestore()
+        let docRef = firestore.collection("Locations").document(location)
+        docRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                guard let myLocation = Mapper<Locations>().map(JSON: document.data() ?? ["":""]) else { return }
+                myLocation.toJSON()
+                self.setHomeData()
+      
+            } else {
+                self.getVakitlerListener()
+            }
+        }
+    }
+    
+    func setHomeData(){
+        let homeData = FavoriteLocations()
+        homeData.isFavorite = true
+        homeData.location = ["location" : self.location]
+        
+        let homeDataList = Home()
+        homeDataList.favoriteList.append(homeData)
+        
+        FirebaseClient.setVakitler(documentName: FirstSelectViewController.deviceId, tableName: "Home", data: homeDataList.toJSON()) { flag, statu in
+            guard flag else { return }
+            if flag {
+                self.performSegue(withIdentifier: "sg_toTabbar", sender: nil)
+            }
+        }
+    }
+    
+    func getVakitlerListener(){
+        guard let country = self.countrySelect, let city = self.citySelect, let district = self.districtSelect else { return alert("Lütfen konumunuzu seçiniz!") }
+        ApiClient.getVakitler(districtId: district.strId, completion: self.getVakitlerHandler)
+    }
     
     func getVakitlerHandler(list: [Vakit]?, status: Bool, message: String){
         guard status, let responseList = list else { return }
         self.vakitList = responseList
-        
-    }
-
-    
-    func getVakitlerListener(completion: @escaping (Bool) -> Void){
-        guard let country = self.countrySelect, let city = self.citySelect, let district = self.districtSelect else { return alert("Lütfen konumunuzu seçiniz!") }
-        ApiClient.getVakitler(districtId: district.strId, completion: self.getVakitlerHandler)
-        let docData: [String: Any] = [
-            "deviceId": UIDevice.current.identifierForVendor!.uuidString,
-            "countryId": country.strId,
-            "countryValue": country.value,
-            "cityId": city.strId,
-            "cityValue": city.value,
-            "districtId": district.strId,
-            "districtValue": district.value,
-            "favoriteList": [
-                String(format: "%@,%@", city.value,district.value): ""
-            ]
-        ]
-        
-        
-        FirebaseClient.setVakitler(documentId: "Main", data: docData) { flag, statu in
-            guard flag else { return }
-            completion(true)
+        var vakitDictList: [[String: Any]] = []
+        for vakit in self.vakitList {
+            vakitDictList.append(vakit.toJSON())
         }
+        let loc = Locations()
+        loc.locationList = vakitDictList
+        loc.lastUpdateTime = DateManager.shared.getTodayString()
         
-        
-
-    }
-    
-    
-    func getLocation(){
-        guard let country = self.countrySelect, let city = self.citySelect, let district = self.districtSelect else { return alert("Lütfen konumunuzu seçiniz!") }
-        var location = String(format: "%@,%@", city.value,district.value)
-        var firestore = Firestore.firestore()
-        let docRef = firestore.collection("Locations").document(location)
-        docRef.getDocument { (document, error) in
-            if let document = document, document.exists {
-                guard let user = Mapper<Locations>().map(JSON: document.data() ?? ["":""]) else { return }
-                user.toJSON()
-                
-            } else {
-                let docData: [String: Any] = [
-                    "deviceId": UIDevice.current.identifierForVendor!.uuidString,
-                    "countryId": country.strId,
-                    "countryValue": country.value,
-                    "cityId": city.strId,
-                    "cityValue": city.value,
-                    "districtId": district.strId,
-                    "districtValue": district.value,
-                    "favoriteList": [
-                        String(format: "%@,%@", city.value,district.value): ""
-                    ]
-                ]
-                
-                
-                FirebaseClient.setVakitler(documentId: "Main", data: docData) { flag, statu in
-                    guard flag else { return }
-                    completion(true)
-                }
+        FirebaseClient.setVakitler(documentName: location, tableName: "Locations", data: loc.toJSON()) { flag, statu in
+            guard flag else { return }
+            if flag {
+                self.setHomeData()
             }
         }
         
-        
-
-       
-        
-        
-        
     }
-    
-    
-    
-    
-    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "sg_picker" {
-            pickerView = segue.destination as! PickerViewController
+            pickerView = segue.destination as? PickerViewController
             pickerView?.delegate = self
             
             if let type = sender as? PickerType {
@@ -198,19 +184,12 @@ class FirstSelectViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
-
     @IBAction func btnSaveAction(_ sender: Any) {
+        guard let country = self.countrySelect, let city = self.citySelect, let district = self.districtSelect else { return alert("Lütfen konumunuzu seçiniz!") }
+        location = String(format: "%@,%@", city.value,district.value)
         getLocation()
-//        self.getVakitlerListener { flag in
-//            guard flag else { return }
-////            self.alert("işleminiz başarılı")
-//            self.performSegue(withIdentifier: "toTabbar", sender: nil)
-//        }
-    
-        
     }
     
-
 }
 
 extension FirstSelectViewController: PickerDelegate{
@@ -228,7 +207,6 @@ extension FirstSelectViewController: PickerDelegate{
             ApiClient.getDistrict(cityId: city.strId, completion: self.getDistrictListHandler)
             break
         }
-        
     }
 }
 
@@ -251,9 +229,8 @@ extension FirstSelectViewController: PickerViewControllerDelegate{
             districtPickerView.selectLabel.text = selected.value
             self.districtSelect = selected
             break
+        }
     }
-    }
-    
-  
-    
 }
+
+
