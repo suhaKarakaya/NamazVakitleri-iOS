@@ -8,11 +8,11 @@
 import UIKit
 
 protocol SettingsDelegate: class {
-    func setFavorite(_ selected: Bool)
-    func toTrash(_ selected: Bool)
+    func setFavorite(_ selected: Bool, _ index: Int)
+    func toTrash(_ selected: Bool, _ index: Int)
 }
 
-typealias SettingsClickHandler = (Bool) -> Void
+typealias SettingsClickHandler = (Bool,Int) -> Void
 
 class SettingsViewCell: UITableViewCell {
     @IBOutlet weak var borderView: UIView!
@@ -21,10 +21,11 @@ class SettingsViewCell: UITableViewCell {
     weak var delegate: SettingsDelegate?
     var favoritedHandler: SettingsClickHandler?
     var trashHandler: SettingsClickHandler?
-    var data: FavoriteLocations? {
+    var index:Int = 0
+    var data: UserLocations? {
         didSet {
             guard let data = data else { return }
-            labelLocation.text = data.location["location"] as? String ?? ""
+            labelLocation.text = data.location
             
             if data.isFavorite {
                 imageSelected.image = UIImage(systemName: "star.fill")
@@ -40,24 +41,22 @@ class SettingsViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        borderView.layer.borderColor = UIColor.brown.cgColor
-        borderView.layer.borderWidth = 1
-        borderView.layer.cornerRadius = 8
+        borderView.setViewBorder(color: UIColor.brown.cgColor, borderWith: 1, borderRadius: 8)
   
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
     }
 
     @IBAction func buttonTrashAction(_ sender: Any) {
-        delegate?.toTrash(true)
+        delegate?.toTrash(true, index)
     }
     @IBAction func buttonSelectAction(_ sender: Any) {
         guard let data = data else { return }
 //        delegate?.setFavorite(!data.isFavorite)
-        favoritedHandler?(!data.isFavorite)
+//        data.isFavorite = !data.isFavorite
+        favoritedHandler?(data.isFavorite, index)
     }
 }

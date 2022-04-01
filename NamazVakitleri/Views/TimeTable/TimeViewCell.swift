@@ -33,9 +33,7 @@ class TimeViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        viewStack.layer.borderColor = UIColor.brown.cgColor
-        viewStack.layer.borderWidth = 1
-        viewStack.layer.cornerRadius = 8
+        viewStack.setViewBorder(color: UIColor.brown.cgColor, borderWith: 1, borderRadius: 8)
         
     
         

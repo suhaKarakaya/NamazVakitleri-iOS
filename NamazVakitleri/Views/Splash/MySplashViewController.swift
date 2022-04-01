@@ -13,10 +13,8 @@ class MySplashViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         sleep(2)
-        let firestore = Firestore.firestore()
-        let docRef = firestore.collection("Home").document(FirstSelectViewController.deviceId)
-        docRef.getDocument { (document, error) in
-            if let document = document, document.exists {
+        FirebaseClient.getDocRefData("User", FirstSelectViewController.deviceId) { result, documentId, response in
+            if result {
                 self.performSegue(withIdentifier: "sg_toHome", sender: nil)
             } else {
                 self.performSegue(withIdentifier: "sg_toLocationSelect", sender: false)

@@ -8,6 +8,7 @@
 import UIKit
 import Firebase
 import ObjectMapper
+import Foundation
 
 
 class FirstSelectViewController: UIViewController {
@@ -32,6 +33,8 @@ class FirstSelectViewController: UIViewController {
     var districtSelect: SelectObje?
     var location = ""
     var backVisible: Bool = false
+    var saveData = User()
+    
     static var deviceId: String = UIDevice.current.identifierForVendor!.uuidString
     
     override func viewDidLoad() {
@@ -49,7 +52,7 @@ class FirstSelectViewController: UIViewController {
         stackView.addArrangedSubview(districtPickerView)
         districtPickerView.selectTitleLabel.text = "Semt"
         
-        btnSave.layer.cornerRadius = 8
+//        btnSave.layer.cornerRadius = 8
         
         countryPickerView.type = .country
         cityPickerView.type = .city
@@ -69,11 +72,12 @@ class FirstSelectViewController: UIViewController {
     }
     
     func getCountyListHandler(list: [Country]?, status: Bool, message: String){
+        self.countryList = []
         guard status, let responseList = list else { return }
-        if let turkey = responseList.first(where: { $0.UlkeID == "2"}) {
-            self.countryList.append(SelectObje.init(strId: turkey.UlkeID ?? "0", value: turkey.UlkeAdi ?? ""))
-                
-            }
+//        if let turkey = responseList.first(where: { $0.UlkeID == "2"}) {
+//            self.countryList.append(SelectObje.init(strId: turkey.UlkeID ?? "0", value: turkey.UlkeAdi ?? ""))
+//                
+//            }
             for item in responseList {
                 self.countryList.append(SelectObje.init(strId: item.UlkeID ?? "0", value: item.UlkeAdi ?? ""))
             }
@@ -81,45 +85,107 @@ class FirstSelectViewController: UIViewController {
     }
     
     func getCityListHandler(list: [City]?, status: Bool, message: String){
+        self.cityList = []
         guard status, let responseList = list else { return }
         for item in responseList {
-            self.cityList.append(SelectObje.init(strId: item.SehirID ?? "0", value: item.SehirAdi ?? ""))
+            var id = ""
+            var adi = ""
+            if let tempId = item.sehirID, let tempAdi = item.sehirAdi {
+                id = tempId
+                adi = tempAdi
+            } else {
+                id = item.SehirID ?? "0"
+                adi = item.SehirAdi ?? ""
+            }
+            
+            self.cityList.append(SelectObje.init(strId: id, value: adi))
         }
         performSegue(withIdentifier: "sg_picker", sender: PickerType.city)
     }
     
     func getDistrictListHandler(list: [District]?, status: Bool, message: String){
+        self.districtList = []
         guard status, let responseList = list else { return }
         for item in responseList {
             self.districtList.append(SelectObje.init(strId: item.IlceID ?? "0", value: item.IlceAdi ?? ""))
         }
         performSegue(withIdentifier: "sg_picker", sender: PickerType.district)
     }
+    
+    func getVakitlerHandler(list: [[String]]?, status: Bool, message: String){
+        guard status, let responseList = list else { return }
+        var vakitList: [Vakit] = []
+        for var vakit in responseList {
+            if vakit[0].contains("&") {
+                let tempStr = vakit[0].components(separatedBy: " ")
+                let day = tempStr[0]
+                let month = tempStr[1]
+                let year = tempStr[2]
+                let dayStr = tempStr[3]
+                vakit[0] = String(format: "%@ %@ %@ %@", day, month, year, "Çarşamba")
+            }
+            let tempValue = Vakit()
+            tempValue.MiladiTarihUzun = vakit[0]
+            tempValue.Imsak = vakit[1]
+            tempValue.Gunes = vakit[2]
+            tempValue.Ogle = vakit[3]
+            tempValue.Ikindi = vakit[4]
+            tempValue.Aksam = vakit[5]
+            tempValue.Yatsi = vakit[6]
+            tempValue.MiladiTarihKisa = DateManager.dateToString2(date: DateManager.strToDate1(strDate: vakit[0]))
+            
+            vakitList.append(tempValue)
+        }
         
-    func getLocation(){
-        let firestore = Firestore.firestore()
-        let docRef = firestore.collection("Locations").document(location)
-        docRef.getDocument { (document, error) in
-            if let document = document, document.exists {
-                guard let myLocation = Mapper<Locations>().map(JSON: document.data() ?? ["":""]) else { return }
-                myLocation.toJSON()
+        
+        let loc = ApiLocations()
+        loc.timeList = vakitList
+        guard let district = self.districtSelect else { return }
+        loc.districtId = district.strId
+        loc.lastUpdateTime = DateManager.dateToStringUgur(date: Date())
+        
+        FirebaseClient.setDocRefData(location, "Locations", loc.toJSON()) { flag, statu in
+            guard flag else { return }
+            if flag {
                 self.setHomeData()
-      
+            }
+        }
+        
+    }
+        
+    func getLocation() {
+        FirebaseClient.getDocRefData("Locations", location) { result, documentId, response in
+            if result {
+                guard let myLocation = Mapper<ApiLocations>().map(JSON: response) else { return }
+                self.setHomeData()
             } else {
                 self.getVakitlerListener()
             }
         }
+
     }
     
-    func setHomeData(){
-        let homeData = FavoriteLocations()
-        homeData.isFavorite = true
-        homeData.location = ["location" : self.location]
+    func setHomeData() {
+        var userLocationList:[UserLocations] = []
+        let saveZikirList:[SelectZikir] = []
+        let userLocation = UserLocations()
+        userLocation.isFavorite = true
+        userLocation.location = self.location
+        userLocationList.append(userLocation)
         
-        let homeDataList = Home()
-        homeDataList.favoriteList.append(homeData)
+        let userModel = User()
+        userModel.locations.append(userLocation)
+        userModel.saveZikirList = saveZikirList
         
-        FirebaseClient.setVakitler(documentName: FirstSelectViewController.deviceId, tableName: "Home", data: homeDataList.toJSON()) { flag, statu in
+        if self.backVisible {
+            for item in self.saveData.locations {
+                item.isFavorite = false
+                userModel.locations.append(item)
+            }
+            userModel.saveZikirList = saveData.saveZikirList
+        }
+
+        FirebaseClient.setDocRefData(FirstSelectViewController.deviceId, "User", userModel.toJSON()) { flag, statu in
             guard flag else { return }
             if flag {
                 self.performSegue(withIdentifier: "sg_toTabbar", sender: nil)
@@ -130,26 +196,6 @@ class FirstSelectViewController: UIViewController {
     func getVakitlerListener(){
         guard let country = self.countrySelect, let city = self.citySelect, let district = self.districtSelect else { return alert("Lütfen konumunuzu seçiniz!") }
         ApiClient.getVakitler(districtId: district.strId, completion: self.getVakitlerHandler)
-    }
-    
-    func getVakitlerHandler(list: [Vakit]?, status: Bool, message: String){
-        guard status, let responseList = list else { return }
-        self.vakitList = responseList
-        var vakitDictList: [[String: Any]] = []
-        for vakit in self.vakitList {
-            vakitDictList.append(vakit.toJSON())
-        }
-        let loc = Locations()
-        loc.locationList = vakitDictList
-        loc.lastUpdateTime = DateManager.shared.getTodayString()
-        
-        FirebaseClient.setVakitler(documentName: location, tableName: "Locations", data: loc.toJSON()) { flag, statu in
-            guard flag else { return }
-            if flag {
-                self.setHomeData()
-            }
-        }
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -203,8 +249,9 @@ extension FirstSelectViewController: PickerDelegate{
             ApiClient.getCity(countyId: country.strId, completion: self.getCityListHandler)
             break
         case .district:
+            guard let country = self.countrySelect else { return alert("Lütfen ülke seçiniz!") }
             guard let city = self.citySelect else { return alert("Lütfen şehir seçiniz!") }
-            ApiClient.getDistrict(cityId: city.strId, completion: self.getDistrictListHandler)
+            ApiClient.getDistrict(countyId: country.strId, cityId: city.strId, completion: self.getDistrictListHandler)
             break
         }
     }

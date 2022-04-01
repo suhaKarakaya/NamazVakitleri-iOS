@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import netfox
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,6 +18,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
 //        sleep(2)
         FirebaseApp.configure()
+#if DEBUG
+        NFX.sharedInstance().start()
+#endif
+       
         return true
     }
 

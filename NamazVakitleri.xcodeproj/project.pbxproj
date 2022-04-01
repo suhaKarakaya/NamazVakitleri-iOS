@@ -12,25 +12,35 @@
 		02156B9827D3812200679FA2 /* colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02156B9727D3812200679FA2 /* colors.xcassets */; };
 		02156BAD27D39A6700679FA2 /* TimeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02156BAC27D39A6700679FA2 /* TimeViewCell.swift */; };
 		02156BAF27D39C1500679FA2 /* TimeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02156BAE27D39C1500679FA2 /* TimeTableViewController.swift */; };
+		0250D62227F1D7F2004C7EEA /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0250D62127F1D7F1004C7EEA /* HomeCollectionViewCell.swift */; };
+		0250D62427F1DEE8004C7EEA /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0250D62327F1DEE8004C7EEA /* HomeScreen.swift */; };
 		0251803E27BE5F5400C29F76 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0251803D27BE5F5400C29F76 /* ApiClient.swift */; };
 		0251804027BE98C000C29F76 /* FirebaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0251803F27BE98C000C29F76 /* FirebaseClient.swift */; };
+		0280834327F5A722001132BF /* KayitliZikirTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0280834227F5A722001132BF /* KayitliZikirTableViewCell.swift */; };
 		02A3090327BD0394001CAFF9 /* Picker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02A3090227BD0394001CAFF9 /* Picker.xib */; };
 		02A3090527BD04B9001CAFF9 /* Picker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A3090427BD04B9001CAFF9 /* Picker.swift */; };
 		02A3090727BD1D40001CAFF9 /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A3090627BD1D40001CAFF9 /* PickerViewController.swift */; };
 		02A3090927BD73B4001CAFF9 /* ResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A3090827BD73B4001CAFF9 /* ResponseModel.swift */; };
+		02C80EEE27F235D300AC1E60 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C80EED27F235D300AC1E60 /* UIView+Extensions.swift */; };
 		02C8600227D6909F00EEE8B2 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C8600127D6909F00EEE8B2 /* SettingsViewController.swift */; };
 		02C8600427D6953E00EEE8B2 /* SettingsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C8600327D6953E00EEE8B2 /* SettingsViewCell.swift */; };
 		02D6823C27B9A40B009CE351 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D6823B27B9A40B009CE351 /* AppDelegate.swift */; };
 		02D6823E27B9A40B009CE351 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D6823D27B9A40B009CE351 /* SceneDelegate.swift */; };
-		02D6824027B9A40B009CE351 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D6823F27B9A40B009CE351 /* ViewController.swift */; };
 		02D6824327B9A40B009CE351 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02D6824127B9A40B009CE351 /* Main.storyboard */; };
 		02D6824527B9A40C009CE351 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02D6824427B9A40C009CE351 /* Assets.xcassets */; };
 		02D6824827B9A40C009CE351 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02D6824627B9A40C009CE351 /* LaunchScreen.storyboard */; };
 		02D6825027B9AA42009CE351 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 02D6824F27B9AA42009CE351 /* GoogleService-Info.plist */; };
+		02DF761D27F7AF74002E7D6F /* QiblaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DF761C27F7AF74002E7D6F /* QiblaViewController.swift */; };
+		02E194CA27F302FC00A700AB /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E194C927F302FC00A700AB /* Date+Extensions.swift */; };
 		02E3BDC427D0E303001DE910 /* FirebaseResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E3BDC327D0E303001DE910 /* FirebaseResponseModel.swift */; };
 		02E3BDC627D0E3D3001DE910 /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E3BDC527D0E3D3001DE910 /* DateManager.swift */; };
 		02EADC7A27BAF14C00E5709A /* FirstSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EADC7927BAF14C00E5709A /* FirstSelectViewController.swift */; };
-		8818C56B295D70A5424A7971 /* Pods_NamazVakitleri.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D63B79B030D0E25A39B32B01 /* Pods_NamazVakitleri.framework */; };
+		02F2679C27F4DB7C00EE4DBE /* ZikirmatikViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F2679B27F4DB7C00EE4DBE /* ZikirmatikViewController.swift */; };
+		02F2679E27F4DB8900EE4DBE /* ZikirOlusturViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F2679D27F4DB8900EE4DBE /* ZikirOlusturViewController.swift */; };
+		02F267A027F4DB9500EE4DBE /* KayitliZikirViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F2679F27F4DB9500EE4DBE /* KayitliZikirViewController.swift */; };
+		02F267A227F4DBA100EE4DBE /* ZikirSecViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F267A127F4DBA100EE4DBE /* ZikirSecViewController.swift */; };
+		02F267A427F4E68400EE4DBE /* ZikirSecTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F267A327F4E68400EE4DBE /* ZikirSecTableViewCell.swift */; };
+		CBFF1194BC92DE5450DA79EA /* Pods_NamazVakitleri.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6167B6C4C11EC712A4ADEAE7 /* Pods_NamazVakitleri.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,29 +49,39 @@
 		02156B9727D3812200679FA2 /* colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = colors.xcassets; sourceTree = "<group>"; };
 		02156BAC27D39A6700679FA2 /* TimeViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeViewCell.swift; sourceTree = "<group>"; };
 		02156BAE27D39C1500679FA2 /* TimeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableViewController.swift; sourceTree = "<group>"; };
+		0250D62127F1D7F1004C7EEA /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
+		0250D62327F1DEE8004C7EEA /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		0251803D27BE5F5400C29F76 /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 		0251803F27BE98C000C29F76 /* FirebaseClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseClient.swift; sourceTree = "<group>"; };
+		0280834227F5A722001132BF /* KayitliZikirTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KayitliZikirTableViewCell.swift; sourceTree = "<group>"; };
 		02A3090227BD0394001CAFF9 /* Picker.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Picker.xib; sourceTree = "<group>"; };
 		02A3090427BD04B9001CAFF9 /* Picker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Picker.swift; sourceTree = "<group>"; };
 		02A3090627BD1D40001CAFF9 /* PickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
 		02A3090827BD73B4001CAFF9 /* ResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseModel.swift; sourceTree = "<group>"; };
+		02C80EED27F235D300AC1E60 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		02C8600127D6909F00EEE8B2 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		02C8600327D6953E00EEE8B2 /* SettingsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewCell.swift; sourceTree = "<group>"; };
 		02D6823827B9A40B009CE351 /* NamazVakitleri.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NamazVakitleri.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02D6823B27B9A40B009CE351 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		02D6823D27B9A40B009CE351 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		02D6823F27B9A40B009CE351 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		02D6824227B9A40B009CE351 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		02D6824427B9A40C009CE351 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		02D6824727B9A40C009CE351 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		02D6824927B9A40C009CE351 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		02D6824F27B9AA42009CE351 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		02DF761C27F7AF74002E7D6F /* QiblaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiblaViewController.swift; sourceTree = "<group>"; };
+		02E194C927F302FC00A700AB /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		02E3BDC327D0E303001DE910 /* FirebaseResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseResponseModel.swift; sourceTree = "<group>"; };
 		02E3BDC527D0E3D3001DE910 /* DateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateManager.swift; sourceTree = "<group>"; };
 		02EADC7927BAF14C00E5709A /* FirstSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstSelectViewController.swift; sourceTree = "<group>"; };
-		32558494ED2F32F7E725CFD1 /* Pods-NamazVakitleri.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NamazVakitleri.release.xcconfig"; path = "Target Support Files/Pods-NamazVakitleri/Pods-NamazVakitleri.release.xcconfig"; sourceTree = "<group>"; };
-		8912DE91746EDE4780F76151 /* Pods-NamazVakitleri.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NamazVakitleri.debug.xcconfig"; path = "Target Support Files/Pods-NamazVakitleri/Pods-NamazVakitleri.debug.xcconfig"; sourceTree = "<group>"; };
-		D63B79B030D0E25A39B32B01 /* Pods_NamazVakitleri.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NamazVakitleri.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		02F2679B27F4DB7C00EE4DBE /* ZikirmatikViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZikirmatikViewController.swift; sourceTree = "<group>"; };
+		02F2679D27F4DB8900EE4DBE /* ZikirOlusturViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZikirOlusturViewController.swift; sourceTree = "<group>"; };
+		02F2679F27F4DB9500EE4DBE /* KayitliZikirViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KayitliZikirViewController.swift; sourceTree = "<group>"; };
+		02F267A127F4DBA100EE4DBE /* ZikirSecViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZikirSecViewController.swift; sourceTree = "<group>"; };
+		02F267A327F4E68400EE4DBE /* ZikirSecTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZikirSecTableViewCell.swift; sourceTree = "<group>"; };
+		083CA87EEDE54CB217019C33 /* Pods-NamazVakitleri.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NamazVakitleri.release.xcconfig"; path = "Target Support Files/Pods-NamazVakitleri/Pods-NamazVakitleri.release.xcconfig"; sourceTree = "<group>"; };
+		195F5D92F7E99BE57F356771 /* Pods-NamazVakitleri.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NamazVakitleri.debug.xcconfig"; path = "Target Support Files/Pods-NamazVakitleri/Pods-NamazVakitleri.debug.xcconfig"; sourceTree = "<group>"; };
+		6167B6C4C11EC712A4ADEAE7 /* Pods_NamazVakitleri.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NamazVakitleri.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,20 +89,70 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8818C56B295D70A5424A7971 /* Pods_NamazVakitleri.framework in Frameworks */,
+				CBFF1194BC92DE5450DA79EA /* Pods_NamazVakitleri.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0250D61D27F1C21F004C7EEA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				02E3BDC327D0E303001DE910 /* FirebaseResponseModel.swift */,
+				02A3090827BD73B4001CAFF9 /* ResponseModel.swift */,
+				0250D62327F1DEE8004C7EEA /* HomeScreen.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		0250D61E27F1C22D004C7EEA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				02DF761B27F7AF54002E7D6F /* Kibla */,
+				02F2679727F4DAE600EE4DBE /* Zikirmatik */,
+				02EDA0C727F38FCA006A2A31 /* TimeTable */,
+				02EDA0C527F38FB5006A2A31 /* Picker */,
+				02EDA0C427F38F5D006A2A31 /* Splash */,
+				02EDA0C327F38F3E006A2A31 /* FirstSelect */,
+				02EDA0C227F38F1D006A2A31 /* Settings */,
+				0250D62027F1C251004C7EEA /* Home */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0250D61F27F1C239004C7EEA /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		0250D62027F1C251004C7EEA /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				02156B9527D3803E00679FA2 /* HomeViewController.swift */,
+				0250D62127F1D7F1004C7EEA /* HomeCollectionViewCell.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		02C80EEC27F2358600AC1E60 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				02C80EED27F235D300AC1E60 /* UIView+Extensions.swift */,
+				02E194C927F302FC00A700AB /* Date+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		02D6822F27B9A40B009CE351 = {
 			isa = PBXGroup;
 			children = (
 				02D6823A27B9A40B009CE351 /* NamazVakitleri */,
 				02D6823927B9A40B009CE351 /* Products */,
 				4E5E2C5096977932A626A9CE /* Pods */,
-				EDEF6FD5C4040E0DA41E5B2C /* Frameworks */,
+				D8E2E1CF4FDBD50668119115 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,45 +169,157 @@
 			children = (
 				02D6823B27B9A40B009CE351 /* AppDelegate.swift */,
 				02D6823D27B9A40B009CE351 /* SceneDelegate.swift */,
-				02D6823F27B9A40B009CE351 /* ViewController.swift */,
-				02D6824127B9A40B009CE351 /* Main.storyboard */,
+				02EDA0C927F3901F006A2A31 /* Storyboard */,
+				02EDA0C827F38FF3006A2A31 /* ServiceClient */,
+				02E194CB27F3036B00A700AB /* Tools */,
+				02C80EEC27F2358600AC1E60 /* Extensions */,
+				0250D61F27F1C239004C7EEA /* CustomViews */,
+				0250D61E27F1C22D004C7EEA /* Views */,
+				0250D61D27F1C21F004C7EEA /* Models */,
 				02D6824427B9A40C009CE351 /* Assets.xcassets */,
-				02D6824627B9A40C009CE351 /* LaunchScreen.storyboard */,
-				02D6824F27B9AA42009CE351 /* GoogleService-Info.plist */,
-				02D6824927B9A40C009CE351 /* Info.plist */,
-				02EADC7927BAF14C00E5709A /* FirstSelectViewController.swift */,
-				02A3090227BD0394001CAFF9 /* Picker.xib */,
-				02A3090427BD04B9001CAFF9 /* Picker.swift */,
-				02A3090627BD1D40001CAFF9 /* PickerViewController.swift */,
-				02A3090827BD73B4001CAFF9 /* ResponseModel.swift */,
-				0251803D27BE5F5400C29F76 /* ApiClient.swift */,
-				0251803F27BE98C000C29F76 /* FirebaseClient.swift */,
-				02E3BDC327D0E303001DE910 /* FirebaseResponseModel.swift */,
-				02E3BDC527D0E3D3001DE910 /* DateManager.swift */,
-				020219E427D13A3C00706ECF /* MySplashViewController.swift */,
-				02156B9527D3803E00679FA2 /* HomeViewController.swift */,
 				02156B9727D3812200679FA2 /* colors.xcassets */,
-				02156BAC27D39A6700679FA2 /* TimeViewCell.swift */,
-				02156BAE27D39C1500679FA2 /* TimeTableViewController.swift */,
+				02D6824927B9A40C009CE351 /* Info.plist */,
+				02D6824F27B9AA42009CE351 /* GoogleService-Info.plist */,
+			);
+			path = NamazVakitleri;
+			sourceTree = "<group>";
+		};
+		02DF761B27F7AF54002E7D6F /* Kibla */ = {
+			isa = PBXGroup;
+			children = (
+				02DF761C27F7AF74002E7D6F /* QiblaViewController.swift */,
+			);
+			path = Kibla;
+			sourceTree = "<group>";
+		};
+		02E194CB27F3036B00A700AB /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				02E3BDC527D0E3D3001DE910 /* DateManager.swift */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		02EDA0C227F38F1D006A2A31 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
 				02C8600127D6909F00EEE8B2 /* SettingsViewController.swift */,
 				02C8600327D6953E00EEE8B2 /* SettingsViewCell.swift */,
 			);
-			path = NamazVakitleri;
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		02EDA0C327F38F3E006A2A31 /* FirstSelect */ = {
+			isa = PBXGroup;
+			children = (
+				02EADC7927BAF14C00E5709A /* FirstSelectViewController.swift */,
+			);
+			path = FirstSelect;
+			sourceTree = "<group>";
+		};
+		02EDA0C427F38F5D006A2A31 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				020219E427D13A3C00706ECF /* MySplashViewController.swift */,
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
+		02EDA0C527F38FB5006A2A31 /* Picker */ = {
+			isa = PBXGroup;
+			children = (
+				02EDA0C627F38FBD006A2A31 /* Xib */,
+				02A3090627BD1D40001CAFF9 /* PickerViewController.swift */,
+			);
+			path = Picker;
+			sourceTree = "<group>";
+		};
+		02EDA0C627F38FBD006A2A31 /* Xib */ = {
+			isa = PBXGroup;
+			children = (
+				02A3090427BD04B9001CAFF9 /* Picker.swift */,
+				02A3090227BD0394001CAFF9 /* Picker.xib */,
+			);
+			path = Xib;
+			sourceTree = "<group>";
+		};
+		02EDA0C727F38FCA006A2A31 /* TimeTable */ = {
+			isa = PBXGroup;
+			children = (
+				02156BAC27D39A6700679FA2 /* TimeViewCell.swift */,
+				02156BAE27D39C1500679FA2 /* TimeTableViewController.swift */,
+			);
+			path = TimeTable;
+			sourceTree = "<group>";
+		};
+		02EDA0C827F38FF3006A2A31 /* ServiceClient */ = {
+			isa = PBXGroup;
+			children = (
+				0251803F27BE98C000C29F76 /* FirebaseClient.swift */,
+				0251803D27BE5F5400C29F76 /* ApiClient.swift */,
+			);
+			path = ServiceClient;
+			sourceTree = "<group>";
+		};
+		02EDA0C927F3901F006A2A31 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				02D6824627B9A40C009CE351 /* LaunchScreen.storyboard */,
+				02D6824127B9A40B009CE351 /* Main.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		02F2679727F4DAE600EE4DBE /* Zikirmatik */ = {
+			isa = PBXGroup;
+			children = (
+				02F2679A27F4DB1300EE4DBE /* ZikirOlustur */,
+				02F2679927F4DB0000EE4DBE /* KayitliZikir */,
+				02F2679827F4DAF400EE4DBE /* ZikirSec */,
+				02F2679B27F4DB7C00EE4DBE /* ZikirmatikViewController.swift */,
+			);
+			path = Zikirmatik;
+			sourceTree = "<group>";
+		};
+		02F2679827F4DAF400EE4DBE /* ZikirSec */ = {
+			isa = PBXGroup;
+			children = (
+				02F267A127F4DBA100EE4DBE /* ZikirSecViewController.swift */,
+				02F267A327F4E68400EE4DBE /* ZikirSecTableViewCell.swift */,
+			);
+			path = ZikirSec;
+			sourceTree = "<group>";
+		};
+		02F2679927F4DB0000EE4DBE /* KayitliZikir */ = {
+			isa = PBXGroup;
+			children = (
+				02F2679F27F4DB9500EE4DBE /* KayitliZikirViewController.swift */,
+				0280834227F5A722001132BF /* KayitliZikirTableViewCell.swift */,
+			);
+			path = KayitliZikir;
+			sourceTree = "<group>";
+		};
+		02F2679A27F4DB1300EE4DBE /* ZikirOlustur */ = {
+			isa = PBXGroup;
+			children = (
+				02F2679D27F4DB8900EE4DBE /* ZikirOlusturViewController.swift */,
+			);
+			path = ZikirOlustur;
 			sourceTree = "<group>";
 		};
 		4E5E2C5096977932A626A9CE /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				8912DE91746EDE4780F76151 /* Pods-NamazVakitleri.debug.xcconfig */,
-				32558494ED2F32F7E725CFD1 /* Pods-NamazVakitleri.release.xcconfig */,
+				195F5D92F7E99BE57F356771 /* Pods-NamazVakitleri.debug.xcconfig */,
+				083CA87EEDE54CB217019C33 /* Pods-NamazVakitleri.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		EDEF6FD5C4040E0DA41E5B2C /* Frameworks */ = {
+		D8E2E1CF4FDBD50668119115 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D63B79B030D0E25A39B32B01 /* Pods_NamazVakitleri.framework */,
+				6167B6C4C11EC712A4ADEAE7 /* Pods_NamazVakitleri.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -149,11 +331,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 02D6824C27B9A40C009CE351 /* Build configuration list for PBXNativeTarget "NamazVakitleri" */;
 			buildPhases = (
-				6D7C2AF3EBFC4D7F2B2030EC /* [CP] Check Pods Manifest.lock */,
+				4438BB5BE8748AB99E6E2B15 /* [CP] Check Pods Manifest.lock */,
 				02D6823427B9A40B009CE351 /* Sources */,
 				02D6823527B9A40B009CE351 /* Frameworks */,
 				02D6823627B9A40B009CE351 /* Resources */,
-				8D7D2A97ADF6C0618EB3B7FA /* [CP] Embed Pods Frameworks */,
+				61A1D085A6D79A6B4ED4E634 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -214,7 +396,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		6D7C2AF3EBFC4D7F2B2030EC /* [CP] Check Pods Manifest.lock */ = {
+		4438BB5BE8748AB99E6E2B15 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -236,7 +418,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		8D7D2A97ADF6C0618EB3B7FA /* [CP] Embed Pods Frameworks */ = {
+		61A1D085A6D79A6B4ED4E634 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -260,18 +442,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02C80EEE27F235D300AC1E60 /* UIView+Extensions.swift in Sources */,
+				02E194CA27F302FC00A700AB /* Date+Extensions.swift in Sources */,
 				02A3090927BD73B4001CAFF9 /* ResponseModel.swift in Sources */,
+				02DF761D27F7AF74002E7D6F /* QiblaViewController.swift in Sources */,
+				0280834327F5A722001132BF /* KayitliZikirTableViewCell.swift in Sources */,
+				02F2679C27F4DB7C00EE4DBE /* ZikirmatikViewController.swift in Sources */,
+				02F2679E27F4DB8900EE4DBE /* ZikirOlusturViewController.swift in Sources */,
 				0251803E27BE5F5400C29F76 /* ApiClient.swift in Sources */,
+				02F267A427F4E68400EE4DBE /* ZikirSecTableViewCell.swift in Sources */,
 				02A3090727BD1D40001CAFF9 /* PickerViewController.swift in Sources */,
 				02156BAD27D39A6700679FA2 /* TimeViewCell.swift in Sources */,
 				02A3090527BD04B9001CAFF9 /* Picker.swift in Sources */,
-				02D6824027B9A40B009CE351 /* ViewController.swift in Sources */,
+				0250D62227F1D7F2004C7EEA /* HomeCollectionViewCell.swift in Sources */,
 				0251804027BE98C000C29F76 /* FirebaseClient.swift in Sources */,
 				02C8600227D6909F00EEE8B2 /* SettingsViewController.swift in Sources */,
+				02F267A027F4DB9500EE4DBE /* KayitliZikirViewController.swift in Sources */,
+				0250D62427F1DEE8004C7EEA /* HomeScreen.swift in Sources */,
 				02EADC7A27BAF14C00E5709A /* FirstSelectViewController.swift in Sources */,
 				02E3BDC627D0E3D3001DE910 /* DateManager.swift in Sources */,
 				02E3BDC427D0E303001DE910 /* FirebaseResponseModel.swift in Sources */,
 				02D6823C27B9A40B009CE351 /* AppDelegate.swift in Sources */,
+				02F267A227F4DBA100EE4DBE /* ZikirSecViewController.swift in Sources */,
 				02D6823E27B9A40B009CE351 /* SceneDelegate.swift in Sources */,
 				02C8600427D6953E00EEE8B2 /* SettingsViewCell.swift in Sources */,
 				02156B9627D3803E00679FA2 /* HomeViewController.swift in Sources */,
@@ -420,15 +612,18 @@
 		};
 		02D6824D27B9A40C009CE351 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8912DE91746EDE4780F76151 /* Pods-NamazVakitleri.debug.xcconfig */;
+			baseConfigurationReference = 195F5D92F7E99BE57F356771 /* Pods-NamazVakitleri.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = PVJ7V7KVGQ;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NamazVakitleri/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Namaz Vakitleri";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = always;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = whenInUse;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -441,6 +636,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.suhaKarakaya.NamazVakitleri;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -449,15 +645,18 @@
 		};
 		02D6824E27B9A40C009CE351 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 32558494ED2F32F7E725CFD1 /* Pods-NamazVakitleri.release.xcconfig */;
+			baseConfigurationReference = 083CA87EEDE54CB217019C33 /* Pods-NamazVakitleri.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = PVJ7V7KVGQ;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NamazVakitleri/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Namaz Vakitleri";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = always;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = whenInUse;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -470,6 +669,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.suhaKarakaya.NamazVakitleri;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

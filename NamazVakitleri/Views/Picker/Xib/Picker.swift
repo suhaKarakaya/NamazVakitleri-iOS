@@ -33,9 +33,7 @@ class Picker: UIView {
         }
     
     func mysetup(){
-        borderView.layer.borderColor = UIColor.brown.cgColor
-        borderView.layer.borderWidth = 1
-        borderView.layer.cornerRadius = 8
+        borderView.setViewBorder(color:  UIColor.brown.cgColor, borderWith: 1, borderRadius: 8)
     }
     
     @IBAction func selectedAction(_ sender: Any) {
