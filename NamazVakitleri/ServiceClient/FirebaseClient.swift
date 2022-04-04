@@ -32,14 +32,15 @@ public class FirebaseClient {
     static func setAllData(_ tableName: String, _ data: [String:Any], completion: @escaping firebaseSetCallBack){
         
         let ref = firestore.collection(tableName)
-        
-        ref.addDocument(data: data) { err in
+        var ref1: DocumentReference? = nil
+        ref1 = ref.addDocument(data: data) { err in
             if let err = err {
                 completion(false, "Failure")
             } else {
-                completion(true, "Success")
+                completion(true, ref1?.documentID ?? "")
             }
         }
+        
     }
     
     static func getDocRefData(_ collectionName: String, _ documentName: String, completion: @escaping firebaseGetCallBack){
