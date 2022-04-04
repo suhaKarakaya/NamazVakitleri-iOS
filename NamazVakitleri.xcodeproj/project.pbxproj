@@ -121,13 +121,6 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		0250D61F27F1C239004C7EEA /* CustomViews */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CustomViews;
-			sourceTree = "<group>";
-		};
 		0250D62027F1C251004C7EEA /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -173,7 +166,6 @@
 				02EDA0C827F38FF3006A2A31 /* ServiceClient */,
 				02E194CB27F3036B00A700AB /* Tools */,
 				02C80EEC27F2358600AC1E60 /* Extensions */,
-				0250D61F27F1C239004C7EEA /* CustomViews */,
 				0250D61E27F1C22D004C7EEA /* Views */,
 				0250D61D27F1C21F004C7EEA /* Models */,
 				02D6824427B9A40C009CE351 /* Assets.xcassets */,
@@ -616,9 +608,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = F24GSTF28W;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NamazVakitleri/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Namaz Vakitleri";
@@ -649,9 +642,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = F24GSTF28W;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NamazVakitleri/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Namaz Vakitleri";

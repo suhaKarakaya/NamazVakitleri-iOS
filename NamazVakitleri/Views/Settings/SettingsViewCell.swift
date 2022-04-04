@@ -24,14 +24,14 @@ class SettingsViewCell: UITableViewCell {
     var index:Int = 0
     var data: UserLocations? {
         didSet {
-            guard let data = data else { return }
-            labelLocation.text = data.location
-            
-            if data.isFavorite {
-                imageSelected.image = UIImage(systemName: "star.fill")
-            } else {
-                imageSelected.image = UIImage(systemName: "star")
-            }
+//            guard let data = data else { return }
+//            labelLocation.text = data.location
+//            
+//            if data.isFavorite {
+//                imageSelected.image = UIImage(systemName: "star.fill")
+//            } else {
+//                imageSelected.image = UIImage(systemName: "star")
+//            }
             
         }
     }

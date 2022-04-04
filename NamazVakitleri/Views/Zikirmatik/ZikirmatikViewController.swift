@@ -15,7 +15,7 @@ class ZikirmatikViewController: UIViewController {
     @IBOutlet weak var selectedZikirLabel: UILabel!
     var userData = SelectZikir()
     var userDataList: [SelectZikir] = []
-    var userMainData = User()
+//    var userMainData = User()
     var myCount = 0
     var documentId = ""
     var countFlag = true
@@ -36,53 +36,53 @@ class ZikirmatikViewController: UIViewController {
 
     
     func getData(){
-        FirebaseClient.getDocRefData("User", FirstSelectViewController.deviceId) { flag, documentId, response in
-            if flag {
-                guard let myLocation = Mapper<User>().map(JSON: response) else { return }
-                self.userMainData = myLocation
-                self.documentId = documentId
-                self.userDataList = []
-                self.userDataList = myLocation.saveZikirList
-                self.countFlag = true
-                if myLocation.saveZikirList.count == 0 {
-                    self.selectedZikirLabel.text = ""
-                    self.counterZikirLabel.text = "Başla"
-                } else {
-                    for item in myLocation.saveZikirList {
-                        if item.isSelected {
-                            self.countFlag = false
-                            self.userData = item
-                            self.myCount = Int(item.count)
-                            self.selectedZikirLabel.text = item.zikir
-                            self.counterZikirLabel.text = String(self.myCount)
-                        }
-                    }
-                    if self.countFlag {
-                        self.selectedZikirLabel.text = ""
-                        self.counterZikirLabel.text = "Başla"
-                    }
-                }
-            }
-        }
+//        FirebaseClient.getDocRefData("User", FirstSelectViewController.deviceId) { flag, documentId, response in
+//            if flag {
+//                guard let myLocation = Mapper<User>().map(JSON: response) else { return }
+//                self.userMainData = myLocation
+//                self.documentId = documentId
+//                self.userDataList = []
+//                self.userDataList = myLocation.saveZikirList
+//                self.countFlag = true
+//                if myLocation.saveZikirList.count == 0 {
+//                    self.selectedZikirLabel.text = ""
+//                    self.counterZikirLabel.text = "Başla"
+//                } else {
+//                    for item in myLocation.saveZikirList {
+//                        if item.isSelected {
+//                            self.countFlag = false
+//                            self.userData = item
+//                            self.myCount = Int(item.count)
+//                            self.selectedZikirLabel.text = item.zikir
+//                            self.counterZikirLabel.text = String(self.myCount)
+//                        }
+//                    }
+//                    if self.countFlag {
+//                        self.selectedZikirLabel.text = ""
+//                        self.counterZikirLabel.text = "Başla"
+//                    }
+//                }
+//            }
+//        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(true)
-        setMainData(data: userMainData)
+//        setMainData(data: userMainData)
     }
     
-    func setMainData(data: User) {
-        for item in userMainData.saveZikirList {
-            if item.isSelected {
-                item.count = Int64(myCount)
-            }
-        }
-        FirebaseClient.setDocRefData(self.documentId, "User", data.toJSON()) { flag, statu in
-            guard flag else { return }
-            if flag {
-            }
-        }
-    }
+//    func setMainData(data: User) {
+//        for item in userMainData.saveZikirList {
+//            if item.isSelected {
+//                item.count = Int64(myCount)
+//            }
+//        }
+//        FirebaseClient.setDocRefData(self.documentId, "User", data.toJSON()) { flag, statu in
+//            guard flag else { return }
+//            if flag {
+//            }
+//        }
+//    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "sg_toZikirSec" {
@@ -95,16 +95,16 @@ class ZikirmatikViewController: UIViewController {
     }
     
     @IBAction func zikirOlusturButtonAction(_ sender: Any) {
-        setMainData(data: userMainData)
+//        setMainData(data: userMainData)
         performSegue(withIdentifier: "sg_toZikirOlustur", sender: nil)
     }
     @IBAction func kayitliZikirlerimButtonAction(_ sender: Any) {
-        setMainData(data: userMainData)
+//        setMainData(data: userMainData)
         performSegue(withIdentifier: "sg_toKayitliZikir", sender: nil)
     }
     
     @IBAction func zikirSecButtonAction(_ sender: Any) {
-        setMainData(data: userMainData)
+//        setMainData(data: userMainData)
         performSegue(withIdentifier: "sg_toZikirSec", sender: nil)
     }
     

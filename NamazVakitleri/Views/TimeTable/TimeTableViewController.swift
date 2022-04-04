@@ -55,50 +55,50 @@ class TimeTableViewController: UIViewController {
         }
         
         
-        let loc = ApiLocations()
-        loc.timeList = vakitList
-        loc.districtId = self.districtId
-        loc.lastUpdateTime = DateManager.dateToStringUgur(date: Date())
-        
-        FirebaseClient.setDocRefData(self.loc, "Locations", loc.toJSON()) { flag, statu in
-            guard flag else { return }
-            if flag {
-                self.getData()
-            }
-        }
+//        let loc = ApiLocations()
+//        loc.timeList = vakitList
+//        loc.districtId = self.districtId
+//        loc.lastUpdateTime = DateManager.dateToStringUgur(date: Date())
+//
+//        FirebaseClient.setDocRefData(self.loc, "Locations", loc.toJSON()) { flag, statu in
+//            guard flag else { return }
+//            if flag {
+//                self.getData()
+//            }
+//        }
         
     }
     
     func getData() {
         tempDicsList = []
             
-        FirebaseClient.getDocRefData("User", FirstSelectViewController.deviceId) { flag, documentId, response in
-            if flag {
-                guard let userData = Mapper<User>().map(JSON: response) else { return }
-                for item in userData.locations {
-                    if item.isFavorite {
-                        self.loc = item.location
-                        self.labelLocation.text = self.loc
-                    }
-                }
-                
-                FirebaseClient.getDocRefData("Locations", self.loc) { flag, documentID, response in
-                    if flag {
-                        guard let myLocation = Mapper<ApiLocations>().map(JSON: response) else { return }
-                        self.districtId = myLocation.districtId
-                        var lastUpdateTimeDate = DateManager.strToDateUgur(strDate: myLocation.lastUpdateTime)
-                        let temp = DateManager.checkDate(date: Date(), endDate: lastUpdateTimeDate)
-                        if temp == .orderedAscending {
-                            self.getVakitlerListener()
-                        } else {
-                            self.tempDicsList = myLocation.timeList
-                            self.tableView.reloadData()
-                        }
-                    }
-                }
-               
-            }
-        }
+//        FirebaseClient.getDocRefData("User", FirstSelectViewController.deviceId) { flag, documentId, response in
+//            if flag {
+//                guard let userData = Mapper<User>().map(JSON: response) else { return }
+//                for item in userData.locations {
+//                    if item.isFavorite {
+//                        self.loc = item.location
+//                        self.labelLocation.text = self.loc
+//                    }
+//                }
+//                
+//                FirebaseClient.getDocRefData("Locations", self.loc) { flag, documentID, response in
+//                    if flag {
+//                        guard let myLocation = Mapper<ApiLocations>().map(JSON: response) else { return }
+//                        self.districtId = myLocation.districtId
+//                        var lastUpdateTimeDate = DateManager.strToDateUgur(strDate: myLocation.lastUpdateTime)
+//                        let temp = DateManager.checkDate(date: Date(), endDate: lastUpdateTimeDate)
+//                        if temp == .orderedAscending {
+//                            self.getVakitlerListener()
+//                        } else {
+//                            self.tempDicsList = myLocation.timeList
+//                            self.tableView.reloadData()
+//                        }
+//                    }
+//                }
+//               
+//            }
+//        }
 
     }
     

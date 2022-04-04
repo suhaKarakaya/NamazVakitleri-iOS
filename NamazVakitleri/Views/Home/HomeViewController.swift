@@ -24,19 +24,19 @@ class HomeViewController: UIViewController {
         self.pageControl.numberOfPages = 0 
         self.homeList = []
         super.viewWillAppear(animated)
-        FirebaseClient.getDocRefData("User", FirstSelectViewController.deviceId) { result, documentId, response in
-            if result {
-                guard let myLocation = Mapper<User>().map(JSON: response) else { return }
-                myLocation.toJSON()
-                self.pageControl.numberOfPages = myLocation.locations.count
-                for item in myLocation.locations {
-                    let obj = HomeScreen()
-                    obj.location = item.location
-                    self.setTableList(obj, completion: self.setListHandler)
-                    
-                }
-            }
-        }
+//        FirebaseClient.getDocRefData("User", FirstSelectViewController.deviceId) { result, documentId, response in
+//            if result {
+//                guard let myLocation = Mapper<User>().map(JSON: response) else { return }
+//                myLocation.toJSON()
+//                self.pageControl.numberOfPages = myLocation.locations.count
+//                for item in myLocation.locations {
+//                    let obj = HomeScreen()
+//                    obj.location = item.location
+//                    self.setTableList(obj, completion: self.setListHandler)
+//
+//                }
+//            }
+//        }
         
     }
     
@@ -47,29 +47,29 @@ class HomeViewController: UIViewController {
     }
     
     func setTableList(_ obj: HomeScreen, completion: @escaping ListReturn) {
-        FirebaseClient.getDocRefData("Locations", obj.location) { result, documentId, response in
-            if result {
-                guard let myLocation = Mapper<ApiLocations>().map(JSON: response) else { return }
-                myLocation.toJSON()
-                var currentDay = myLocation.timeList[0]
-                var nextDay = myLocation.timeList[1]
-                obj.miladiTimeKisa = currentDay.MiladiTarihKisa
-                obj.miladiTimeUzun = currentDay.MiladiTarihUzun
-//                    obj.hicriTime = tempDics["HicriTarihUzun"] as? String ?? ""
-                obj.imsakTime = currentDay.Imsak
-                obj.gunesTime = currentDay.Gunes
-                obj.ogleTime = currentDay.Ogle
-                obj.ikindiTime = currentDay.Ikindi
-                obj.aksamTime = currentDay.Aksam
-                obj.yatsiTime = currentDay.Yatsi
-                obj.nextDay = nextDay.MiladiTarihKisa
-                obj.nextDayImsakTime = nextDay.Imsak
-                
-                
-                completion(obj, true, "Success")
-            }
-        }
-        
+//        FirebaseClient.getDocRefData("Locations", obj.location) { result, documentId, response in
+//            if result {
+//                guard let myLocation = Mapper<ApiLocations>().map(JSON: response) else { return }
+//                myLocation.toJSON()
+//                var currentDay = myLocation.timeList[0]
+//                var nextDay = myLocation.timeList[1]
+//                obj.miladiTimeKisa = currentDay.MiladiTarihKisa
+//                obj.miladiTimeUzun = currentDay.MiladiTarihUzun
+////                    obj.hicriTime = tempDics["HicriTarihUzun"] as? String ?? ""
+//                obj.imsakTime = currentDay.Imsak
+//                obj.gunesTime = currentDay.Gunes
+//                obj.ogleTime = currentDay.Ogle
+//                obj.ikindiTime = currentDay.Ikindi
+//                obj.aksamTime = currentDay.Aksam
+//                obj.yatsiTime = currentDay.Yatsi
+//                obj.nextDay = nextDay.MiladiTarihKisa
+//                obj.nextDayImsakTime = nextDay.Imsak
+//
+//
+//                completion(obj, true, "Success")
+//            }
+//        }
+//
     }
     
 }
