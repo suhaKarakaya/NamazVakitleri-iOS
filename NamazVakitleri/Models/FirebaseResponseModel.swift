@@ -8,10 +8,10 @@
 import Foundation
 import ObjectMapper
 
-class User: NSObject,Mappable {
+class UserDevice: NSObject,Mappable {
     
-    var locations: [UserLocations] = []
-    var saveZikirList: [SelectZikir] = []
+    var deviceId: String = ""
+    var deviceType: String = ""
     
     override init() {
         super.init()
@@ -23,15 +23,16 @@ class User: NSObject,Mappable {
     
     func mapping(map: Map){
         
-        locations <- map["locations"]
-        saveZikirList <- map["saveZikirList"]
+        deviceId <- map["deviceId"]
+        deviceType <- map["deviceType"]
     }
 
 }
 
 class UserLocations: NSObject,Mappable {
     
-    var location: String = ""
+    var deviceId: String = ""
+    var locationId: String = ""
     var isFavorite: Bool = false
     
     override init() {
@@ -43,17 +44,24 @@ class UserLocations: NSObject,Mappable {
     }
     
     func mapping(map: Map){
+        deviceId <- map["deviceId"]
+        locationId <- map["locationId"]
         isFavorite <- map["isFavorite"]
-        location <- map["location"]
     }
     
     
 }
 
-class ApiLocations: NSObject,Mappable {
-    var lastUpdateTime: String = ""
+class Locations: NSObject,Mappable {
+    var countryId: String = ""
+    var countyName: String = ""
+    var cityId: String = ""
+    var cityName: String = ""
     var districtId: String = ""
-    var timeList: [Vakit] = []
+    var districtName: String = ""
+    var lastUpdateTime: String = ""
+    var vakitId: String = ""
+    var uniqName: String = ""
     
     override init() {
         super.init()
@@ -64,9 +72,35 @@ class ApiLocations: NSObject,Mappable {
     }
     
     func mapping(map: Map){
-        lastUpdateTime <- map["lastUpdateTime"]
+        countryId <- map["countryId"]
+        countyName <- map["countyName"]
+        cityId <- map["cityId"]
+        cityName <- map["cityName"]
         districtId <- map["districtId"]
-        timeList <- map["timeList"]
+        districtName <- map["districtName"]
+        lastUpdateTime <- map["lastUpdateTime"]
+        vakitId <- map["vakitId"]
+        uniqName <- map["uniqName"]
+    }
+    
+    
+}
+
+class VakitList: NSObject,Mappable {
+    var vakitList: [Vakit] = []
+
+    
+    override init() {
+        super.init()
+    }
+    
+    required init?(map: Map) {
+       
+    }
+    
+    func mapping(map: Map){
+        vakitList <- map["vakitList"]
+
     }
     
     
@@ -181,6 +215,25 @@ class SelectZikir: NSObject,Mappable,Codable {
         count <- map["count"]
         zikir <- map["zikir"]
         isSelected <- map["isSelected"]
+    }
+}
+
+class FirebaseResponse: NSObject,Mappable {
+    var document: [String:Any] = [:]
+    var documentId: String = ""
+    
+    override init() {
+        super.init()
+    }
+    
+    required init?(map: Map) {
+       
+    }
+    
+    func mapping(map: Map) {
+        document <- map["document"]
+        documentId <- map["documentId"]
+        
     }
 }
 

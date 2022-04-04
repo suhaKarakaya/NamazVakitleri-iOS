@@ -92,22 +92,22 @@ class ZikirSecViewController: UIViewController {
         selectZikir.isSelected = true
         selectZikir.zikir = data.zikir
         
-        FirebaseClient.getDocRefData("User", FirstSelectViewController.deviceId) { flag, documentId, response in
-            if flag {
-                guard let myLocation = Mapper<User>().map(JSON: response) else { return }
-                for item in myLocation.saveZikirList {
-                    item.isSelected = false
-                }
-                myLocation.saveZikirList.append(selectZikir)
-                FirebaseClient.setDocRefData(FirstSelectViewController.deviceId, "User", myLocation.toJSON()) { flag, statu in
-                    guard flag else { return }
-                    if flag {
-                        self.delegate?.selected()
-                        self.dismiss(animated: true)
-                    }
-                }
-            }
-        }
+//        FirebaseClient.getDocRefData("User", FirstSelectViewController.deviceId) { flag, documentId, response in
+//            if flag {
+//                guard let myLocation = Mapper<User>().map(JSON: response) else { return }
+//                for item in myLocation.saveZikirList {
+//                    item.isSelected = false
+//                }
+//                myLocation.saveZikirList.append(selectZikir)
+//                FirebaseClient.setDocRefData(FirstSelectViewController.deviceId, "User", myLocation.toJSON()) { flag, statu in
+//                    guard flag else { return }
+//                    if flag {
+//                        self.delegate?.selected()
+//                        self.dismiss(animated: true)
+//                    }
+//                }
+//            }
+//        }
         
     }
     

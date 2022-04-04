@@ -12,7 +12,7 @@ import ObjectMapper
 class SettingsViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
-    var saveData = User()
+//    var saveData = User()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,26 +28,26 @@ class SettingsViewController: UIViewController {
     }
     
     func getData(){
-        FirebaseClient.getDocRefData("User", FirstSelectViewController.deviceId) { result, documentId, response in
-            if result {
-                guard let myLocation = Mapper<User>().map(JSON: response) else { return }
-                self.saveData = myLocation
-                self.tableView.reloadData()
-            }
-        }
+//        FirebaseClient.getDocRefData("User", FirstSelectViewController.deviceId) { result, documentId, response in
+//            if result {
+//                guard let myLocation = Mapper<User>().map(JSON: response) else { return }
+//                self.saveData = myLocation
+//                self.tableView.reloadData()
+//            }
+//        }
     }
     
     
-    func setData(saveData: User){
-
-        FirebaseClient.setDocRefData(FirstSelectViewController.deviceId, "User", saveData.toJSON()) { flag, statu in
-            guard flag else { return }
-            if flag {
-                self.getData()
-            }
-        }
-        
-    }
+//    func setData(saveData: User){
+//
+//        FirebaseClient.setDocRefData(FirstSelectViewController.deviceId, "User", saveData.toJSON()) { flag, statu in
+//            guard flag else { return }
+//            if flag {
+//                self.getData()
+//            }
+//        }
+//
+//    }
     
     
     
@@ -57,7 +57,7 @@ class SettingsViewController: UIViewController {
             if let data = sender as? Bool {
                 let view = segue.destination as! FirstSelectViewController
                 view.backVisible = data
-                view.saveData = self.saveData
+//                view.saveData = self.saveData
             }
         }
         
@@ -65,15 +65,15 @@ class SettingsViewController: UIViewController {
     }
     
     @IBAction func buttonSelectedAction(_ sender: Any) {
-        if self.saveData.locations.count < 3 {
-            performSegue(withIdentifier: "sg_toSelected", sender: true)
-        } else {
-            let alert = UIAlertController.init(title: "Uyarı", message: "En fala 3 adet konum ekleyebilirsiniz!", preferredStyle: UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction.init(title: "Tamam", style: UIAlertAction.Style.default, handler: { UIAlertAction in
-                
-            }))
-            self.present(alert, animated: true, completion: nil)
-        }
+//        if self.saveData.locations.count < 3 {
+//            performSegue(withIdentifier: "sg_toSelected", sender: true)
+//        } else {
+//            let alert = UIAlertController.init(title: "Uyarı", message: "En fala 3 adet konum ekleyebilirsiniz!", preferredStyle: UIAlertController.Style.alert)
+//            alert.addAction(UIAlertAction.init(title: "Tamam", style: UIAlertAction.Style.default, handler: { UIAlertAction in
+//                
+//            }))
+//            self.present(alert, animated: true, completion: nil)
+//        }
         
     }
     
@@ -81,27 +81,27 @@ class SettingsViewController: UIViewController {
    
     
     func setFavo(isSelected: Bool, index: Int){
-        if self.saveData.locations.count < 2 {
-            if isSelected {
-                let alert = UIAlertController.init(title: "Uyarı", message: "En fala 1 adet favori konum bulunmalıdır!", preferredStyle: UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction.init(title: "Tamam", style: UIAlertAction.Style.default, handler: { UIAlertAction in
-                    
-                }))
-                self.present(alert, animated: true, completion: nil)
-            } else {
-                self.saveData.locations[index].isFavorite = !isSelected
-                setData(saveData: self.saveData)
-            }
-        } else {
-            if !isSelected {
-                for item in self.saveData.locations {
-                    item.isFavorite = false
-                }
-                self.saveData.locations[index].isFavorite = !isSelected
-                setData(saveData: self.saveData)
-            }
-        
-        }
+//        if self.saveData.locations.count < 2 {
+//            if isSelected {
+//                let alert = UIAlertController.init(title: "Uyarı", message: "En fala 1 adet favori konum bulunmalıdır!", preferredStyle: UIAlertController.Style.alert)
+//                alert.addAction(UIAlertAction.init(title: "Tamam", style: UIAlertAction.Style.default, handler: { UIAlertAction in
+//
+//                }))
+//                self.present(alert, animated: true, completion: nil)
+//            } else {
+//                self.saveData.locations[index].isFavorite = !isSelected
+//                setData(saveData: self.saveData)
+//            }
+//        } else {
+//            if !isSelected {
+//                for item in self.saveData.locations {
+//                    item.isFavorite = false
+//                }
+//                self.saveData.locations[index].isFavorite = !isSelected
+//                setData(saveData: self.saveData)
+//            }
+//
+//        }
         
         
     }
@@ -110,7 +110,8 @@ class SettingsViewController: UIViewController {
 
 extension SettingsViewController: UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return saveData.locations.count
+        return 0
+//        saveData.locations.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -119,7 +120,7 @@ extension SettingsViewController: UITableViewDelegate,UITableViewDataSource {
         
         cell.delegate = self
         cell.favoritedHandler = setFavo
-        cell.data = saveData.locations[indexPath.row]
+//        cell.data = saveData.locations[indexPath.row]
         cell.index = indexPath.row
     
         
@@ -134,30 +135,30 @@ extension SettingsViewController: SettingsDelegate {
     }
     
     func toTrash(_ selected: Bool, _ index: Int) {
-        if self.saveData.locations.count < 2 {
-            let alert = UIAlertController.init(title: "Uyarı", message: "En fala 1 adet favori konum bulunmalıdır!", preferredStyle:
-                                                    UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction.init(title: "Tamam", style: UIAlertAction.Style.default, handler: { UIAlertAction in
-                    
-            }))
-            self.present(alert, animated: true, completion: nil)
-        } else {
-            if self.saveData.locations[index].isFavorite {
-                let alert = UIAlertController.init(title: "Uyarı", message: "Favori konum silemezsiniz!", preferredStyle:
-                                                        UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction.init(title: "Tamam", style: UIAlertAction.Style.default, handler: { UIAlertAction in
-                        
-                }))
-                self.present(alert, animated: true, completion: nil)
-            } else {
-                self.saveData.locations.remove(at: index)
-                if self.saveData.locations.count == 1 {
-                    self.saveData.locations[0].isFavorite = true
-                }
-                setData(saveData: self.saveData)
-            }
-       
-        }
+//        if self.saveData.locations.count < 2 {
+//            let alert = UIAlertController.init(title: "Uyarı", message: "En fala 1 adet favori konum bulunmalıdır!", preferredStyle:
+//                                                    UIAlertController.Style.alert)
+//            alert.addAction(UIAlertAction.init(title: "Tamam", style: UIAlertAction.Style.default, handler: { UIAlertAction in
+//
+//            }))
+//            self.present(alert, animated: true, completion: nil)
+//        } else {
+//            if self.saveData.locations[index].isFavorite {
+//                let alert = UIAlertController.init(title: "Uyarı", message: "Favori konum silemezsiniz!", preferredStyle:
+//                                                        UIAlertController.Style.alert)
+//                alert.addAction(UIAlertAction.init(title: "Tamam", style: UIAlertAction.Style.default, handler: { UIAlertAction in
+//
+//                }))
+//                self.present(alert, animated: true, completion: nil)
+//            } else {
+//                self.saveData.locations.remove(at: index)
+//                if self.saveData.locations.count == 1 {
+//                    self.saveData.locations[0].isFavorite = true
+//                }
+//                setData(saveData: self.saveData)
+//            }
+//
+//        }
         
       
     }
