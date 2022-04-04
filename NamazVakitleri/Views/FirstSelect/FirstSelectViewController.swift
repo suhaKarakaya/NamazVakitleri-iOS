@@ -80,6 +80,7 @@ class FirstSelectViewController: UIViewController {
             for item in responseList {
                 self.countryList.append(SelectObje.init(strId: item.UlkeID ?? "0", value: item.UlkeAdi ?? ""))
             }
+        LoadingIndicatorView.hide()
         performSegue(withIdentifier: "sg_picker", sender: PickerType.country)
     }
     
@@ -99,6 +100,7 @@ class FirstSelectViewController: UIViewController {
             
             self.cityList.append(SelectObje.init(strId: id, value: adi))
         }
+        LoadingIndicatorView.hide()
         performSegue(withIdentifier: "sg_picker", sender: PickerType.city)
     }
     
@@ -108,10 +110,12 @@ class FirstSelectViewController: UIViewController {
         for item in responseList {
             self.districtList.append(SelectObje.init(strId: item.IlceID ?? "0", value: item.IlceAdi ?? ""))
         }
+        LoadingIndicatorView.hide()
         performSegue(withIdentifier: "sg_picker", sender: PickerType.district)
     }
     
     func getVakitlerHandler(list: [[String]]?, status: Bool, message: String) {
+        LoadingIndicatorView.hide()
         guard status, let responseList = list else { return }
         var vakitList: [Vakit] = []
         for var vakit in responseList {
@@ -140,9 +144,10 @@ class FirstSelectViewController: UIViewController {
         let list = VakitList()
         list.vakitList = vakitList
         
-        
-        FirebaseClient.setAllData("Vakit", list.toJSON()) { result, documentId in
+        LoadingIndicatorView.show(self.view)
+        FirebaseClient.setAllData("Vakit", list.toJSON()) { result, vakitId in
             if result {
+                LoadingIndicatorView.hide()
                 let tempLoc = Locations()
                 tempLoc.countryId = self.countrySelect?.strId ?? ""
                 tempLoc.countyName = self.countrySelect?.value ?? ""
@@ -151,13 +156,15 @@ class FirstSelectViewController: UIViewController {
                 tempLoc.districtId = self.districtSelect?.strId ?? ""
                 tempLoc.districtName = self.districtSelect?.value ?? ""
                 tempLoc.lastUpdateTime = DateManager.dateToStringUgur(date: Date())
-                tempLoc.vakitId = documentId
+                tempLoc.vakitId = vakitId
                 tempLoc.uniqName = self.location
                 
-                FirebaseClient.setAllData("Location", tempLoc.toJSON()) { result, documentId in
+                LoadingIndicatorView.show(self.view)
+                FirebaseClient.setAllData("Location", tempLoc.toJSON()) { result, locId in
                     if result {
+                        LoadingIndicatorView.hide()
                         let tempObj = FirebaseResponse()
-                        tempObj.documentId
+                        tempObj.documentId = locId
                         self.setHomeData(data: tempObj)
                     }
                 }
@@ -168,10 +175,13 @@ class FirstSelectViewController: UIViewController {
     }
         
     func getLocation(location: String) {
-        FirebaseClient.getDocWhereCondt("Locations", "uniqName", location) { result, status, response in
+        LoadingIndicatorView.show(self.view)
+        FirebaseClient.getDocWhereCondt("Location", "uniqName", location) { result, status, response in
             if result {
+                LoadingIndicatorView.hide()
                 self.setHomeData(data: response[0])
             } else {
+                LoadingIndicatorView.hide()
                 self.getVakitlerListener()
             }
         }
@@ -180,37 +190,50 @@ class FirstSelectViewController: UIViewController {
     
     func setHomeData(data: FirebaseResponse) {
         let tempObj = UserLocations()
+        tempObj.isFavorite = true
+        tempObj.locationId = data.documentId
+        tempObj.deviceId = FirstSelectViewController.deviceId
+        guard let city = self.citySelect else { return alert("Lütfen şehir seçiniz!") }
+        guard let district = self.districtSelect else { return alert("Lütfen semt seçiniz!") }
+        tempObj.uniqName = String(format: "%@,%@", district.value,city.value)
+        LoadingIndicatorView.show(self.view)
         FirebaseClient.getDocWhereCondt("UserLocations", "deviceId", FirstSelectViewController.deviceId) { result, status, response in
             if result {
-                tempObj.isFavorite = true
-                tempObj.locationId = data.documentId
-                tempObj.deviceId = FirstSelectViewController.deviceId
+                LoadingIndicatorView.hide()
                 if response.isEmpty {
+                    LoadingIndicatorView.show(self.view)
                     FirebaseClient.setAllData("UserLocations", tempObj.toJSON()) { result, documentId in
                         if result {
+                            LoadingIndicatorView.hide()
                             self.performSegue(withIdentifier: "sg_toTabbar", sender: nil)
                         }
                     }
                     
                 } else {
                     for item in response {
+                        LoadingIndicatorView.show(self.view)
                         guard let myLocation = Mapper<UserLocations>().map(JSON: item.document) else { return }
                         myLocation.isFavorite = false
                         FirebaseClient.setDocRefData(item.documentId, "UserLocations", myLocation.toJSON()) { result, status in
                             if result {
+                                LoadingIndicatorView.hide()
                                 self.performSegue(withIdentifier: "sg_toTabbar", sender: nil)
                             }
                         }
                     }
+                    LoadingIndicatorView.show(self.view)
                     FirebaseClient.setAllData("UserLocations", tempObj.toJSON()) { result, documentId in
                         if result {
+                            LoadingIndicatorView.hide()
                             self.performSegue(withIdentifier: "sg_toTabbar", sender: nil)
                         }
                     }
                 }
             } else {
+                LoadingIndicatorView.show(self.view)
                 FirebaseClient.setAllData("UserLocations", tempObj.toJSON()) { result, documentId in
                     if result {
+                        LoadingIndicatorView.hide()
                         self.performSegue(withIdentifier: "sg_toTabbar", sender: nil)
                     }
                 }
@@ -221,6 +244,7 @@ class FirstSelectViewController: UIViewController {
     
     func getVakitlerListener() {
         guard let country = self.countrySelect, let city = self.citySelect, let district = self.districtSelect else { return alert("Lütfen konumunuzu seçiniz!") }
+        LoadingIndicatorView.show(self.view)
         ApiClient.getVakitler(districtId: district.strId, completion: self.getVakitlerHandler)
     }
     
@@ -268,13 +292,16 @@ extension FirstSelectViewController: PickerDelegate{
     func clicked(type: PickerType) {
         switch(type){
         case .country:
+            LoadingIndicatorView.show(self.view)
             ApiClient.getCountry(completion: self.getCountyListHandler)
             break
         case .city:
+            LoadingIndicatorView.show(self.view)
             guard let country = self.countrySelect else { return alert("Lütfen ülke seçiniz!") }
             ApiClient.getCity(countyId: country.strId, completion: self.getCityListHandler)
             break
         case .district:
+            LoadingIndicatorView.show(self.view)
             guard let country = self.countrySelect else { return alert("Lütfen ülke seçiniz!") }
             guard let city = self.citySelect else { return alert("Lütfen şehir seçiniz!") }
             ApiClient.getDistrict(countyId: country.strId, cityId: city.strId, completion: self.getDistrictListHandler)

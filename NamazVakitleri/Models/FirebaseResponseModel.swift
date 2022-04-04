@@ -33,6 +33,7 @@ class UserLocations: NSObject,Mappable {
     
     var deviceId: String = ""
     var locationId: String = ""
+    var uniqName: String = ""
     var isFavorite: Bool = false
     
     override init() {
@@ -46,6 +47,7 @@ class UserLocations: NSObject,Mappable {
     func mapping(map: Map){
         deviceId <- map["deviceId"]
         locationId <- map["locationId"]
+        uniqName <- map["uniqName"]
         isFavorite <- map["isFavorite"]
     }
     

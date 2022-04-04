@@ -53,6 +53,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
 //  var data = HomeScreen()
     var timer: Timer?
     
+   
     var strRemainingKey = ""
     var strRemainingValue = " "
     

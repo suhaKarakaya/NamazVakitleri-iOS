@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		020219E527D13A3C00706ECF /* MySplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020219E427D13A3C00706ECF /* MySplashViewController.swift */; };
+		0214F97F27FAEA3700C8CC37 /* LoadingIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0214F97E27FAEA3700C8CC37 /* LoadingIndicatorView.swift */; };
 		02156B9627D3803E00679FA2 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02156B9527D3803E00679FA2 /* HomeViewController.swift */; };
 		02156B9827D3812200679FA2 /* colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02156B9727D3812200679FA2 /* colors.xcassets */; };
 		02156BAD27D39A6700679FA2 /* TimeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02156BAC27D39A6700679FA2 /* TimeViewCell.swift */; };
@@ -45,6 +46,7 @@
 
 /* Begin PBXFileReference section */
 		020219E427D13A3C00706ECF /* MySplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySplashViewController.swift; sourceTree = "<group>"; };
+		0214F97E27FAEA3700C8CC37 /* LoadingIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicatorView.swift; sourceTree = "<group>"; };
 		02156B9527D3803E00679FA2 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		02156B9727D3812200679FA2 /* colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = colors.xcassets; sourceTree = "<group>"; };
 		02156BAC27D39A6700679FA2 /* TimeViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeViewCell.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				02E3BDC527D0E3D3001DE910 /* DateManager.swift */,
+				0214F97E27FAEA3700C8CC37 /* LoadingIndicatorView.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -445,6 +448,7 @@
 				02F267A427F4E68400EE4DBE /* ZikirSecTableViewCell.swift in Sources */,
 				02A3090727BD1D40001CAFF9 /* PickerViewController.swift in Sources */,
 				02156BAD27D39A6700679FA2 /* TimeViewCell.swift in Sources */,
+				0214F97F27FAEA3700C8CC37 /* LoadingIndicatorView.swift in Sources */,
 				02A3090527BD04B9001CAFF9 /* Picker.swift in Sources */,
 				0250D62227F1D7F2004C7EEA /* HomeCollectionViewCell.swift in Sources */,
 				0251804027BE98C000C29F76 /* FirebaseClient.swift in Sources */,
