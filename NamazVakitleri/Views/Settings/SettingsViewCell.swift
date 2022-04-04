@@ -25,7 +25,15 @@ class SettingsViewCell: UITableViewCell {
     var data: UserLocations? {
         didSet {
             guard let data = data else { return }
-            labelLocation.text = data.uniqName
+            let location = data.uniqName.components(separatedBy: ",")
+            let city    = location[0]
+            let district = location[1]
+            if city == district {
+                labelLocation.text = district
+            } else {
+                labelLocation.text = data.uniqName
+            }
+            
             
             if data.isFavorite {
                 imageSelected.image = UIImage(systemName: "star.fill")

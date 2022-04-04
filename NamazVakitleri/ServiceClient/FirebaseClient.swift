@@ -115,6 +115,20 @@ public class FirebaseClient {
 
     }
     
+    static func updateString(_ collectionName: String, _ documentId: String, _ myWhere:String, _ updateData: String, completion: @escaping firebaseSetCallBack){
+        firestore.collection(collectionName).document(documentId).updateData([
+            myWhere:updateData
+        ]) { err in
+            if err != nil {
+                completion(false, "Failure")
+            } else {
+                completion(true, "Success")
+            }
+        }
+
+
+    }
+    
     static func delete(_ collectionName: String, _ documentId: String, completion: @escaping firebaseSetCallBack){
         firestore.collection(collectionName).document(documentId).delete() { err in
             if err != nil {

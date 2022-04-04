@@ -33,6 +33,7 @@ class FirstSelectViewController: UIViewController {
     var districtSelect: SelectObje?
     var location = ""
     var backVisible: Bool = false
+    var documentIdList: [LocationList] = []
     
     static var deviceId: String = UIDevice.current.identifierForVendor!.uuidString
     
@@ -178,8 +179,27 @@ class FirstSelectViewController: UIViewController {
         LoadingIndicatorView.show(self.view)
         FirebaseClient.getDocWhereCondt("Location", "uniqName", location) { result, status, response in
             if result {
-                LoadingIndicatorView.hide()
-                self.setHomeData(data: response[0])
+                if self.documentIdList != nil && !self.documentIdList.isEmpty {
+                    var count = 0
+                    for item in self.documentIdList {
+                        if item.userLocation.uniqName == location {
+                            LoadingIndicatorView.hide()
+                            count += 1
+                            let alert = UIAlertController.init(title: "Uyarı", message: "Seçtiğiniz konum konum listenizde bulunmaktadır!", preferredStyle: UIAlertController.Style.alert)
+                            alert.addAction(UIAlertAction.init(title: "Tamam", style: UIAlertAction.Style.default, handler: { UIAlertAction in
+                                return
+                            }))
+                            self.present(alert, animated: true, completion: nil)
+                        }
+                    }
+                    if count == 0 {
+                        LoadingIndicatorView.hide()
+                        self.setHomeData(data: response[0])
+                    }
+                } else {
+                    LoadingIndicatorView.hide()
+                    self.setHomeData(data: response[0])
+                }
             } else {
                 LoadingIndicatorView.hide()
                 self.getVakitlerListener()
@@ -195,7 +215,7 @@ class FirstSelectViewController: UIViewController {
         tempObj.deviceId = FirstSelectViewController.deviceId
         guard let city = self.citySelect else { return alert("Lütfen şehir seçiniz!") }
         guard let district = self.districtSelect else { return alert("Lütfen semt seçiniz!") }
-        tempObj.uniqName = String(format: "%@,%@", district.value,city.value)
+        tempObj.uniqName = String(format: "%@,%@", city.value,district.value)
         LoadingIndicatorView.show(self.view)
         FirebaseClient.getDocWhereCondt("UserLocations", "deviceId", FirstSelectViewController.deviceId) { result, status, response in
             if result {
