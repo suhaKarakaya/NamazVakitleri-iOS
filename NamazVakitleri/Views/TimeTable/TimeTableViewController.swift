@@ -18,6 +18,8 @@ class TimeTableViewController: UIViewController {
     var loc:String = ""
     var tempDicsList: [Vakit] = []
     var districtId = ""
+    var locationDocId = ""
+    var vakitDocId = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
@@ -55,50 +57,55 @@ class TimeTableViewController: UIViewController {
         }
         
         
-//        let loc = ApiLocations()
-//        loc.timeList = vakitList
-//        loc.districtId = self.districtId
-//        loc.lastUpdateTime = DateManager.dateToStringUgur(date: Date())
-//
-//        FirebaseClient.setDocRefData(self.loc, "Locations", loc.toJSON()) { flag, statu in
-//            guard flag else { return }
-//            if flag {
-//                self.getData()
-//            }
-//        }
+        let list = VakitList()
+        list.vakitList = vakitList
+        
+        LoadingIndicatorView.show(self.view)
+        FirebaseClient.updateString("Location", self.locationDocId, "lastUpdateTime", DateManager.dateToStringUgur(date: Date())) { result, status in
+            if result {
+                FirebaseClient.setDocRefData(self.vakitDocId, "Vakit", list.toJSON()) { result, status in
+                    if result {
+                        LoadingIndicatorView.hide()
+                        self.getData()
+                    }
+                }
+            }
+        }
         
     }
     
     func getData() {
         tempDicsList = []
-            
-//        FirebaseClient.getDocRefData("User", FirstSelectViewController.deviceId) { flag, documentId, response in
-//            if flag {
-//                guard let userData = Mapper<User>().map(JSON: response) else { return }
-//                for item in userData.locations {
-//                    if item.isFavorite {
-//                        self.loc = item.location
-//                        self.labelLocation.text = self.loc
-//                    }
-//                }
-//                
-//                FirebaseClient.getDocRefData("Locations", self.loc) { flag, documentID, response in
-//                    if flag {
-//                        guard let myLocation = Mapper<ApiLocations>().map(JSON: response) else { return }
-//                        self.districtId = myLocation.districtId
-//                        var lastUpdateTimeDate = DateManager.strToDateUgur(strDate: myLocation.lastUpdateTime)
-//                        let temp = DateManager.checkDate(date: Date(), endDate: lastUpdateTimeDate)
-//                        if temp == .orderedAscending {
-//                            self.getVakitlerListener()
-//                        } else {
-//                            self.tempDicsList = myLocation.timeList
-//                            self.tableView.reloadData()
-//                        }
-//                    }
-//                }
-//               
-//            }
-//        }
+        LoadingIndicatorView.show(self.view)
+        FirebaseClient.getDocWhereCondt("UserLocations", "isFavorite", true) { result, status, response in
+            if result {
+                guard let userMainData = Mapper<UserLocations>().map(JSON: response[0].document) else { return }
+                FirebaseClient.getDocRefData("Location", userMainData.locationId) { result, locDocumentID, response in
+                    if result {
+                        self.locationDocId = locDocumentID
+                        guard let userData = Mapper<Locations>().map(JSON: response) else { return }
+                        self.districtId = userData.districtId
+                        self.labelLocation.text = userData.uniqName
+                        FirebaseClient.getDocRefData("Vakit", userData.vakitId) { result, vakitDocumentID, response in
+                            if result {
+                                LoadingIndicatorView.hide()
+                                self.vakitDocId = vakitDocumentID
+                                guard let vakitData = Mapper<VakitList>().map(JSON: response) else { return }
+                                let lastUpdateTimeDate = DateManager.strToDateUgur(strDate: userData.lastUpdateTime)
+                                let temp = DateManager.checkDate(date: Date(), endDate: lastUpdateTimeDate)
+                                if temp == .orderedAscending {
+                                    self.getVakitlerListener()
+                                } else {
+                                    self.tempDicsList = vakitData.vakitList
+                                    self.tableView.reloadData()
+                                }
+                            }
+                        }
+                    }
+                    
+                }
+            }
+        }
 
     }
     

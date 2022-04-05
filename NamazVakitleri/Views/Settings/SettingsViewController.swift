@@ -69,6 +69,7 @@ class SettingsViewController: UIViewController {
             if let data = sender as? Bool {
                 let view = segue.destination as! FirstSelectViewController
                 view.backVisible = data
+                view.documentIdList = documentIdList
             }
         }
         

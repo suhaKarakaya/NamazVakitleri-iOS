@@ -21,7 +21,7 @@ public class FirebaseClient {
         
         let ref = firestore.collection(tableName).document(documentName)
         ref.setData(data) { err in
-            if let err = err {
+            if err != nil  {
                 completion(false, "Failure")
             } else {
                 completion(true, "Success")
@@ -36,7 +36,7 @@ public class FirebaseClient {
         let ref = firestore.collection(tableName)
         var ref1: DocumentReference? = nil
         ref1 = ref.addDocument(data: data) { err in
-            if let err = err {
+            if err != nil {
                 completion(false, "Failure")
             } else {
                 completion(true, ref1?.documentID ?? "")
@@ -104,6 +104,20 @@ public class FirebaseClient {
     static func updateBool(_ collectionName: String, _ documentId: String, _ myWhere:String, _ updateData: Bool, completion: @escaping firebaseSetCallBack){
         firestore.collection(collectionName).document(documentId).updateData([
             myWhere:true
+        ]) { err in
+            if err != nil {
+                completion(false, "Failure")
+            } else {
+                completion(true, "Success")
+            }
+        }
+
+
+    }
+    
+    static func updateString(_ collectionName: String, _ documentId: String, _ myWhere:String, _ updateData: String, completion: @escaping firebaseSetCallBack){
+        firestore.collection(collectionName).document(documentId).updateData([
+            myWhere:updateData
         ]) { err in
             if err != nil {
                 completion(false, "Failure")
