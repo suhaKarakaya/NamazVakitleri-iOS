@@ -49,9 +49,13 @@ class DateManager {
     
     
     static func strToDate1(strDate: String) -> Date {
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "dd MMMM yyyy eeee"
+//        return dateFormatter.date(from: strDate)!
         let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "tr_TR") // set locale to reliable US_POSIX
         dateFormatter.dateFormat = "dd MMMM yyyy eeee"
-        return dateFormatter.date(from: strDate) ?? Date()
+        return dateFormatter.date(from:strDate) ?? Date()
     }
     
     static func strToDate2(strDate: String) -> Date {

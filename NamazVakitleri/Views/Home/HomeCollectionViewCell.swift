@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import ObjectMapper
 
 class HomeCollectionViewCell: UICollectionViewCell {
     
@@ -49,66 +50,149 @@ class HomeCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var miladiTimeView: UIView!
     @IBOutlet weak var locationView: UIView!
     
-    var data: HomeScreen?
-//  var data = HomeScreen()
     var timer: Timer?
-    
-   
+    var districtId = ""
+    var locationDocId = ""
+    var vakitDocId = ""
+    var currentDay = Vakit()
+    var nextDay = Vakit()
+    var uniqName = ""
+    var locationId = ""
     var strRemainingKey = ""
     var strRemainingValue = " "
+    var myView = UIView()
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         currentTimeTableView.setViewBorder(color: UIColor.brown.cgColor, borderWith: 1, borderRadius: 8)
-        
- 
-  
     }
     
+    func setup() {
+        LoadingIndicatorView.show(self.myView)
+        FirebaseClient.getDocRefData("Location", locationId) { result, locDocumentID, response in
+            if result {
+                guard let locData = Mapper<Locations>().map(JSON: response) else { return }
+                self.districtId = locData.districtId
+                self.locationDocId = locDocumentID
+                let obj = HomeScreen()
+                obj.location = self.uniqName
+                self.setTableList(locData.lastUpdateTime, obj, locData.vakitId)
+                }
+            }
+    }
     
-    func setup(_ data: HomeScreen) {
-        self.data = data
-        
-        
-        miladiTimeLabel.text = data.miladiTimeUzun
-        hicriTimeLabel.text = data.hicriTime
-//        remainingTimeLabel.text = data.remainingTime
-        imsakValueLabel.text = data.imsakTime
-        gunesValueLabel.text = data.gunesTime
-        ogleValueLabel.text = data.ogleTime
-        ikindiValueLabel.text = data.ikindiTime
-        aksamValueLabel.text = data.aksamTime
-        yatsiValueLabel.text = data.yatsiTime
-        
-        let tempLoc = data.location.components(separatedBy: ",")
-        let city    = tempLoc[0]
-        let district = tempLoc[1]
-        locationLabel.text = city == district ? city : data.location
-        
-        if timer == nil {
-            timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(timerAction), userInfo: nil, repeats: true)
+    func setTableList(_ lastUpdateTime: String ,_ obj: HomeScreen, _ vakitId: String) {
+        FirebaseClient.getDocRefData("Vakit", vakitId) { result, vakitDocumentID, response in
+            if result {
+                self.vakitDocId = vakitDocumentID
+                guard let vakitData = Mapper<VakitList>().map(JSON: response) else { return }
+                let lastUpdateTimeDate = DateManager.strToDateUgur(strDate: lastUpdateTime)
+                let temp = DateManager.checkDate(date: Date(), endDate: lastUpdateTimeDate)
+                if temp == .orderedAscending {
+                    self.getVakitlerListener()
+                } else {
+                    LoadingIndicatorView.hide()
+                    self.currentDay = vakitData.vakitList[0]
+                    self.nextDay = vakitData.vakitList[1]
+                    
+                    self.miladiTimeLabel.text = self.currentDay.MiladiTarihUzun
+//                    hicriTimeLabel.text = data.hicriTime
+//                    remainingTimeLabel.text = data.remainingTime
+                    self.imsakValueLabel.text = self.currentDay.Imsak
+                    self.gunesValueLabel.text = self.currentDay.Gunes
+                    self.ogleValueLabel.text = self.currentDay.Ogle
+                    self.ikindiValueLabel.text = self.currentDay.Ikindi
+                    self.aksamValueLabel.text = self.currentDay.Aksam
+                    self.yatsiValueLabel.text = self.currentDay.Yatsi
+                    
+                    let tempLoc = obj.location.components(separatedBy: ",")
+                    let city    = tempLoc[0]
+                    let district = tempLoc[1]
+                    self.locationLabel.text = city == district ? city : obj.location
+                    
+                    if self.timer == nil {
+                        self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.timerAction), userInfo: nil, repeats: true)
+                    }
+
+                }
+                
+            }
         }
-      
     }
+    
+    func getVakitlerListener(){
+        ApiClient.getVakitler(districtId: self.districtId, completion: self.getVakitlerHandler)
+    }
+    
+    func getVakitlerHandler(list: [[String]]?, status: Bool, message: String){
+        guard status, let responseList = list else { return }
+        var vakitList: [Vakit] = []
+        for var vakit in responseList {
+            if vakit[0].contains("&") {
+                let tempStr = vakit[0].components(separatedBy: " ")
+                let day = tempStr[0]
+                let month = tempStr[1]
+                let year = tempStr[2]
+                let dayStr = tempStr[3]
+                vakit[0] = String(format: "%@ %@ %@ %@", day, month, year, "Çarşamba")
+            }
+            let tempValue = Vakit()
+            tempValue.MiladiTarihUzun = vakit[0]
+            tempValue.Imsak = vakit[1]
+            tempValue.Gunes = vakit[2]
+            tempValue.Ogle = vakit[3]
+            tempValue.Ikindi = vakit[4]
+            tempValue.Aksam = vakit[5]
+            tempValue.Yatsi = vakit[6]
+            tempValue.MiladiTarihKisa = DateManager.dateToString2(date: DateManager.strToDate1(strDate: vakit[0]))
+            
+            vakitList.append(tempValue)
+        }
+        
+        
+        let list = VakitList()
+        list.vakitList = vakitList
+        
+        
+        FirebaseClient.updateString("Location", self.locationDocId, "lastUpdateTime", DateManager.dateToStringUgur(date: Date())) { result, status in
+            if result {
+                FirebaseClient.setDocRefData(self.vakitDocId, "Vakit", list.toJSON()) { result, status in
+                    if result {
+                        LoadingIndicatorView.hide()
+                        self.setup()
+                    }
+                }
+            }
+        }
+        
+    }
+    
+
+    
+
+    
+    
+
+    
+    
     
     @objc func timerAction(){
-        guard let data = data else { return }
         let currentInter = Date().timeIntervalSince1970
-        let imsakInter = DateManager.getStrToTimeInterval(strDate: data.miladiTimeKisa, strTime: data.imsakTime)
-        let ogleInter = DateManager.getStrToTimeInterval(strDate: data.miladiTimeKisa, strTime: data.ogleTime)
-        let ikindiInter = DateManager.getStrToTimeInterval(strDate: data.miladiTimeKisa, strTime: data.ikindiTime)
-        let aksamInter = DateManager.getStrToTimeInterval(strDate: data.miladiTimeKisa, strTime: data.aksamTime)
-        let yatsiInter = DateManager.getStrToTimeInterval(strDate: data.miladiTimeKisa, strTime: data.yatsiTime)
-        let nextImsakInter = DateManager.getStrToTimeInterval(strDate: data.nextDay, strTime: data.nextDayImsakTime)
+        let imsakInter = DateManager.getStrToTimeInterval(strDate: currentDay.MiladiTarihKisa, strTime: currentDay.Imsak)
+        let ogleInter = DateManager.getStrToTimeInterval(strDate: currentDay.MiladiTarihKisa, strTime: currentDay.Ogle)
+        let ikindiInter = DateManager.getStrToTimeInterval(strDate: currentDay.MiladiTarihKisa, strTime: currentDay.Ikindi)
+        let aksamInter = DateManager.getStrToTimeInterval(strDate: currentDay.MiladiTarihKisa, strTime: currentDay.Aksam)
+        let yatsiInter = DateManager.getStrToTimeInterval(strDate: currentDay.MiladiTarihKisa, strTime: currentDay.Yatsi)
+        let nextImsakInter = DateManager.getStrToTimeInterval(strDate: nextDay.MiladiTarihKisa, strTime: nextDay.Imsak)
         
-//        debugPrint(DateManager.getTimeIntervalToDate(time: currentInter))
-//        debugPrint(DateManager.getTimeIntervalToDate(time: imsakInter))
-//        debugPrint(DateManager.getTimeIntervalToDate(time: ogleInter))
-//        debugPrint(DateManager.getTimeIntervalToDate(time: ikindiInter))
-//        debugPrint(DateManager.getTimeIntervalToDate(time: aksamInter))
-//        debugPrint(DateManager.getTimeIntervalToDate(time: yatsiInter))
-//        debugPrint(DateManager.getTimeIntervalToDate(time: nextImsakInter))
+        debugPrint(DateManager.getTimeIntervalToDate(time: currentInter))
+        debugPrint(DateManager.getTimeIntervalToDate(time: imsakInter))
+        debugPrint(DateManager.getTimeIntervalToDate(time: ogleInter))
+        debugPrint(DateManager.getTimeIntervalToDate(time: ikindiInter))
+        debugPrint(DateManager.getTimeIntervalToDate(time: aksamInter))
+        debugPrint(DateManager.getTimeIntervalToDate(time: yatsiInter))
+        debugPrint(DateManager.getTimeIntervalToDate(time: nextImsakInter))
       
         let val1 = currentInter - imsakInter
         let val2 = currentInter - ogleInter
