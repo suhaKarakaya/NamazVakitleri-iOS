@@ -80,7 +80,7 @@ public class FirebaseClient {
         
         
     }
-    
+//    yorum
     static func getDocRefData(_ collectionName: String, _ documentName: String, completion: @escaping firebaseGetCallBack){
         
         let docRef = firestore.collection(collectionName).document(documentName)
