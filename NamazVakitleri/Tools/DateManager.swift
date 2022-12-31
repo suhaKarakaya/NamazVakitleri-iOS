@@ -70,6 +70,13 @@ class DateManager {
         return dateFormatter.date(from: strDate) ?? Date()
     }
     
+    static func strToDateSuha(strDate: String) -> Date {
+        let tempTime = String(format: "%@.%@.%@", strDate.components(separatedBy: ".")[2],strDate.components(separatedBy: ".")[1],strDate.components(separatedBy: ".")[0])
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YYYY.MM.dd"
+        return dateFormatter.date(from: tempTime) ?? Date()
+    }
+    
     static func getStrToTimeInterval(strDate: String, strTime:String) -> TimeInterval {
         let tempTime = strTime.components(separatedBy: ":")
         let hour    = tempTime[0]
@@ -118,6 +125,13 @@ class DateManager {
 
       return String(format: "%0.2d:%0.2d:%0.2d",hours,minutes,seconds)
     }
+    
+    static func checkSuhaDate(date: Date, endDate: Date) -> Bool {
+        var strDate = dateToStringUgur(date: date)
+        var strEndDate = dateToStringUgur(date: endDate)
+        return strDate.elementsEqual(strEndDate)
+    }
+    
     
     
     static func checkDate(date: Date, endDate: Date) -> ComparisonResult {

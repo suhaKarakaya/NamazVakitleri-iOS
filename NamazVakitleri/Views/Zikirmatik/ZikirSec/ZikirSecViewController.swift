@@ -71,30 +71,24 @@ class ZikirSecViewController: UIViewController {
     }
     
     func setInfo(data: ZikirObj){
-        let alert = UIAlertController.init(title: data.data.zikir, message: String(format: "%@\n%@%@", data.data.aciklamasi,"Kaynak: ", data.data.kaynak), preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction.init(title: "Tamam", style: UIAlertAction.Style.default, handler: { UIAlertAction in
+        showOneButtonAlert(title: data.data.zikir, message: String(format: "%@\n%@%@", data.data.aciklamasi,"Kaynak: ", data.data.kaynak), buttonTitle: "Tamam", view: self) { confirm in
             
-        }))
-        self.present(alert, animated: true, completion: nil)
+        }
     }
     
     func toTrash(data: ZikirObj){
-        let alert = UIAlertController.init(title: "Uyarı", message: "Seçmiş olduğunuz zikiri silmek istediğinizden emin misiniz?", preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction.init(title: "Evet", style: UIAlertAction.Style.default, handler: { UIAlertAction in
-            FirebaseClient.delete("UserCustomZikir", data.id){ flag, statu in
-                guard flag else { return }
-                if flag {
-                    self.getDefaultsZikirList{
-                        self.getUserSavedZikirList()
+        showTwoButtonAlert(title: "Uyarı", message: "Seçmiş olduğunuz zikiri silmek istediğinizden emin misiniz?", button1Title: "Evet", button2Title: "Hayır", view: self) { confirm in
+            if confirm {
+                FirebaseClient.delete("UserCustomZikir", data.id){ flag, statu in
+                    guard flag else { return }
+                    if flag {
+                        self.getDefaultsZikirList{
+                            self.getUserSavedZikirList()
+                        }
                     }
                 }
             }
-        }))
-        
-        alert.addAction(UIAlertAction.init(title: "Hayır", style: UIAlertAction.Style.default, handler: { UIAlertAction in
-     
-        }))
-        self.present(alert, animated: true, completion: nil)
+        }
     }
     
     private func setOtherZikr(completion: @escaping () -> Void) {
@@ -122,20 +116,16 @@ class ZikirSecViewController: UIViewController {
             tempZikr.deviceId = FirstSelectViewController.deviceId
             FirebaseClient.setAllData("UserZikr", tempZikr.toJSON()) { result, id in
                 if result {
-                    let alert = UIAlertController.init(title: "Uyarı", message: "Zikir seçim başarılı", preferredStyle: UIAlertController.Style.alert)
+                    showOneButtonAlert(title: "Uyarı", message: "Zikir seçim başarılı", buttonTitle: "Tamam", view: self) { confirm in
+                        if confirm {
+                            self.handler?(true)
+                            self.dismiss(animated: true)
+                        }
+                    }
                     
-                    alert.addAction(UIAlertAction.init(title: "Tamam", style: UIAlertAction.Style.default, handler: { UIAlertAction in
-                        self.handler?(true)
-                        self.dismiss(animated: true)
-                    }))
-                    self.present(alert, animated: true, completion: nil)
                 } else {
-                    let alert = UIAlertController.init(title: "Uyarı", message: "İşlem sırasında bir hata oluştur", preferredStyle: UIAlertController.Style.alert)
-                    
-                    alert.addAction(UIAlertAction.init(title: "Tamam", style: UIAlertAction.Style.default, handler: { UIAlertAction in
-                        
-                    }))
-                    self.present(alert, animated: true, completion: nil)
+                    showOneButtonAlert(title: "Uyarı", message: "İşlem sırasında bir hata oluştur", buttonTitle: "Tamam", view: self) { confirm in
+                    }
                 }
             }
         }

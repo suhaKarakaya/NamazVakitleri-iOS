@@ -64,14 +64,12 @@ class ZikirOlusturViewController: UIViewController {
                 tempZikir.deviceId = FirstSelectViewController.deviceId
                 FirebaseClient.setAllData("UserCustomZikir", tempZikir.toJSON()){ result, status in
                     if result {
-                        let alert = UIAlertController.init(title: "Bilgi", message: "Zikiriniz başarılı bir şekilde kaydedilmiştir.", preferredStyle: UIAlertController.Style.alert)
-                    
-                        alert.addAction(UIAlertAction.init(title: "Tamam", style: UIAlertAction.Style.default, handler: { UIAlertAction in
-                            self.handler?(true)
-                            self.dismiss(animated: true)
-                        }))
-                        
-                        self.present(alert, animated: true, completion: nil)
+                        showOneButtonAlert(title: "Bilgi", message: "Zikiriniz başarılı bir şekilde kaydedilmiştir.", buttonTitle: "Tamam", view: self) { confirm in
+                            if confirm {
+                                self.handler?(true)
+                                self.dismiss(animated: true)
+                            }
+                        }
                     }
                 }
             }

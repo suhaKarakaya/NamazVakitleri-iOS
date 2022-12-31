@@ -44,6 +44,7 @@
 		02F267A027F4DB9500EE4DBE /* KayitliZikirViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F2679F27F4DB9500EE4DBE /* KayitliZikirViewController.swift */; };
 		02F267A227F4DBA100EE4DBE /* ZikirSecViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F267A127F4DBA100EE4DBE /* ZikirSecViewController.swift */; };
 		02F267A427F4E68400EE4DBE /* ZikirSecTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F267A327F4E68400EE4DBE /* ZikirSecTableViewCell.swift */; };
+		02FB1FF3296069900084BCEB /* AlertUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FB1FF2296069900084BCEB /* AlertUtils.swift */; };
 		CBFF1194BC92DE5450DA79EA /* Pods_NamazVakitleri.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6167B6C4C11EC712A4ADEAE7 /* Pods_NamazVakitleri.framework */; };
 /* End PBXBuildFile section */
 
@@ -87,6 +88,7 @@
 		02F2679F27F4DB9500EE4DBE /* KayitliZikirViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KayitliZikirViewController.swift; sourceTree = "<group>"; };
 		02F267A127F4DBA100EE4DBE /* ZikirSecViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZikirSecViewController.swift; sourceTree = "<group>"; };
 		02F267A327F4E68400EE4DBE /* ZikirSecTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZikirSecTableViewCell.swift; sourceTree = "<group>"; };
+		02FB1FF2296069900084BCEB /* AlertUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertUtils.swift; sourceTree = "<group>"; };
 		083CA87EEDE54CB217019C33 /* Pods-NamazVakitleri.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NamazVakitleri.release.xcconfig"; path = "Target Support Files/Pods-NamazVakitleri/Pods-NamazVakitleri.release.xcconfig"; sourceTree = "<group>"; };
 		195F5D92F7E99BE57F356771 /* Pods-NamazVakitleri.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NamazVakitleri.debug.xcconfig"; path = "Target Support Files/Pods-NamazVakitleri/Pods-NamazVakitleri.debug.xcconfig"; sourceTree = "<group>"; };
 		6167B6C4C11EC712A4ADEAE7 /* Pods_NamazVakitleri.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NamazVakitleri.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -216,6 +218,7 @@
 			children = (
 				02E3BDC527D0E3D3001DE910 /* DateManager.swift */,
 				0214F97E27FAEA3700C8CC37 /* LoadingIndicatorView.swift */,
+				02FB1FF2296069900084BCEB /* AlertUtils.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -484,6 +487,7 @@
 				0250D62427F1DEE8004C7EEA /* HomeScreen.swift in Sources */,
 				02EADC7A27BAF14C00E5709A /* FirstSelectViewController.swift in Sources */,
 				02E3BDC627D0E3D3001DE910 /* DateManager.swift in Sources */,
+				02FB1FF3296069900084BCEB /* AlertUtils.swift in Sources */,
 				02E3BDC427D0E303001DE910 /* FirebaseResponseModel.swift in Sources */,
 				0272E489295F88C60038B219 /* DailyPrayTimeViewCell.swift in Sources */,
 				02D6823C27B9A40B009CE351 /* AppDelegate.swift in Sources */,

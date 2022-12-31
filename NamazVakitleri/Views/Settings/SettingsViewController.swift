@@ -80,13 +80,9 @@ class SettingsViewController: UIViewController {
         if self.locationList.count < 3 {
             performSegue(withIdentifier: "sg_toSelected", sender: true)
         } else {
-            let alert = UIAlertController.init(title: "Uyarı", message: "En fala 3 adet konum ekleyebilirsiniz!", preferredStyle: UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction.init(title: "Tamam", style: UIAlertAction.Style.default, handler: { UIAlertAction in
-                
-            }))
-            self.present(alert, animated: true, completion: nil)
+            showOneButtonAlert(title: "Uyarı", message: "En fazla 3 adet konum ekleyebilirsiniz!", buttonTitle: "Tamam", view: self) { confirm in
+            }
         }
-        
     }
     
     
@@ -95,11 +91,8 @@ class SettingsViewController: UIViewController {
     func setFavo(isSelected: Bool, index: Int){
         if self.locationList.count < 2 {
             if isSelected {
-                let alert = UIAlertController.init(title: "Uyarı", message: "En fala 1 adet favori konum bulunmalıdır!", preferredStyle: UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction.init(title: "Tamam", style: UIAlertAction.Style.default, handler: { UIAlertAction in
-
-                }))
-                self.present(alert, animated: true, completion: nil)
+                showOneButtonAlert(title: "Uyarı", message: "En fazla 1 adet favori konum bulunmalıdır!", buttonTitle: "Tamam", view: self) { confirm in
+                }
             } else {
                 for var item in documentIdList {
                     item.userLocation.isFavorite = false
@@ -150,20 +143,12 @@ extension SettingsViewController: SettingsDelegate {
     
     func toTrash(_ selected: Bool, _ index: Int) {
         if self.locationList.count < 2 {
-            let alert = UIAlertController.init(title: "Uyarı", message: "En fala 1 adet favori konum bulunmalıdır!", preferredStyle:
-                                                    UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction.init(title: "Tamam", style: UIAlertAction.Style.default, handler: { UIAlertAction in
-
-            }))
-            self.present(alert, animated: true, completion: nil)
+            showOneButtonAlert(title: "Uyarı", message: "En fazla 1 adet favori konum bulunmalıdır!", buttonTitle: "Tamam", view: self) { confirm in
+            }
         } else {
             if self.locationList[index].isFavorite {
-                let alert = UIAlertController.init(title: "Uyarı", message: "Favori konum silemezsiniz!", preferredStyle:
-                                                        UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction.init(title: "Tamam", style: UIAlertAction.Style.default, handler: { UIAlertAction in
-
-                }))
-                self.present(alert, animated: true, completion: nil)
+                showOneButtonAlert(title: "Uyarı", message: "Favori konum silemezsiniz!", buttonTitle: "Tamam", view: self) { confirm in
+                }
             } else {
 //                self.locationList.remove(at: index)
 //                if self.locationList.count == 1 {
@@ -173,12 +158,11 @@ extension SettingsViewController: SettingsDelegate {
                 FirebaseClient.delete("UserInfo", documentIdList[index].documentId) { result, status in
                     if result {
                         LoadingIndicatorView.hide()
-                        let alert = UIAlertController.init(title: "Bilgi", message: "İşleminiz başarılı bir şekilde gerçekleştirildi", preferredStyle:
-                                                                UIAlertController.Style.alert)
-                        alert.addAction(UIAlertAction.init(title: "Tamam", style: UIAlertAction.Style.default, handler: { UIAlertAction in
-                            self.getData()
-                        }))
-                        self.present(alert, animated: true, completion: nil)
+                        showOneButtonAlert(title: "Bilgi", message: "İşleminiz başarılı bir şekilde gerçekleştirildi", buttonTitle: "Tamam", view: self) { confirm in
+                            if confirm {
+                                self.getData()
+                            }
+                        }
                     }
                 }
             }

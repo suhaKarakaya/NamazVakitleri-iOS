@@ -43,7 +43,7 @@ class KayitliZikirViewController: UIViewController {
                 }
                 self.tableView.reloadData()
             } else {
-// hata elerti ver
+                // hata elerti ver
                 self.tableView.reloadData()
                 self.handler?(true)
             }
@@ -57,25 +57,20 @@ class KayitliZikirViewController: UIViewController {
     }
     
     
+    
+    
     func toTrash(index: ZikirObj){
-        let alert = UIAlertController.init(title: "Uyarı", message: "Seçmiş olduğunuz zikiri silmek istediğinizden emin misiniz?", preferredStyle: UIAlertController.Style.alert)
-        let cancelButton = UIAlertAction(title: "Evet", style: UIAlertAction.Style.default, handler: { UIAlertAction in
-            FirebaseClient.delete("UserZikr", index.id) { result, status in
-                if result {
-                    self.getData()
-                } else {
-//                    hata alerti göster
+        showTwoButtonAlert(title: "Uyarı", message: "Seçmiş olduğunuz zikiri silmek istediğinizden emin misiniz?", button1Title: "Evet", button2Title: "Hayır", view: self){ confirm in
+            if confirm {
+                FirebaseClient.delete("UserZikr", index.id) { result, status in
+                    if result {
+                        self.getData()
+                    } else {
+                        //                    hata alerti göster
+                    }
                 }
             }
-
-        })
-        cancelButton.setValue(UIColor(named: "kabeYellow"), forKey: "titleTextColor")
-        alert.addAction(cancelButton)
-        
-        alert.addAction(UIAlertAction.init(title: "Hayır", style: UIAlertAction.Style.default, handler: { UIAlertAction in
-            
-        }))
-        self.present(alert, animated: true, completion: nil)
+        }
     }
     
     private func setOtherZikr(completion: @escaping () -> Void) {
@@ -99,20 +94,16 @@ class KayitliZikirViewController: UIViewController {
             tempZikr.data.isSelected = true
             FirebaseClient.setDocRefData(data.id, "UserZikr", tempZikr.data.toJSON()){ result, id in
                 if result {
-                    let alert = UIAlertController.init(title: "Uyarı", message: "Zikir seçim başarılı", preferredStyle: UIAlertController.Style.alert)
+                    showOneButtonAlert(title: "Uyarı", message: "Zikir seçim başarılı", buttonTitle: "Tamam", view: self) { confirm in
+                        if confirm {
+                            self.handler?(true)
+                            self.dismiss(animated: true)
+                        }
+                    }
                     
-                    alert.addAction(UIAlertAction.init(title: "Tamam", style: UIAlertAction.Style.default, handler: { UIAlertAction in
-                        self.handler?(true)
-                        self.dismiss(animated: true)
-                    }))
-                    self.present(alert, animated: true, completion: nil)
                 } else {
-                    let alert = UIAlertController.init(title: "Uyarı", message: "İşlem sırasında bir hata oluştur", preferredStyle: UIAlertController.Style.alert)
-                    
-                    alert.addAction(UIAlertAction.init(title: "Tamam", style: UIAlertAction.Style.default, handler: { UIAlertAction in
-                        
-                    }))
-                    self.present(alert, animated: true, completion: nil)
+                    showOneButtonAlert(title: "Uyarı", message: "İşlem sırasında bir hata oluştur", buttonTitle: "Tamam", view: self) { confirm in
+                    }
                 }
             }
         }

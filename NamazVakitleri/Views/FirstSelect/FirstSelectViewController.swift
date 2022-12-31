@@ -123,21 +123,17 @@ class FirstSelectViewController: UIViewController {
                     let temp = DateManager.checkDate(date: Date(), endDate: lastUpdateTimeDate)
                     if temp == .orderedAscending {
 //                        Daha önce yazılan location değeri day olarak geride kalmış yenisini apiden çekmek gerek
-                        LoadingIndicatorView.hide()
                         self.getVakitlerListener(_isUpdate: true, _locationsShortDocumentId: response[0].documentId, _vakitsDocumentId: tempObj.vakitId)
                     } else {
 //                        Firebase üzerinde güncel veri bulunmakta
-                        LoadingIndicatorView.hide()
                         self.setHomeData(data: response[0])
                     }
                 } else {
 //                    Seçilen location değeri firebasede yok apiden çekmek gerek
-                    LoadingIndicatorView.hide()
                     self.getVakitlerListener(_isUpdate: false, _locationsShortDocumentId:"", _vakitsDocumentId: "")
                 }
             } else {
 //                    Seçilen location değeri firebasede yok apiden çekmek gerek
-                LoadingIndicatorView.hide()
                 self.getVakitlerListener(_isUpdate: false, _locationsShortDocumentId:"",_vakitsDocumentId: "")
             }
         }
@@ -146,7 +142,6 @@ class FirstSelectViewController: UIViewController {
     
     func getVakitlerListener(_isUpdate: Bool, _locationsShortDocumentId: String, _vakitsDocumentId: String) {
         guard let country = self.countrySelect, let city = self.citySelect, let district = self.districtSelect else { return alert("Lütfen konumunuzu seçiniz!") }
-        LoadingIndicatorView.show(self.view)
         ApiClient.getVakitler(districtId: district.strId, completion: self.getVakitlerHandler)
         isUpdate = _isUpdate
         vakitsDocumentId = _vakitsDocumentId
@@ -154,9 +149,7 @@ class FirstSelectViewController: UIViewController {
     }
     
     func getVakitlerHandler(list: [Vakit]?, status: Bool, message: String) {
-        LoadingIndicatorView.hide()
         guard status, let responseList = list else { return }
-        LoadingIndicatorView.show(self.view)
         if vakitsDocumentId.isEmpty {
 //            seçilen location değeri firebase üzerinde daha önce yok ilk defa yazılıyor
             FirebaseClient.setVakitList("Vakits", responseList, self.location) { result, vakitId in
@@ -176,7 +169,6 @@ class FirstSelectViewController: UIViewController {
     }
     
     func setLocationsShortData(_ vakitId: String) {
-        LoadingIndicatorView.hide()
         let tempLoc = Locations()
         tempLoc.countryId = self.countrySelect?.strId ?? ""
         tempLoc.countyName = self.countrySelect?.value ?? ""
@@ -187,13 +179,11 @@ class FirstSelectViewController: UIViewController {
         tempLoc.lastUpdateTime = DateManager.dateToStringUgur(date: Date())
         tempLoc.vakitId = vakitId
         tempLoc.uniqName = self.location
-        LoadingIndicatorView.show(self.view)
         if self.isUpdate {
 //            seçilen location değeri daha önce firebase üzerinde var fakat güncel day değil. Üzerinde yazılacak
             FirebaseClient.setDocRefData( self.locationsShortDocumentId, "LocationsShort", tempLoc.toJSON()) {
                 result, locId in
                 if result {
-                    LoadingIndicatorView.hide()
                     let tempObj = FirebaseResponse()
                     tempObj.documentId = locId
                     self.setHomeData(data: tempObj)
@@ -203,7 +193,6 @@ class FirstSelectViewController: UIViewController {
 //            seçilen location değeri firebase üzerinde daha önce yok ilk defa yazılıyor
             FirebaseClient.setAllData("LocationsShort", tempLoc.toJSON()) { result, locId in
                 if result {
-                    LoadingIndicatorView.hide()
                     let tempObj = FirebaseResponse()
                     tempObj.documentId = locId
                     self.setHomeData(data: tempObj)
@@ -220,7 +209,6 @@ class FirstSelectViewController: UIViewController {
         guard let city = self.citySelect else { return alert("Lütfen şehir seçiniz!") }
         guard let district = self.districtSelect else { return alert("Lütfen semt seçiniz!") }
         tempObj.uniqName = String(format: "%@,%@", city.value,district.value)
-        LoadingIndicatorView.show(self.view)
         FirebaseClient.getDocWhereCondt("UserInfo", "deviceId", FirstSelectViewController.deviceId) { result, status, response in
             if result {
                 if response.isEmpty {
@@ -284,11 +272,9 @@ class FirstSelectViewController: UIViewController {
     }
     
     func alert(_ message: String) {
-        let alert = UIAlertController.init(title: "Uyarı", message: message, preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction.init(title: "Tamam", style: UIAlertAction.Style.default, handler: { UIAlertAction in
+        showOneButtonAlert(title: "Uyarı", message: message, buttonTitle: "Tamam", view: self) { confirm in
             
-        }))
-        self.present(alert, animated: true, completion: nil)
+        }
     }
     
     @IBAction func btnSaveAction(_ sender: Any) {

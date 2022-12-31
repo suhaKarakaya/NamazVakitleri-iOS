@@ -143,13 +143,8 @@ class ZikirmatikViewController: UIViewController {
             selectedZikr?.data.count += 1
             self.counterZikirLabel.text = String(selectedZikr?.data.count ?? 0)
         } else {
-            let alert = UIAlertController.init(title: "Uyarı", message: "Seçilmiş zikiriniz bulunmamaktadır!", preferredStyle: UIAlertController.Style.alert)
-            
-            alert.addAction(UIAlertAction.init(title: "Tamam", style: UIAlertAction.Style.default, handler: { UIAlertAction in
-                
-            }))
-            self.present(alert, animated: true, completion: nil)
-            return
+            showOneButtonAlert(title: "Uyarı", message: "Seçilmiş zikiriniz bulunmamaktadır!", buttonTitle: "Tamam", view: self) { confirm in
+            }
         }
     }
     

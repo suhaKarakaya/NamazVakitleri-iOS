@@ -44,11 +44,18 @@ class TimeTableViewController: UIViewController {
                             if result {
                                 LoadingIndicatorView.hide()
                                 guard let tempObj3 = Mapper<VakitMain>().map(JSON: response) else { return }
-                                self.tempDicsList = tempObj3.vakitList
+//                                self.tempDicsList = tempObj3.vakitList
                                 let _dateArr = tempObj3.location.components(separatedBy: ",")
                                 let _city = _dateArr[0]
                                 let _district = _dateArr[1]
                                 self.labelLocation.text = _city == _district ? _city : tempObj3.location
+                                for item in tempObj3.vakitList {
+                                    let lastUpdateTimeDate = DateManager.strToDateSuha(strDate: item.MiladiTarihKisa)
+                                    let temp = DateManager.checkDate(date: Date(), endDate: lastUpdateTimeDate)
+                                    if temp != .orderedAscending{
+                                        self.tempDicsList.append(item)
+                                    }
+                                }
                                 self.tableView.reloadData()
                             }
                             
