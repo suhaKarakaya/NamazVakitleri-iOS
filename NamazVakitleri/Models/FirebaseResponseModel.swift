@@ -29,7 +29,7 @@ class UserDevice: NSObject,Mappable {
 
 }
 
-class UserLocations: NSObject,Mappable {
+class UserInfo: NSObject,Mappable {
     
     var deviceId: String = ""
     var locationId: String = ""
@@ -88,7 +88,8 @@ class Locations: NSObject,Mappable {
     
 }
 
-class VakitList: NSObject,Mappable {
+class VakitMain: NSObject,Mappable {
+    var location: String = ""
     var vakitList: [Vakit] = []
 
     
@@ -101,6 +102,7 @@ class VakitList: NSObject,Mappable {
     }
     
     func mapping(map: Map){
+        location <- map["location"]
         vakitList <- map["vakitList"]
 
     }
@@ -151,11 +153,13 @@ class Vakit: NSObject,Mappable,Codable {
 }
 
 class Zikir: NSObject,Mappable,Codable {
-    var id: Int64 = 0
     var zikir: String = ""
     var aciklamasi: String = ""
     var kaynak: String = ""
     var deletable: Bool = false
+    var count: Int64 = 0
+    var isSelected: Bool = false
+    var deviceId: String = ""
  
     
     
@@ -168,20 +172,20 @@ class Zikir: NSObject,Mappable,Codable {
     }
     
     func mapping(map: Map) {
-        id <- map["id"]
         zikir <- map["zikir"]
         aciklamasi <- map["aciklamasi"]
         kaynak <- map["kaynak"]
         deletable <- map["deletable"]
+        count <- map["count"]
+        isSelected <- map["isSelected"]
+        deviceId <- map["deviceId"]
+        
 
     }
 }
 
 class ZikirListModel: NSObject,Mappable,Codable {
     var zikirList: [Zikir] = []
-    
- 
-    
     
     override init() {
         super.init()
@@ -193,30 +197,6 @@ class ZikirListModel: NSObject,Mappable,Codable {
     
     func mapping(map: Map) {
         zikirList <- map["zikirList"]
-
-
-    }
-}
-
-class SelectZikir: NSObject,Mappable,Codable {
-    var id: Int64 = 0
-    var count: Int64 = 0
-    var zikir: String = ""
-    var isSelected: Bool = false
-    
-    override init() {
-        super.init()
-    }
-    
-    required init?(map: Map) {
-       
-    }
-    
-    func mapping(map: Map) {
-        id <- map["id"]
-        count <- map["count"]
-        zikir <- map["zikir"]
-        isSelected <- map["isSelected"]
     }
 }
 
@@ -235,6 +215,25 @@ class FirebaseResponse: NSObject,Mappable {
     func mapping(map: Map) {
         document <- map["document"]
         documentId <- map["documentId"]
+        
+    }
+}
+
+class ZikirObj: NSObject,Mappable {
+    var data = Zikir()
+    var id = ""
+    
+    override init() {
+        super.init()
+    }
+    
+    required init?(map: Map) {
+       
+    }
+    
+    func mapping(map: Map) {
+        data <- map["data"]
+        id <- map["id"]
         
     }
 }

@@ -8,19 +8,20 @@
 import UIKit
 import ObjectMapper
 
+
 class HomeViewController: UIViewController {
-    @IBOutlet weak var pageControl: UIPageControl!
-    @IBOutlet weak var collectionView: UICollectionView!
-    var homeList:[UserLocations] = []
-    var currentPage = 0
-    typealias ListReturn = (HomeScreen, Bool, String) -> Void
+    
+    @IBOutlet weak var dailyView: UIView!
+    var homeList:[VakitMain] = []
+    private var dailyPrayerTimeView: DailyPrayerTimeView? = nil
+    var location: Locations?
+    var locationsShortDocumentId = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.pageControl.numberOfPages = 0 
         self.homeList = []
         super.viewWillAppear(animated)
         getData()
@@ -29,55 +30,68 @@ class HomeViewController: UIViewController {
     
     func getData(){
         LoadingIndicatorView.show(self.view)
-        FirebaseClient.getDocWhereCondt("UserLocations", "deviceId", FirstSelectViewController.deviceId) { result, status, response in
+        FirebaseClient.getDocWhereCondt("UserInfo", "deviceId", FirstSelectViewController.deviceId) { result, status, response in
             if result {
-                LoadingIndicatorView.hide()
-                self.pageControl.numberOfPages = response.count
                 self.homeList = []
                 for item in response {
-                    guard let myLocation = Mapper<UserLocations>().map(JSON: item.document) else { return }
-                    self.homeList.append(myLocation)
+                    guard let myLocation = Mapper<UserInfo>().map(JSON: item.document) else { return }
+                    self.getVakitsByLocationId(myLocation.locationId)
                 }
-                self.collectionView.reloadData()
+                LoadingIndicatorView.hide()
             }
         }
     }
     
-}
-    
-    
-
-
-extension HomeViewController: UICollectionViewDelegate,UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return homeList.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCollectionViewCell.identifier, for: indexPath) as! HomeCollectionViewCell
-        cell.myView = self.view
-        cell.locationId = self.homeList[indexPath.row].locationId
-        cell.uniqName = self.homeList[indexPath.row].uniqName
-        cell.setup()
-    
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
-    }
-    
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        let width = scrollView.frame.width
-        currentPage = Int(scrollView.contentOffset.x / width)
-        pageControl.currentPage = currentPage
-        
+    func getVakitsByLocationId(_ locationId: String){
+        FirebaseClient.getDocRefData("LocationsShort", locationId) { result, locDocumentID, response in
+            if result {
+                self.locationsShortDocumentId = locDocumentID
+                guard let locData = Mapper<Locations>().map(JSON: response) else { return }
+                let lastUpdateTimeDate = DateManager.strToDateUgur(strDate: locData.lastUpdateTime)
+                let temp = DateManager.checkDate(date: Date(), endDate: lastUpdateTimeDate)
+                if temp == .orderedAscending {
+                    //                  geride kalmış yeni zaman çek
+                    self.location = locData
+                    ApiClient.getVakitler(districtId: locData.districtId, completion: self.getVakitlerHandler)
+                } else {
+                    //                  zaman güncel bunu bas
+                    FirebaseClient.getDocRefData("Vakits", locData.vakitId) { result, locDocumentID, response in
+                        if result {
+                            LoadingIndicatorView.hide()
+                            guard let tempObj3 = Mapper<VakitMain>().map(JSON: response) else { return }
+                            self.dailyPrayerTimeView = DailyPrayerTimeView.instance()
+                            self.dailyPrayerTimeView?.data = tempObj3.vakitList[0]
+                        }
+                    }
+                }
+            }
+        }
         
     }
     
+    func getVakitlerHandler(list: [Vakit]?, status: Bool, message: String) {
+        guard status, let responseList = list, let tempObj = self.location else { return }
+        FirebaseClient.setVakitListRef(tempObj.vakitId, "Vakits", responseList, tempObj.uniqName) {
+            result, status in
+            if result {
+                self.setLocationsShortData()
+            }
+        }
+    }
+    
+    func setLocationsShortData() {
+        guard let tempObj = self.location else { return }
+        tempObj.lastUpdateTime = DateManager.dateToStringUgur(date: Date())
+        FirebaseClient.setDocRefData( self.locationsShortDocumentId, "LocationsShort", tempObj.toJSON()) {
+            result, locId in
+            if result {
+            }
+        }
+    }
+    
+    
+    
     
     
     
 }
-
-

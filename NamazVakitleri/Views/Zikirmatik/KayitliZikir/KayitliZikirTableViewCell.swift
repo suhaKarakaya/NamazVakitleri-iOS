@@ -7,8 +7,8 @@
 
 import UIKit
 
-typealias KayitliZikirSecTrashHandler = (Int) -> Void
-typealias KayitliZikirSelectHandler = (Int) -> Void
+typealias KayitliZikirSecTrashHandler = (ZikirObj) -> Void
+typealias KayitliZikirSelectHandler = (ZikirObj) -> Void
 
 class KayitliZikirTableViewCell: UITableViewCell {
     
@@ -18,7 +18,7 @@ class KayitliZikirTableViewCell: UITableViewCell {
     @IBOutlet weak var zikirNameLabel: UILabel!
     @IBOutlet weak var cellView: UIView!
     
-    var data = SelectZikir()
+    var cellData = ZikirObj()
     var index = 0
     var trashHandler: KayitliZikirSecTrashHandler?
     var selectHandler: KayitliZikirSelectHandler?
@@ -34,19 +34,19 @@ class KayitliZikirTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setup(_ data: SelectZikir) {
-        self.data = data
+    func setup(_ data: ZikirObj) {
+        cellData = data
         cellView.setViewBorder(color: UIColor.brown.cgColor, borderWith: 1, borderRadius: 8)
-        zikirNameLabel.text = String(data.zikir)
-        zikirSelectedButton.setTitle(String(data.count), for: .normal)
+        zikirNameLabel.text = String(data.data.zikir)
+        zikirSelectedButton.setTitle(String(data.data.count), for: .normal)
  
     }
     
     @IBAction func trashButtonAction(_ sender: Any) {
-        trashHandler?(index)
+        trashHandler?(cellData)
     }
     @IBAction func zikirSelectedButtonAction(_ sender: Any) {
-        selectHandler?(index)
+        selectHandler?(cellData)
     }
     
 }

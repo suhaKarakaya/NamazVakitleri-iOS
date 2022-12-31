@@ -11,12 +11,15 @@
 		0214F97F27FAEA3700C8CC37 /* LoadingIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0214F97E27FAEA3700C8CC37 /* LoadingIndicatorView.swift */; };
 		02156B9627D3803E00679FA2 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02156B9527D3803E00679FA2 /* HomeViewController.swift */; };
 		02156B9827D3812200679FA2 /* colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02156B9727D3812200679FA2 /* colors.xcassets */; };
-		02156BAD27D39A6700679FA2 /* TimeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02156BAC27D39A6700679FA2 /* TimeViewCell.swift */; };
 		02156BAF27D39C1500679FA2 /* TimeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02156BAE27D39C1500679FA2 /* TimeTableViewController.swift */; };
 		0250D62227F1D7F2004C7EEA /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0250D62127F1D7F1004C7EEA /* HomeCollectionViewCell.swift */; };
 		0250D62427F1DEE8004C7EEA /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0250D62327F1DEE8004C7EEA /* HomeScreen.swift */; };
 		0251803E27BE5F5400C29F76 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0251803D27BE5F5400C29F76 /* ApiClient.swift */; };
 		0251804027BE98C000C29F76 /* FirebaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0251803F27BE98C000C29F76 /* FirebaseClient.swift */; };
+		0272E489295F88C60038B219 /* DailyPrayTimeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0272E487295F88C60038B219 /* DailyPrayTimeViewCell.swift */; };
+		0272E48A295F88C60038B219 /* DailyPrayTimeViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0272E488295F88C60038B219 /* DailyPrayTimeViewCell.xib */; };
+		0272E48D295F8DA40038B219 /* DailyPrayerTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0272E48C295F8DA40038B219 /* DailyPrayerTimeView.swift */; };
+		0272E48F295F8DC50038B219 /* DailyPrayerTimeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0272E48E295F8DC50038B219 /* DailyPrayerTimeView.xib */; };
 		0280834327F5A722001132BF /* KayitliZikirTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0280834227F5A722001132BF /* KayitliZikirTableViewCell.swift */; };
 		02A3090327BD0394001CAFF9 /* Picker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02A3090227BD0394001CAFF9 /* Picker.xib */; };
 		02A3090527BD04B9001CAFF9 /* Picker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A3090427BD04B9001CAFF9 /* Picker.swift */; };
@@ -49,12 +52,15 @@
 		0214F97E27FAEA3700C8CC37 /* LoadingIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicatorView.swift; sourceTree = "<group>"; };
 		02156B9527D3803E00679FA2 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		02156B9727D3812200679FA2 /* colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = colors.xcassets; sourceTree = "<group>"; };
-		02156BAC27D39A6700679FA2 /* TimeViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeViewCell.swift; sourceTree = "<group>"; };
 		02156BAE27D39C1500679FA2 /* TimeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableViewController.swift; sourceTree = "<group>"; };
 		0250D62127F1D7F1004C7EEA /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		0250D62327F1DEE8004C7EEA /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		0251803D27BE5F5400C29F76 /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 		0251803F27BE98C000C29F76 /* FirebaseClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseClient.swift; sourceTree = "<group>"; };
+		0272E487295F88C60038B219 /* DailyPrayTimeViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyPrayTimeViewCell.swift; sourceTree = "<group>"; };
+		0272E488295F88C60038B219 /* DailyPrayTimeViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DailyPrayTimeViewCell.xib; sourceTree = "<group>"; };
+		0272E48C295F8DA40038B219 /* DailyPrayerTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyPrayerTimeView.swift; sourceTree = "<group>"; };
+		0272E48E295F8DC50038B219 /* DailyPrayerTimeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DailyPrayerTimeView.xib; sourceTree = "<group>"; };
 		0280834227F5A722001132BF /* KayitliZikirTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KayitliZikirTableViewCell.swift; sourceTree = "<group>"; };
 		02A3090227BD0394001CAFF9 /* Picker.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Picker.xib; sourceTree = "<group>"; };
 		02A3090427BD04B9001CAFF9 /* Picker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Picker.swift; sourceTree = "<group>"; };
@@ -126,10 +132,29 @@
 		0250D62027F1C251004C7EEA /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				0272E48B295F8D2D0038B219 /* Xib */,
 				02156B9527D3803E00679FA2 /* HomeViewController.swift */,
 				0250D62127F1D7F1004C7EEA /* HomeCollectionViewCell.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		025BC609295F878D00BD386F /* Xib */ = {
+			isa = PBXGroup;
+			children = (
+				0272E487295F88C60038B219 /* DailyPrayTimeViewCell.swift */,
+				0272E488295F88C60038B219 /* DailyPrayTimeViewCell.xib */,
+			);
+			path = Xib;
+			sourceTree = "<group>";
+		};
+		0272E48B295F8D2D0038B219 /* Xib */ = {
+			isa = PBXGroup;
+			children = (
+				0272E48C295F8DA40038B219 /* DailyPrayerTimeView.swift */,
+				0272E48E295F8DC50038B219 /* DailyPrayerTimeView.xib */,
+			);
+			path = Xib;
 			sourceTree = "<group>";
 		};
 		02C80EEC27F2358600AC1E60 /* Extensions */ = {
@@ -241,7 +266,7 @@
 		02EDA0C727F38FCA006A2A31 /* TimeTable */ = {
 			isa = PBXGroup;
 			children = (
-				02156BAC27D39A6700679FA2 /* TimeViewCell.swift */,
+				025BC609295F878D00BD386F /* Xib */,
 				02156BAE27D39C1500679FA2 /* TimeTableViewController.swift */,
 			);
 			path = TimeTable;
@@ -379,9 +404,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0272E48F295F8DC50038B219 /* DailyPrayerTimeView.xib in Resources */,
 				02D6824827B9A40C009CE351 /* LaunchScreen.storyboard in Resources */,
 				02D6825027B9AA42009CE351 /* GoogleService-Info.plist in Resources */,
 				02D6824527B9A40C009CE351 /* Assets.xcassets in Resources */,
+				0272E48A295F88C60038B219 /* DailyPrayTimeViewCell.xib in Resources */,
 				02156B9827D3812200679FA2 /* colors.xcassets in Resources */,
 				02A3090327BD0394001CAFF9 /* Picker.xib in Resources */,
 				02D6824327B9A40B009CE351 /* Main.storyboard in Resources */,
@@ -447,17 +474,18 @@
 				0251803E27BE5F5400C29F76 /* ApiClient.swift in Sources */,
 				02F267A427F4E68400EE4DBE /* ZikirSecTableViewCell.swift in Sources */,
 				02A3090727BD1D40001CAFF9 /* PickerViewController.swift in Sources */,
-				02156BAD27D39A6700679FA2 /* TimeViewCell.swift in Sources */,
 				0214F97F27FAEA3700C8CC37 /* LoadingIndicatorView.swift in Sources */,
 				02A3090527BD04B9001CAFF9 /* Picker.swift in Sources */,
 				0250D62227F1D7F2004C7EEA /* HomeCollectionViewCell.swift in Sources */,
 				0251804027BE98C000C29F76 /* FirebaseClient.swift in Sources */,
 				02C8600227D6909F00EEE8B2 /* SettingsViewController.swift in Sources */,
 				02F267A027F4DB9500EE4DBE /* KayitliZikirViewController.swift in Sources */,
+				0272E48D295F8DA40038B219 /* DailyPrayerTimeView.swift in Sources */,
 				0250D62427F1DEE8004C7EEA /* HomeScreen.swift in Sources */,
 				02EADC7A27BAF14C00E5709A /* FirstSelectViewController.swift in Sources */,
 				02E3BDC627D0E3D3001DE910 /* DateManager.swift in Sources */,
 				02E3BDC427D0E303001DE910 /* FirebaseResponseModel.swift in Sources */,
+				0272E489295F88C60038B219 /* DailyPrayTimeViewCell.swift in Sources */,
 				02D6823C27B9A40B009CE351 /* AppDelegate.swift in Sources */,
 				02F267A227F4DBA100EE4DBE /* ZikirSecViewController.swift in Sources */,
 				02D6823E27B9A40B009CE351 /* SceneDelegate.swift in Sources */,

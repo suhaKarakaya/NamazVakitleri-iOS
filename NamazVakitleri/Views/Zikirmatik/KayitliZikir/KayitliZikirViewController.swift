@@ -9,24 +9,18 @@ import UIKit
 import Firebase
 import ObjectMapper
 
-protocol ZikirSecDelegate: class {
-    func selected()
-}
-
+typealias KayitliZikirSelected = (Bool) -> Void
 class KayitliZikirViewController: UIViewController {
-
-    @IBOutlet weak var tableView: UITableView!
     
-//    var userData = User()
-    var documentID = ""
-    weak var delegate: ZikirSecDelegate?
+    @IBOutlet weak var tableView: UITableView!
+    var selectedZikr: ZikirObj?
+    var userZikrList: [ZikirObj]?
+    public var handler: KayitliZikirSelected? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -35,34 +29,48 @@ class KayitliZikirViewController: UIViewController {
     }
     
     func getData(){
-//        FirebaseClient.getDocRefData("User", FirstSelectViewController.deviceId) { flag, documentId, response in
-//            if flag {
-//                guard let myLocation = Mapper<User>().map(JSON: response) else { return }
-//                self.documentID = documentId
-//                self.userData = myLocation
-//                self.tableView.reloadData()
-//            }
-//        }
+        self.userZikrList = []
+        LoadingIndicatorView.show(self.view)
+        FirebaseClient.getDocWhereCondt("UserZikr", "deviceId", FirstSelectViewController.deviceId) { result, status, response in
+            LoadingIndicatorView.hide()
+            if result {
+                for item in response {
+                    guard let tempObj = Mapper<Zikir>().map(JSON:  item.document) else { return }
+                    let zikr = ZikirObj()
+                    zikr.id = item.documentId
+                    zikr.data = tempObj
+                    self.userZikrList?.append(zikr)
+                }
+                self.tableView.reloadData()
+            } else {
+// hata elerti ver
+                self.tableView.reloadData()
+                self.handler?(true)
+            }
+            
+        }
     }
     
     @IBAction func backButtonAction(_ sender: Any) {
-        self.delegate?.selected()
+        handler?(true)
         dismiss(animated: true)
     }
     
     
-    func toTrash(index: Int){
+    func toTrash(index: ZikirObj){
         let alert = UIAlertController.init(title: "Uyarı", message: "Seçmiş olduğunuz zikiri silmek istediğinizden emin misiniz?", preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction.init(title: "Evet", style: UIAlertAction.Style.default, handler: { UIAlertAction in
-//            self.userData.saveZikirList.remove(at: index)
-//
-//            FirebaseClient.setDocRefData(self.documentID, "User", self.userData.toJSON()) { flag, statu in
-//                guard flag else { return }
-//                if flag {
-//                    self.getData()
-//                }
-//            }
-        }))
+        let cancelButton = UIAlertAction(title: "Evet", style: UIAlertAction.Style.default, handler: { UIAlertAction in
+            FirebaseClient.delete("UserZikr", index.id) { result, status in
+                if result {
+                    self.getData()
+                } else {
+//                    hata alerti göster
+                }
+            }
+
+        })
+        cancelButton.setValue(UIColor(named: "kabeYellow"), forKey: "titleTextColor")
+        alert.addAction(cancelButton)
         
         alert.addAction(UIAlertAction.init(title: "Hayır", style: UIAlertAction.Style.default, handler: { UIAlertAction in
             
@@ -70,44 +78,61 @@ class KayitliZikirViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
-    func selectZikir(index: Int){
-//        for item in self.userData.saveZikirList {
-//            item.isSelected = false
-//        }
-//        self.userData.saveZikirList[index].isSelected = true
-//
-//        FirebaseClient.setDocRefData(self.documentID, "User", self.userData.toJSON()) { flag, statu in
-//            guard flag else { return }
-//            if flag {
-//                self.delegate?.selected()
-//                self.dismiss(animated: true)
-//            }
-//        }
-        
+    private func setOtherZikr(completion: @escaping () -> Void) {
+        if selectedZikr != nil {
+            selectedZikr?.data.isSelected = false
+            FirebaseClient.setDocRefData(selectedZikr?.id ?? "", "UserZikr", selectedZikr?.data.toJSON() ?? ["":""]) {
+                result, status in
+                if result {
+                    completion()
+                }
+            }
+        } else {
+            completion()
+        }
     }
-
+    
+    
+    func selectZikir(data: ZikirObj){
+        setOtherZikr {
+            let tempZikr = data
+            tempZikr.data.isSelected = true
+            FirebaseClient.setDocRefData(data.id, "UserZikr", tempZikr.data.toJSON()){ result, id in
+                if result {
+                    let alert = UIAlertController.init(title: "Uyarı", message: "Zikir seçim başarılı", preferredStyle: UIAlertController.Style.alert)
+                    
+                    alert.addAction(UIAlertAction.init(title: "Tamam", style: UIAlertAction.Style.default, handler: { UIAlertAction in
+                        self.handler?(true)
+                        self.dismiss(animated: true)
+                    }))
+                    self.present(alert, animated: true, completion: nil)
+                } else {
+                    let alert = UIAlertController.init(title: "Uyarı", message: "İşlem sırasında bir hata oluştur", preferredStyle: UIAlertController.Style.alert)
+                    
+                    alert.addAction(UIAlertAction.init(title: "Tamam", style: UIAlertAction.Style.default, handler: { UIAlertAction in
+                        
+                    }))
+                    self.present(alert, animated: true, completion: nil)
+                }
+            }
+        }
+    }
+    
 }
 
 extension KayitliZikirViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
-//        userData.saveZikirList.count
+        return userZikrList?.count ?? 0
     }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: KayitliZikirTableViewCell.identifier, for: indexPath) as! KayitliZikirTableViewCell
-        
-//        cell.setup(self.userData.saveZikirList[indexPath.row])
-        cell.index = indexPath.row
-        cell.trashHandler = self.toTrash
-        cell.selectHandler = self.selectZikir
-
-        
+        if let data = self.userZikrList?[indexPath.row] {
+            cell.setup(data)
+            cell.index = indexPath.row
+            cell.trashHandler = self.toTrash
+            cell.selectHandler = self.selectZikir
+        }
         return cell
-
-    
     }
-    
-    
 }

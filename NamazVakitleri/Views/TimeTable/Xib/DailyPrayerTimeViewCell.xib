@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="172" id="KGk-i7-Jjw" customClass="DailyPrayerTimeViewCell" customModule="NamazVakitleri" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="462" height="172"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="462" height="172"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BeV-j6-BUf">
+                        <rect key="frame" x="10" y="10" width="442" height="152"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="RUU-7d-Ni2">
+                                <rect key="frame" x="0.0" y="0.0" width="442" height="152"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ywm-0H-imT">
+                                        <rect key="frame" x="0.0" y="0.0" width="442" height="38"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cp6-LE-iTe">
+                                                <rect key="frame" x="0.0" y="0.0" width="221" height="38"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Df-07-jTJ">
+                                                        <rect key="frame" x="0.0" y="5" width="221" height="28"/>
+                                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
+                                                        <color key="textColor" name="kabeBlack"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="2Df-07-jTJ" firstAttribute="leading" secondItem="Cp6-LE-iTe" secondAttribute="leading" id="BUI-Vv-Ior"/>
+                                                    <constraint firstItem="2Df-07-jTJ" firstAttribute="top" secondItem="Cp6-LE-iTe" secondAttribute="top" constant="5" id="TtR-Rs-l34"/>
+                                                    <constraint firstAttribute="trailing" secondItem="2Df-07-jTJ" secondAttribute="trailing" id="fpa-1H-h1D"/>
+                                                    <constraint firstAttribute="bottom" secondItem="2Df-07-jTJ" secondAttribute="bottom" constant="5" id="rmn-ob-jeR"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="phV-7G-T6k">
+                                                <rect key="frame" x="221" y="0.0" width="221" height="38"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OB7-Kh-9IX">
+                                                        <rect key="frame" x="0.0" y="5" width="221" height="28"/>
+                                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
+                                                        <color key="textColor" name="kabeBlack"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="OB7-Kh-9IX" secondAttribute="bottom" constant="5" id="PlF-8i-Kko"/>
+                                                    <constraint firstAttribute="trailing" secondItem="OB7-Kh-9IX" secondAttribute="trailing" id="nUe-tt-abd"/>
+                                                    <constraint firstItem="OB7-Kh-9IX" firstAttribute="leading" secondItem="phV-7G-T6k" secondAttribute="leading" id="ueW-rG-01m"/>
+                                                    <constraint firstItem="OB7-Kh-9IX" firstAttribute="top" secondItem="phV-7G-T6k" secondAttribute="top" constant="5" id="wAF-pg-8dI"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="OlU-n0-L0S">
+                                        <rect key="frame" x="0.0" y="38" width="442" height="38"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bgR-dz-JsD">
+                                                <rect key="frame" x="0.0" y="0.0" width="221" height="38"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0vw-aR-ltw">
+                                                        <rect key="frame" x="0.0" y="5" width="221" height="28"/>
+                                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
+                                                        <color key="textColor" name="kabeYellow"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="0vw-aR-ltw" secondAttribute="trailing" id="5h0-Fs-qrs"/>
+                                                    <constraint firstAttribute="bottom" secondItem="0vw-aR-ltw" secondAttribute="bottom" constant="5" id="AMM-dZ-sp5"/>
+                                                    <constraint firstItem="0vw-aR-ltw" firstAttribute="top" secondItem="bgR-dz-JsD" secondAttribute="top" constant="5" id="Zwk-ZA-GXo"/>
+                                                    <constraint firstItem="0vw-aR-ltw" firstAttribute="leading" secondItem="bgR-dz-JsD" secondAttribute="leading" id="hI5-aY-xni"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cel-sE-3IG">
+                                                <rect key="frame" x="221" y="0.0" width="221" height="38"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j9h-M8-tIE">
+                                                        <rect key="frame" x="0.0" y="5" width="221" height="28"/>
+                                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
+                                                        <color key="textColor" name="kabeYellow"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="j9h-M8-tIE" firstAttribute="leading" secondItem="cel-sE-3IG" secondAttribute="leading" id="1C4-ub-6j6"/>
+                                                    <constraint firstItem="j9h-M8-tIE" firstAttribute="top" secondItem="cel-sE-3IG" secondAttribute="top" constant="5" id="7gx-YG-Jbl"/>
+                                                    <constraint firstAttribute="bottom" secondItem="j9h-M8-tIE" secondAttribute="bottom" constant="5" id="hnt-Ia-olt"/>
+                                                    <constraint firstAttribute="trailing" secondItem="j9h-M8-tIE" secondAttribute="trailing" id="l4q-1S-2op"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="nYr-cE-4d9">
+                                        <rect key="frame" x="0.0" y="76" width="442" height="38"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PPg-vV-Qqe">
+                                                <rect key="frame" x="0.0" y="0.0" width="73.666666666666671" height="38"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AKj-6j-T4i">
+                                                        <rect key="frame" x="0.0" y="0.0" width="73.666666666666671" height="38"/>
+                                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
+                                                        <color key="textColor" name="kabeBlack"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="AKj-6j-T4i" firstAttribute="top" secondItem="PPg-vV-Qqe" secondAttribute="top" id="75O-aI-Iet"/>
+                                                    <constraint firstAttribute="bottom" secondItem="AKj-6j-T4i" secondAttribute="bottom" id="KLD-rj-mfs"/>
+                                                    <constraint firstAttribute="trailing" secondItem="AKj-6j-T4i" secondAttribute="trailing" id="Rny-zV-i3I"/>
+                                                    <constraint firstItem="AKj-6j-T4i" firstAttribute="leading" secondItem="PPg-vV-Qqe" secondAttribute="leading" id="aks-ZR-UTC"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="19v-7y-nH6">
+                                                <rect key="frame" x="73.666666666666657" y="0.0" width="73.666666666666657" height="38"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OXK-8o-45e">
+                                                        <rect key="frame" x="0.0" y="0.0" width="73.666666666666671" height="38"/>
+                                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
+                                                        <color key="textColor" name="kabeBlack"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="OXK-8o-45e" firstAttribute="top" secondItem="19v-7y-nH6" secondAttribute="top" id="ATJ-J0-Egc"/>
+                                                    <constraint firstAttribute="trailing" secondItem="OXK-8o-45e" secondAttribute="trailing" id="dck-p3-2y2"/>
+                                                    <constraint firstAttribute="bottom" secondItem="OXK-8o-45e" secondAttribute="bottom" id="fFM-Cg-Fnh"/>
+                                                    <constraint firstItem="OXK-8o-45e" firstAttribute="leading" secondItem="19v-7y-nH6" secondAttribute="leading" id="kkd-cW-ypZ"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fGm-RM-Nmf">
+                                                <rect key="frame" x="147.33333333333334" y="0.0" width="73.666666666666657" height="38"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TEq-xl-Sq4">
+                                                        <rect key="frame" x="0.0" y="0.0" width="73.666666666666671" height="38"/>
+                                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
+                                                        <color key="textColor" name="kabeBlack"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="TEq-xl-Sq4" firstAttribute="leading" secondItem="fGm-RM-Nmf" secondAttribute="leading" id="8Ks-PH-YpO"/>
+                                                    <constraint firstAttribute="bottom" secondItem="TEq-xl-Sq4" secondAttribute="bottom" id="CL3-Ol-bVQ"/>
+                                                    <constraint firstAttribute="trailing" secondItem="TEq-xl-Sq4" secondAttribute="trailing" id="SRw-Gp-enD"/>
+                                                    <constraint firstItem="TEq-xl-Sq4" firstAttribute="top" secondItem="fGm-RM-Nmf" secondAttribute="top" id="abv-Ef-cYT"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AwX-sO-tg2">
+                                                <rect key="frame" x="220.99999999999997" y="0.0" width="73.666666666666657" height="38"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2qj-5T-QTQ">
+                                                        <rect key="frame" x="0.0" y="0.0" width="73.666666666666671" height="38"/>
+                                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
+                                                        <color key="textColor" name="kabeBlack"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="2qj-5T-QTQ" firstAttribute="top" secondItem="AwX-sO-tg2" secondAttribute="top" id="MOy-oP-Pp2"/>
+                                                    <constraint firstAttribute="trailing" secondItem="2qj-5T-QTQ" secondAttribute="trailing" id="MnE-1m-x04"/>
+                                                    <constraint firstAttribute="bottom" secondItem="2qj-5T-QTQ" secondAttribute="bottom" id="Y1V-ax-0Ek"/>
+                                                    <constraint firstItem="2qj-5T-QTQ" firstAttribute="leading" secondItem="AwX-sO-tg2" secondAttribute="leading" id="eJZ-zj-Fue"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i9K-2k-WmJ">
+                                                <rect key="frame" x="294.66666666666669" y="0.0" width="73.666666666666686" height="38"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="69k-8d-uKQ">
+                                                        <rect key="frame" x="0.0" y="0.0" width="73.666666666666671" height="38"/>
+                                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
+                                                        <color key="textColor" name="kabeBlack"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="69k-8d-uKQ" secondAttribute="trailing" id="Q5q-OB-y8W"/>
+                                                    <constraint firstItem="69k-8d-uKQ" firstAttribute="leading" secondItem="i9K-2k-WmJ" secondAttribute="leading" id="dOZ-M0-PJc"/>
+                                                    <constraint firstAttribute="bottom" secondItem="69k-8d-uKQ" secondAttribute="bottom" id="muW-13-d3O"/>
+                                                    <constraint firstItem="69k-8d-uKQ" firstAttribute="top" secondItem="i9K-2k-WmJ" secondAttribute="top" id="yao-G3-jhs"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZjF-nc-90S">
+                                                <rect key="frame" x="368.33333333333331" y="0.0" width="73.666666666666686" height="38"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vDy-JO-0td">
+                                                        <rect key="frame" x="0.0" y="0.0" width="73.666666666666671" height="38"/>
+                                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
+                                                        <color key="textColor" name="kabeBlack"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="vDy-JO-0td" secondAttribute="trailing" id="A9E-6W-Knc"/>
+                                                    <constraint firstItem="vDy-JO-0td" firstAttribute="top" secondItem="ZjF-nc-90S" secondAttribute="top" id="Jsp-10-61V"/>
+                                                    <constraint firstItem="vDy-JO-0td" firstAttribute="leading" secondItem="ZjF-nc-90S" secondAttribute="leading" id="kno-e4-Eg9"/>
+                                                    <constraint firstAttribute="bottom" secondItem="vDy-JO-0td" secondAttribute="bottom" id="r7t-Ak-pWw"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="t0I-YL-nen">
+                                        <rect key="frame" x="0.0" y="114" width="442" height="38"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mkN-A4-zrt">
+                                                <rect key="frame" x="0.0" y="0.0" width="73.666666666666671" height="38"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XsK-2M-lFZ">
+                                                        <rect key="frame" x="0.0" y="0.0" width="73.666666666666671" height="38"/>
+                                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
+                                                        <color key="textColor" name="kabeYellow"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="XsK-2M-lFZ" secondAttribute="trailing" id="8ku-7P-dZO"/>
+                                                    <constraint firstAttribute="bottom" secondItem="XsK-2M-lFZ" secondAttribute="bottom" id="AnY-tj-U2M"/>
+                                                    <constraint firstItem="XsK-2M-lFZ" firstAttribute="top" secondItem="mkN-A4-zrt" secondAttribute="top" id="QpO-3H-IlT"/>
+                                                    <constraint firstItem="XsK-2M-lFZ" firstAttribute="leading" secondItem="mkN-A4-zrt" secondAttribute="leading" id="s4N-6V-dh3"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5UW-or-QhA">
+                                                <rect key="frame" x="73.666666666666657" y="0.0" width="73.666666666666657" height="38"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ge-H8-263">
+                                                        <rect key="frame" x="0.0" y="0.0" width="73.666666666666671" height="38"/>
+                                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
+                                                        <color key="textColor" name="kabeYellow"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="9ge-H8-263" firstAttribute="top" secondItem="5UW-or-QhA" secondAttribute="top" id="GZ9-Jl-ypQ"/>
+                                                    <constraint firstAttribute="bottom" secondItem="9ge-H8-263" secondAttribute="bottom" id="ORF-bj-WPJ"/>
+                                                    <constraint firstAttribute="trailing" secondItem="9ge-H8-263" secondAttribute="trailing" id="YdC-4i-8ds"/>
+                                                    <constraint firstItem="9ge-H8-263" firstAttribute="leading" secondItem="5UW-or-QhA" secondAttribute="leading" id="tmG-Lg-dcR"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J85-8Z-JrG">
+                                                <rect key="frame" x="147.33333333333334" y="0.0" width="73.666666666666657" height="38"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5sC-Gv-5tj">
+                                                        <rect key="frame" x="0.0" y="0.0" width="73.666666666666671" height="38"/>
+                                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
+                                                        <color key="textColor" name="kabeYellow"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="5sC-Gv-5tj" secondAttribute="bottom" id="0GW-Fd-qfP"/>
+                                                    <constraint firstAttribute="trailing" secondItem="5sC-Gv-5tj" secondAttribute="trailing" id="IUX-pi-acd"/>
+                                                    <constraint firstItem="5sC-Gv-5tj" firstAttribute="top" secondItem="J85-8Z-JrG" secondAttribute="top" id="MrR-at-uQk"/>
+                                                    <constraint firstItem="5sC-Gv-5tj" firstAttribute="leading" secondItem="J85-8Z-JrG" secondAttribute="leading" id="osf-uC-Gg1"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="poK-Du-757">
+                                                <rect key="frame" x="220.99999999999997" y="0.0" width="73.666666666666657" height="38"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DXs-4N-DWv">
+                                                        <rect key="frame" x="0.0" y="0.0" width="73.666666666666671" height="38"/>
+                                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
+                                                        <color key="textColor" name="kabeYellow"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="DXs-4N-DWv" firstAttribute="top" secondItem="poK-Du-757" secondAttribute="top" id="6VE-Ht-4hu"/>
+                                                    <constraint firstItem="DXs-4N-DWv" firstAttribute="leading" secondItem="poK-Du-757" secondAttribute="leading" id="jSL-Vh-AhS"/>
+                                                    <constraint firstAttribute="trailing" secondItem="DXs-4N-DWv" secondAttribute="trailing" id="t7Y-K3-Bzk"/>
+                                                    <constraint firstAttribute="bottom" secondItem="DXs-4N-DWv" secondAttribute="bottom" id="vFi-xE-eUK"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qYZ-bd-Nyr">
+                                                <rect key="frame" x="294.66666666666669" y="0.0" width="73.666666666666686" height="38"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NFB-Gl-QrS">
+                                                        <rect key="frame" x="0.0" y="0.0" width="73.666666666666671" height="38"/>
+                                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
+                                                        <color key="textColor" name="kabeYellow"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="NFB-Gl-QrS" firstAttribute="top" secondItem="qYZ-bd-Nyr" secondAttribute="top" id="HU8-Ek-jDP"/>
+                                                    <constraint firstItem="NFB-Gl-QrS" firstAttribute="leading" secondItem="qYZ-bd-Nyr" secondAttribute="leading" id="Kl9-lh-692"/>
+                                                    <constraint firstAttribute="trailing" secondItem="NFB-Gl-QrS" secondAttribute="trailing" id="V61-yN-HPF"/>
+                                                    <constraint firstAttribute="bottom" secondItem="NFB-Gl-QrS" secondAttribute="bottom" id="ghs-Pe-a74"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ni4-Xn-7Ef">
+                                                <rect key="frame" x="368.33333333333331" y="0.0" width="73.666666666666686" height="38"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sgo-8N-IRb">
+                                                        <rect key="frame" x="0.0" y="0.0" width="73.666666666666671" height="38"/>
+                                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
+                                                        <color key="textColor" name="kabeYellow"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="sgo-8N-IRb" firstAttribute="top" secondItem="Ni4-Xn-7Ef" secondAttribute="top" id="LRM-VL-UYD"/>
+                                                    <constraint firstAttribute="bottom" secondItem="sgo-8N-IRb" secondAttribute="bottom" id="SH2-Jo-Txq"/>
+                                                    <constraint firstAttribute="trailing" secondItem="sgo-8N-IRb" secondAttribute="trailing" id="doz-vU-0XU"/>
+                                                    <constraint firstItem="sgo-8N-IRb" firstAttribute="leading" secondItem="Ni4-Xn-7Ef" secondAttribute="leading" id="jNy-vd-cBl"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="RUU-7d-Ni2" secondAttribute="bottom" id="5DI-Yk-Ixt"/>
+                            <constraint firstAttribute="trailing" secondItem="RUU-7d-Ni2" secondAttribute="trailing" id="Tc4-xo-m5t"/>
+                            <constraint firstItem="RUU-7d-Ni2" firstAttribute="top" secondItem="BeV-j6-BUf" secondAttribute="top" id="jKF-1e-3k2"/>
+                            <constraint firstItem="RUU-7d-Ni2" firstAttribute="leading" secondItem="BeV-j6-BUf" secondAttribute="leading" id="rUP-ah-xoO"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="BeV-j6-BUf" secondAttribute="bottom" constant="10" id="1QP-om-qdI"/>
+                    <constraint firstItem="BeV-j6-BUf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="9EB-Z9-Nhi"/>
+                    <constraint firstAttribute="trailing" secondItem="BeV-j6-BUf" secondAttribute="trailing" constant="10" id="M5O-A4-5TY"/>
+                    <constraint firstItem="BeV-j6-BUf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="pIc-65-Mxa"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="aksamKeyLabel" destination="69k-8d-uKQ" id="RZa-YB-pt9"/>
+                <outlet property="aksamValueLabel" destination="NFB-Gl-QrS" id="nDs-h8-Wa5"/>
+                <outlet property="gunesKeyLabel" destination="OXK-8o-45e" id="8zL-VR-JpA"/>
+                <outlet property="gunesValueLabel" destination="9ge-H8-263" id="zzf-Fj-azH"/>
+                <outlet property="hicriTimeKeyLabel" destination="2Df-07-jTJ" id="xx9-dh-MAa"/>
+                <outlet property="hicriTimeValueLabel" destination="0vw-aR-ltw" id="BSE-Vj-Hw1"/>
+                <outlet property="ikindiKeyLabel" destination="2qj-5T-QTQ" id="wTd-eo-2cv"/>
+                <outlet property="ikindiValueLabel" destination="DXs-4N-DWv" id="FVj-Xi-bQP"/>
+                <outlet property="imsakKeyLabel" destination="AKj-6j-T4i" id="TMi-zd-nzK"/>
+                <outlet property="imsakValueLabel" destination="XsK-2M-lFZ" id="Q0K-c8-etX"/>
+                <outlet property="miladiTimeKeyLabel" destination="OB7-Kh-9IX" id="5R1-p8-l84"/>
+                <outlet property="miladiTimeValueLabel" destination="j9h-M8-tIE" id="1iT-Ic-9kB"/>
+                <outlet property="ogleKeyLabel" destination="TEq-xl-Sq4" id="iNn-TJ-6qX"/>
+                <outlet property="ogleValueLabel" destination="5sC-Gv-5tj" id="0rW-eZ-E6t"/>
+                <outlet property="xibview" destination="BeV-j6-BUf" id="xhd-2t-PSS"/>
+                <outlet property="yatsiKeyLabel" destination="vDy-JO-0td" id="RbX-jf-wG4"/>
+                <outlet property="yatsiValueLabel" destination="sgo-8N-IRb" id="CBk-pe-0qI"/>
+            </connections>
+            <point key="canvasLocation" x="-6.1068702290076331" y="64.788732394366207"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="kabeBlack">
+            <color red="0.12156862745098039" green="0.098039215686274508" blue="0.098039215686274508" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="kabeYellow">
+            <color red="0.5490196078431373" green="0.48627450980392156" blue="0.30196078431372547" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

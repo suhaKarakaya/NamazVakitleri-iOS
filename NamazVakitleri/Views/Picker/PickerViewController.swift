@@ -30,10 +30,6 @@ class PickerViewController: UIViewController {
         btnCancel.tintColor = UIColor.systemBrown
         pickerView.delegate = self
         pickerView.dataSource = self
-        
-        
-        
-        
         pickerView.reloadComponent(0)
     }
     

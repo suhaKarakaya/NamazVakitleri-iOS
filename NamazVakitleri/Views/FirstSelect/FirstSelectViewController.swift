@@ -12,8 +12,8 @@ import Foundation
 
 
 class FirstSelectViewController: UIViewController {
-
-
+    
+    
     @IBOutlet weak var btnSave: UIButton!
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var viewCountryPicker: Picker!
@@ -34,6 +34,9 @@ class FirstSelectViewController: UIViewController {
     var location = ""
     var backVisible: Bool = false
     var documentIdList: [LocationList] = []
+    var isUpdate = false
+    var locationsShortDocumentId = ""
+    var vakitsDocumentId = ""
     
     static var deviceId: String = UIDevice.current.identifierForVendor!.uuidString
     
@@ -41,7 +44,6 @@ class FirstSelectViewController: UIViewController {
         super.viewDidLoad()
         
         buttonBack.isHidden = !backVisible
-
         
         stackView.addArrangedSubview(countryPickerView)
         countryPickerView.selectTitleLabel.text = "Ülke"
@@ -52,20 +54,16 @@ class FirstSelectViewController: UIViewController {
         stackView.addArrangedSubview(districtPickerView)
         districtPickerView.selectTitleLabel.text = "Semt"
         
-//        btnSave.layer.cornerRadius = 8
-        
         countryPickerView.type = .country
         cityPickerView.type = .city
         districtPickerView.type = .district
-        
         
         countryPickerView.delegate = self
         cityPickerView.delegate = self
         districtPickerView.delegate = self
         
-
+        
     }
-    
     
     @IBAction func buttonBackAction(_ sender: Any) {
         dismiss(animated: true, completion: nil)
@@ -74,13 +72,12 @@ class FirstSelectViewController: UIViewController {
     func getCountyListHandler(list: [Country]?, status: Bool, message: String) {
         self.countryList = []
         guard status, let responseList = list else { return }
-//        if let turkey = responseList.first(where: { $0.UlkeID == "2"}) {
-//            self.countryList.append(SelectObje.init(strId: turkey.UlkeID ?? "0", value: turkey.UlkeAdi ?? ""))
-//                
-//            }
-            for item in responseList {
-                self.countryList.append(SelectObje.init(strId: item.UlkeID ?? "0", value: item.UlkeAdi ?? ""))
-            }
+        if let turkey = responseList.first(where: { $0.UlkeID == "2" || $0.UlkeAdi == "Türkiye" || $0.UlkeAdiEn == "Turkey" }) {
+            self.countryList.append(SelectObje.init(strId: turkey.UlkeID ?? "0", value: turkey.UlkeAdi ?? ""))
+        }
+        for item in responseList {
+            self.countryList.append(SelectObje.init(strId: item.UlkeID ?? "0", value: item.UlkeAdi ?? ""))
+        }
         LoadingIndicatorView.hide()
         performSegue(withIdentifier: "sg_picker", sender: PickerType.country)
     }
@@ -115,101 +112,108 @@ class FirstSelectViewController: UIViewController {
         performSegue(withIdentifier: "sg_picker", sender: PickerType.district)
     }
     
-    func getVakitlerHandler(list: [[String]]?, status: Bool, message: String) {
-        LoadingIndicatorView.hide()
-        guard status, let responseList = list else { return }
-        var vakitList: [Vakit] = []
-        for var vakit in responseList {
-            if vakit[0].contains("&") {
-                let tempStr = vakit[0].components(separatedBy: " ")
-                let day = tempStr[0]
-                let month = tempStr[1]
-                let year = tempStr[2]
-                let dayStr = tempStr[3]
-                vakit[0] = String(format: "%@ %@ %@ %@", day, month, year, "Çarşamba")
-            }
-            let tempValue = Vakit()
-            tempValue.MiladiTarihUzun = vakit[0]
-            tempValue.Imsak = vakit[1]
-            tempValue.Gunes = vakit[2]
-            tempValue.Ogle = vakit[3]
-            tempValue.Ikindi = vakit[4]
-            tempValue.Aksam = vakit[5]
-            tempValue.Yatsi = vakit[6]
-            tempValue.MiladiTarihKisa = DateManager.dateToString2(date: DateManager.strToDate1(strDate: vakit[0]))
-            
-            vakitList.append(tempValue)
-        }
-        
- 
-        let list = VakitList()
-        list.vakitList = vakitList
-        
-        LoadingIndicatorView.show(self.view)
-        FirebaseClient.setAllData("Vakit", list.toJSON()) { result, vakitId in
-            if result {
-                LoadingIndicatorView.hide()
-                let tempLoc = Locations()
-                tempLoc.countryId = self.countrySelect?.strId ?? ""
-                tempLoc.countyName = self.countrySelect?.value ?? ""
-                tempLoc.cityId = self.citySelect?.strId ?? ""
-                tempLoc.cityName = self.citySelect?.value ?? ""
-                tempLoc.districtId = self.districtSelect?.strId ?? ""
-                tempLoc.districtName = self.districtSelect?.value ?? ""
-                tempLoc.lastUpdateTime = DateManager.dateToStringUgur(date: Date())
-                tempLoc.vakitId = vakitId
-                tempLoc.uniqName = self.location
-                
-                LoadingIndicatorView.show(self.view)
-                FirebaseClient.setAllData("Location", tempLoc.toJSON()) { result, locId in
-                    if result {
-                        LoadingIndicatorView.hide()
-                        let tempObj = FirebaseResponse()
-                        tempObj.documentId = locId
-                        self.setHomeData(data: tempObj)
-                    }
-                }
-            }
-        }
-        
-        
-    }
-        
     func getLocation(location: String) {
         LoadingIndicatorView.show(self.view)
-        FirebaseClient.getDocWhereCondt("Location", "uniqName", location) { result, status, response in
+        FirebaseClient.getDocWhereCondt("LocationsShort", "uniqName", location) { result, status, response in
             if result {
-                if self.documentIdList != nil && !self.documentIdList.isEmpty {
-                    var count = 0
-                    for item in self.documentIdList {
-                        if item.userLocation.uniqName == location {
-                            LoadingIndicatorView.hide()
-                            count += 1
-                            let alert = UIAlertController.init(title: "Uyarı", message: "Seçtiğiniz konum konum listenizde bulunmaktadır!", preferredStyle: UIAlertController.Style.alert)
-                            alert.addAction(UIAlertAction.init(title: "Tamam", style: UIAlertAction.Style.default, handler: { UIAlertAction in
-                                return
-                            }))
-                            self.present(alert, animated: true, completion: nil)
-                        }
-                    }
-                    if count == 0 {
+//                Seçilen location değeri firebase sistemine daha önce yazılmış
+                if response != nil && !response.isEmpty {
+                    guard let tempObj = Mapper<Locations>().map(JSON:  response[0].document) else { return }
+                    let lastUpdateTimeDate = DateManager.strToDateUgur(strDate: tempObj.lastUpdateTime)
+                    let temp = DateManager.checkDate(date: Date(), endDate: lastUpdateTimeDate)
+                    if temp == .orderedAscending {
+//                        Daha önce yazılan location değeri day olarak geride kalmış yenisini apiden çekmek gerek
+                        LoadingIndicatorView.hide()
+                        self.getVakitlerListener(_isUpdate: true, _locationsShortDocumentId: response[0].documentId, _vakitsDocumentId: tempObj.vakitId)
+                    } else {
+//                        Firebase üzerinde güncel veri bulunmakta
                         LoadingIndicatorView.hide()
                         self.setHomeData(data: response[0])
                     }
                 } else {
+//                    Seçilen location değeri firebasede yok apiden çekmek gerek
                     LoadingIndicatorView.hide()
-                    self.setHomeData(data: response[0])
+                    self.getVakitlerListener(_isUpdate: false, _locationsShortDocumentId:"", _vakitsDocumentId: "")
                 }
             } else {
+//                    Seçilen location değeri firebasede yok apiden çekmek gerek
                 LoadingIndicatorView.hide()
-                self.getVakitlerListener()
+                self.getVakitlerListener(_isUpdate: false, _locationsShortDocumentId:"",_vakitsDocumentId: "")
             }
         }
-
+        
+    }
+    
+    func getVakitlerListener(_isUpdate: Bool, _locationsShortDocumentId: String, _vakitsDocumentId: String) {
+        guard let country = self.countrySelect, let city = self.citySelect, let district = self.districtSelect else { return alert("Lütfen konumunuzu seçiniz!") }
+        LoadingIndicatorView.show(self.view)
+        ApiClient.getVakitler(districtId: district.strId, completion: self.getVakitlerHandler)
+        isUpdate = _isUpdate
+        vakitsDocumentId = _vakitsDocumentId
+        locationsShortDocumentId = _locationsShortDocumentId
+    }
+    
+    func getVakitlerHandler(list: [Vakit]?, status: Bool, message: String) {
+        LoadingIndicatorView.hide()
+        guard status, let responseList = list else { return }
+        LoadingIndicatorView.show(self.view)
+        if vakitsDocumentId.isEmpty {
+//            seçilen location değeri firebase üzerinde daha önce yok ilk defa yazılıyor
+            FirebaseClient.setVakitList("Vakits", responseList, self.location) { result, vakitId in
+                if result {
+                    self.setLocationsShortData(vakitId)
+                }
+            }
+        } else {
+//            seçilen location değeri daha önce firebase üzerinde var fakat güncel day değil. Üzerinde yazılacak
+            FirebaseClient.setVakitListRef(vakitsDocumentId, "Vakits", responseList, self.location) {
+                result, status in
+                if result {
+                    self.setLocationsShortData(self.vakitsDocumentId)
+                }
+            }
+        }
+    }
+    
+    func setLocationsShortData(_ vakitId: String) {
+        LoadingIndicatorView.hide()
+        let tempLoc = Locations()
+        tempLoc.countryId = self.countrySelect?.strId ?? ""
+        tempLoc.countyName = self.countrySelect?.value ?? ""
+        tempLoc.cityId = self.citySelect?.strId ?? ""
+        tempLoc.cityName = self.citySelect?.value ?? ""
+        tempLoc.districtId = self.districtSelect?.strId ?? ""
+        tempLoc.districtName = self.districtSelect?.value ?? ""
+        tempLoc.lastUpdateTime = DateManager.dateToStringUgur(date: Date())
+        tempLoc.vakitId = vakitId
+        tempLoc.uniqName = self.location
+        LoadingIndicatorView.show(self.view)
+        if self.isUpdate {
+//            seçilen location değeri daha önce firebase üzerinde var fakat güncel day değil. Üzerinde yazılacak
+            FirebaseClient.setDocRefData( self.locationsShortDocumentId, "LocationsShort", tempLoc.toJSON()) {
+                result, locId in
+                if result {
+                    LoadingIndicatorView.hide()
+                    let tempObj = FirebaseResponse()
+                    tempObj.documentId = locId
+                    self.setHomeData(data: tempObj)
+                }
+            }
+        } else {
+//            seçilen location değeri firebase üzerinde daha önce yok ilk defa yazılıyor
+            FirebaseClient.setAllData("LocationsShort", tempLoc.toJSON()) { result, locId in
+                if result {
+                    LoadingIndicatorView.hide()
+                    let tempObj = FirebaseResponse()
+                    tempObj.documentId = locId
+                    self.setHomeData(data: tempObj)
+                }
+            }
+        }
     }
     
     func setHomeData(data: FirebaseResponse) {
-        let tempObj = UserLocations()
+        let tempObj = UserInfo()
         tempObj.isFavorite = true
         tempObj.locationId = data.documentId
         tempObj.deviceId = FirstSelectViewController.deviceId
@@ -217,41 +221,33 @@ class FirstSelectViewController: UIViewController {
         guard let district = self.districtSelect else { return alert("Lütfen semt seçiniz!") }
         tempObj.uniqName = String(format: "%@,%@", city.value,district.value)
         LoadingIndicatorView.show(self.view)
-        FirebaseClient.getDocWhereCondt("UserLocations", "deviceId", FirstSelectViewController.deviceId) { result, status, response in
+        FirebaseClient.getDocWhereCondt("UserInfo", "deviceId", FirstSelectViewController.deviceId) { result, status, response in
             if result {
-                LoadingIndicatorView.hide()
                 if response.isEmpty {
-                    LoadingIndicatorView.show(self.view)
-                    FirebaseClient.setAllData("UserLocations", tempObj.toJSON()) { result, documentId in
+//                Kullanıcının daha önce kaydı olmadığı için ilk defa kayıt atılıyor
+                    FirebaseClient.setAllData("UserInfo", tempObj.toJSON()) { result, documentId in
                         if result {
                             LoadingIndicatorView.hide()
                             self.performSegue(withIdentifier: "sg_toTabbar", sender: nil)
                         }
+                    }
+                } else {
+//                    Kullanıcının daha önce kaydı var. Daha önceki kayıtlar isFavorite false yapılıp güncelleniyor ve yeni kayıt ayrıca atılıyor
+                    for item in response {
+                        guard let myLocation = Mapper<UserInfo>().map(JSON: item.document) else { return }
+                        myLocation.isFavorite = myLocation.uniqName.elementsEqual(self.location) ? true : false
+                        FirebaseClient.setDocRefData(item.documentId, "UserInfo", myLocation.toJSON()) { result, status in
+                        }
+                    }
+                    FirebaseClient.setAllData( "UserInfo", tempObj.toJSON()) { result, status in
+                        if result {LoadingIndicatorView.hide()}
                     }
                     
-                } else {
-                    for item in response {
-                        LoadingIndicatorView.show(self.view)
-                        guard let myLocation = Mapper<UserLocations>().map(JSON: item.document) else { return }
-                        myLocation.isFavorite = false
-                        FirebaseClient.setDocRefData(item.documentId, "UserLocations", myLocation.toJSON()) { result, status in
-                            if result {
-                                LoadingIndicatorView.hide()
-                                self.performSegue(withIdentifier: "sg_toTabbar", sender: nil)
-                            }
-                        }
-                    }
-                    LoadingIndicatorView.show(self.view)
-                    FirebaseClient.setAllData("UserLocations", tempObj.toJSON()) { result, documentId in
-                        if result {
-                            LoadingIndicatorView.hide()
-                            self.performSegue(withIdentifier: "sg_toTabbar", sender: nil)
-                        }
-                    }
+                    self.performSegue(withIdentifier: "sg_toTabbar", sender: nil)
                 }
             } else {
-                LoadingIndicatorView.show(self.view)
-                FirebaseClient.setAllData("UserLocations", tempObj.toJSON()) { result, documentId in
+//                Kullanıcının daha önce kaydı olmadığı için ilk defa kayıt atılıyor
+                FirebaseClient.setAllData("UserInfo", tempObj.toJSON()) { result, documentId in
                     if result {
                         LoadingIndicatorView.hide()
                         self.performSegue(withIdentifier: "sg_toTabbar", sender: nil)
@@ -259,14 +255,9 @@ class FirstSelectViewController: UIViewController {
                 }
             }
         }
-
+        
     }
     
-    func getVakitlerListener() {
-        guard let country = self.countrySelect, let city = self.citySelect, let district = self.districtSelect else { return alert("Lütfen konumunuzu seçiniz!") }
-        LoadingIndicatorView.show(self.view)
-        ApiClient.getVakitler(districtId: district.strId, completion: self.getVakitlerHandler)
-    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "sg_picker" {
@@ -287,7 +278,7 @@ class FirstSelectViewController: UIViewController {
                 }
             }
             
-       
+            
             
         }
     }
@@ -303,6 +294,11 @@ class FirstSelectViewController: UIViewController {
     @IBAction func btnSaveAction(_ sender: Any) {
         guard let country = self.countrySelect, let city = self.citySelect, let district = self.districtSelect else { return alert("Lütfen konumunuzu seçiniz!") }
         location = String(format: "%@,%@", city.value,district.value)
+        if (documentIdList.filter({$0.userLocation.uniqName == location }).count > 0) {
+//            Kullanıcı bu sayfaya setting üzerinden gelmiş ve daha önce kendisinde olan kaydı tekrar atmaya çalışırsa alert çıkar
+            alert("Bu konum listenizde bulunmaktadır!")
+            return
+        }
         getLocation(location: location)
     }
     
@@ -330,7 +326,7 @@ extension FirstSelectViewController: PickerDelegate{
     }
 }
 
-extension FirstSelectViewController: PickerViewControllerDelegate{
+extension FirstSelectViewController: PickerViewControllerDelegate {
     func iptalClicked() {
         
     }

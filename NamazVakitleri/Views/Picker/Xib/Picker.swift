@@ -10,7 +10,6 @@ import UIKit
 
 protocol PickerDelegate: class{
     func clicked(type: PickerType);
-    
 }
 
 class Picker: UIView {

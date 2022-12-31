@@ -8,68 +8,73 @@
 import UIKit
 import ObjectMapper
 
+typealias ZikirOlusturSelected = (Bool) -> Void
 class ZikirOlusturViewController: UIViewController {
-
+    public var handler: ZikirOlusturSelected? = nil
+    
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var textSuperView: UIView!
-    var zikirList: [Zikir] = []
-    var documentID = ""
-
+    var selectedZikr: ZikirObj?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         textSuperView.setViewBorder(color: UIColor.brown.cgColor, borderWith: 1, borderRadius: 8)
-        getData(false)
     }
     
+    @IBAction func backButtonAction(_ sender: Any) {
+        dismiss(animated: true)
+    }
     
-    func getData(_ isExit: Bool){
-        self.zikirList = []
-        FirebaseClient.getAllData("Zikir") { flag, documentId, response in
-            if flag {
-                self.documentID = documentId
-                guard let myList = Mapper<ZikirListModel>().map(JSON: response) else { return }
-                self.zikirList = myList.zikirList
-                if isExit {
-                    self.dismiss(animated: true)
+//    sayfaya selected zikirle gelmiş isem
+    private func setOtherZikr(completion: @escaping () -> Void) {
+        if selectedZikr != nil {
+            selectedZikr?.data.isSelected = false
+            FirebaseClient.setDocRefData(selectedZikr?.id ?? "", "UserZikr", selectedZikr?.data.toJSON() ?? ["":""]) {
+                result, status in
+                if result {
+                    completion()
+                }
+            }
+        } else {
+            completion()
+        }
+    }
+//    oluşturulan zikir selected yapılıyor
+    private func setSelected(completion: @escaping () -> Void) {
+        let tempZikir = Zikir()
+        tempZikir.zikir = self.textView.text
+        tempZikir.deletable = true
+        tempZikir.isSelected = true
+        tempZikir.deviceId = FirstSelectViewController.deviceId
+        FirebaseClient.setAllData("UserZikr", tempZikir.toJSON()) { result, status in
+            if result {
+                completion()
+            }
+        }
+    }
+
+//    kullanıcının kendine has oluşturduğu zikirler kayıt atılıyor
+    @IBAction func saveButtonAction(_ sender: Any) {
+        setOtherZikr {
+            self.setSelected {
+                let tempZikir = Zikir()
+                tempZikir.zikir = self.textView.text
+                tempZikir.deletable = true
+                tempZikir.deviceId = FirstSelectViewController.deviceId
+                FirebaseClient.setAllData("UserCustomZikir", tempZikir.toJSON()){ result, status in
+                    if result {
+                        let alert = UIAlertController.init(title: "Bilgi", message: "Zikiriniz başarılı bir şekilde kaydedilmiştir.", preferredStyle: UIAlertController.Style.alert)
+                    
+                        alert.addAction(UIAlertAction.init(title: "Tamam", style: UIAlertAction.Style.default, handler: { UIAlertAction in
+                            self.handler?(true)
+                            self.dismiss(animated: true)
+                        }))
+                        
+                        self.present(alert, animated: true, completion: nil)
+                    }
                 }
             }
         }
     }
-    
-    @IBAction func backButtonAction(_ sender: Any) {
-        
-        dismiss(animated: true)
-    }
-
-    @IBAction func saveButtonAction(_ sender: Any) {
-        var tempZikir = Zikir()
-        tempZikir.id = Int64(self.zikirList.count + 1)
-        tempZikir.zikir = textView.text
-        tempZikir.deletable = true
-        tempZikir.kaynak = ""
-        tempZikir.aciklamasi = ""
-        self.zikirList.append(tempZikir)
-        
-        var zikirModel = ZikirListModel()
-        zikirModel.zikirList = self.zikirList
-        
-
-        
-        
-        FirebaseClient.setDocRefData(documentID, "Zikir", zikirModel.toJSON()) { flag, statu in
-            guard flag else { return }
-            if flag {
-                let alert = UIAlertController.init(title: "Bilgi", message: "Zikiriniz başarılı bir şekilde kaydedilmiştir.", preferredStyle: UIAlertController.Style.alert)
-            
-                alert.addAction(UIAlertAction.init(title: "Tamam", style: UIAlertAction.Style.default, handler: { UIAlertAction in
-                    self.getData(true)
-                }))
-                
-                self.present(alert, animated: true, completion: nil)
-                
-            }
-        }
-    }
-    
 }

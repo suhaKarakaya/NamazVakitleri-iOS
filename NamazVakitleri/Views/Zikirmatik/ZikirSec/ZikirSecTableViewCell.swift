@@ -7,9 +7,9 @@
 
 import UIKit
 
-typealias ZikirSecInfoHandler = (String,String) -> Void
-typealias ZikirSecTrashHandler = (Int) -> Void
-typealias ZikirSecSelectHandler = (Zikir) -> Void
+typealias ZikirSecInfoHandler = (ZikirObj) -> Void
+typealias ZikirSecTrashHandler = (ZikirObj) -> Void
+typealias ZikirSecSelectHandler = (ZikirObj) -> Void
 
 class ZikirSecTableViewCell: UITableViewCell {
     
@@ -17,11 +17,9 @@ class ZikirSecTableViewCell: UITableViewCell {
     @IBOutlet weak var infoButton: UIButton!
     @IBOutlet weak var trashButton: UIButton!
     @IBOutlet weak var zikirNameLabel: UILabel!
-    @IBOutlet weak var zikirIndexLabel: UILabel!
     @IBOutlet weak var cellView: UIView!
     
-    var data = Zikir()
-    var index = 0
+    var cellData = ZikirObj()
     var infoHandler: ZikirSecInfoHandler?
     var trashHandler: ZikirSecTrashHandler?
     var selectHandler: ZikirSecSelectHandler?
@@ -37,24 +35,23 @@ class ZikirSecTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     @IBAction func trashButtonAction(_ sender: Any) {
-        trashHandler?(index)
+        trashHandler?(cellData)
     }
     
     @IBAction func infoButtonAction(_ sender: Any) {
-        infoHandler?(data.zikir,String(format: "%@\n%@%@", data.aciklamasi,"Kaynak: ", data.kaynak))
+        infoHandler?(cellData)
     }
     @IBAction func zikirSecButtonAction(_ sender: Any) {
         
-        selectHandler?(data)
+        selectHandler?(cellData)
     }
     
-    func setup(_ data: Zikir) {
-        self.data = data
+    func setup(_ data: ZikirObj) {
+        cellData = data
         cellView.setViewBorder(color: UIColor.brown.cgColor, borderWith: 1, borderRadius: 8)
-        zikirIndexLabel.text = String(data.id)
-        zikirNameLabel.text = data.zikir
-        infoButton.isHidden = data.deletable
-        trashButton.isHidden = !data.deletable
+        zikirNameLabel.text = data.data.zikir
+        infoButton.isHidden = data.data.deletable
+        trashButton.isHidden = !data.data.deletable
 
    
     }

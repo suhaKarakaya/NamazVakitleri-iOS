@@ -45,6 +45,42 @@ public class FirebaseClient {
         
     }
     
+    static func setVakitList(_ tableName: String, _ data: [Vakit], _ location: String, completion: @escaping firebaseSetCallBack){
+        
+        let ref = firestore.collection(tableName)
+        var ref1: DocumentReference? = nil
+        let docData: [String: Any] = [
+            "location": location,
+            "vakitList": data.toJSON()
+        ]
+        ref1 = ref.addDocument(data: docData) { err in
+            if err != nil {
+                completion(false, "Failure")
+            } else {
+                completion(true, ref1?.documentID ?? "")
+            }
+        }
+        
+    }
+    
+    static func setVakitListRef(_ documentName: String, _ tableName: String, _  data: [Vakit], _ location: String, completion: @escaping firebaseSetCallBack){
+        
+        let ref = firestore.collection(tableName).document(documentName)
+        let docData: [String: Any] = [
+            "location": location,
+            "vakitList": data.toJSON()
+        ]
+        ref.setData(docData) { err in
+            if err != nil  {
+                completion(false, "Failure")
+            } else {
+                completion(true, "Success")
+            }
+        }
+        
+        
+    }
+    
     static func getDocRefData(_ collectionName: String, _ documentName: String, completion: @escaping firebaseGetCallBack){
         
         let docRef = firestore.collection(collectionName).document(documentName)
@@ -79,7 +115,6 @@ public class FirebaseClient {
             .getDocuments() { (querySnapshot, err) in
                 if err != nil {
                     completion(false, "Failure", [])
-                    
                 } else {
                     var tempDict: [FirebaseResponse] = []
                     if querySnapshot!.documents.isEmpty {
@@ -93,17 +128,35 @@ public class FirebaseClient {
                         }
                         completion(true, "Success", tempDict)
                     }
-                   
-                    
                 }
-                
             }
-        
+    }
+    
+    static func getDocTwoWhereCondt(_ collectionName: String, _ whereField1: String, _ whereCondition1: Any, _ whereField2: String, _ whereCondition2: Any, completion: @escaping firebaseGetCallBackList){
+        firestore.collection(collectionName).whereField(whereField1, isEqualTo: whereCondition1).whereField(whereField2, isEqualTo: whereCondition2)
+            .getDocuments() { (querySnapshot, err) in
+                if err != nil {
+                    completion(false, "Failure", [])
+                } else {
+                    var tempDict: [FirebaseResponse] = []
+                    if querySnapshot!.documents.isEmpty {
+                        completion(false, "Failure", [])
+                    } else {
+                        for document in querySnapshot!.documents {
+                            let tempObj = FirebaseResponse()
+                            tempObj.document = document.data()
+                            tempObj.documentId = document.documentID
+                            tempDict.append(tempObj)
+                        }
+                        completion(true, "Success", tempDict)
+                    }
+                }
+            }
     }
     
     static func updateBool(_ collectionName: String, _ documentId: String, _ myWhere:String, _ updateData: Bool, completion: @escaping firebaseSetCallBack){
         firestore.collection(collectionName).document(documentId).updateData([
-            myWhere:true
+            myWhere:updateData
         ]) { err in
             if err != nil {
                 completion(false, "Failure")

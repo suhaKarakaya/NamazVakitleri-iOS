@@ -12,7 +12,7 @@ import ObjectMapper
 class SettingsViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
-    var locationList: [UserLocations] = []
+    var locationList: [UserInfo] = []
     var documentIdList: [LocationList] = []
     
     override func viewDidLoad() {
@@ -30,14 +30,14 @@ class SettingsViewController: UIViewController {
     
     func getData(){
         LoadingIndicatorView.show(self.view)
-        FirebaseClient.getDocWhereCondt("UserLocations", "deviceId", FirstSelectViewController.deviceId) { result, status, response in
+        FirebaseClient.getDocWhereCondt("UserInfo", "deviceId", FirstSelectViewController.deviceId) { result, status, response in
             if result {
                 LoadingIndicatorView.hide()
                 self.documentIdList = []
                 self.locationList = []
                 for item in response {
-                    guard let myLocation = Mapper<UserLocations>().map(JSON: item.document) else { return }
-                    let obj:UserLocations = myLocation
+                    guard let myLocation = Mapper<UserInfo>().map(JSON: item.document) else { return }
+                    let obj:UserInfo = myLocation
                     self.locationList.append(obj)
                     self.documentIdList.append(LocationList.init(documentId: item.documentId, userLocation: obj))
                 }
@@ -50,7 +50,7 @@ class SettingsViewController: UIViewController {
     func setData(_ documentList: [LocationList]){
         for item in documentList {
             LoadingIndicatorView.show(self.view)
-            FirebaseClient.setDocRefData(item.documentId, "UserLocations", item.userLocation.toJSON()) { result, status in
+            FirebaseClient.setDocRefData(item.documentId, "UserInfo", item.userLocation.toJSON()) { result, status in
                 if result {
                     LoadingIndicatorView.hide()
                 }
@@ -170,7 +170,7 @@ extension SettingsViewController: SettingsDelegate {
 //                    self.locationList[0].isFavorite = true
 //                }
                 LoadingIndicatorView.show(self.view)
-                FirebaseClient.delete("UserLocations", documentIdList[index].documentId) { result, status in
+                FirebaseClient.delete("UserInfo", documentIdList[index].documentId) { result, status in
                     if result {
                         LoadingIndicatorView.hide()
                         let alert = UIAlertController.init(title: "Bilgi", message: "İşleminiz başarılı bir şekilde gerçekleştirildi", preferredStyle:
@@ -195,9 +195,9 @@ extension SettingsViewController: SettingsDelegate {
 
 struct LocationList {
     var documentId: String = ""
-    var userLocation: UserLocations = UserLocations()
+    var userLocation: UserInfo = UserInfo()
     
-    init(documentId: String, userLocation:UserLocations) {
+    init(documentId: String, userLocation:UserInfo) {
         self.documentId = documentId
         self.userLocation = userLocation
     }

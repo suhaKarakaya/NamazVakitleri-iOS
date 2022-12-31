@@ -22,7 +22,7 @@ class SettingsViewCell: UITableViewCell {
     var favoritedHandler: SettingsClickHandler?
     var trashHandler: SettingsClickHandler?
     var index:Int = 0
-    var data: UserLocations? {
+    var data: UserInfo? {
         didSet {
             guard let data = data else { return }
             let location = data.uniqName.components(separatedBy: ",")
