@@ -119,69 +119,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "72393DA6-8EA1-4031-B9B8-765BDC7E52A3"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "NamazVakitleri/Views/FirstSelect/FirstSelectViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "75"
-            endingLineNumber = "75"
-            landmarkName = "getCountyListHandler(list:status:message:)"
-            landmarkType = "9">
-            <Locations>
-               <Location
-                  uuid = "72393DA6-8EA1-4031-B9B8-765BDC7E52A3 - 45c533f724e84b17"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "NamazVakitleri.FirstSelectViewController.getCountyListHandler(list: Swift.Optional&lt;Swift.Array&lt;NamazVakitleri.Country&gt;&gt;, status: Swift.Bool, message: Swift.String) -&gt; ()"
-                  moduleName = "NamazVakitleri"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/suhakarakaya/NamazVakitleri-iOS/NamazVakitleri/Views/FirstSelect/FirstSelectViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "75"
-                  endingLineNumber = "75"
-                  offsetFromSymbolStart = "304">
-               </Location>
-               <Location
-                  uuid = "72393DA6-8EA1-4031-B9B8-765BDC7E52A3 - 45c533f724e84b17"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "NamazVakitleri.FirstSelectViewController.getCountyListHandler(list: Swift.Optional&lt;Swift.Array&lt;NamazVakitleri.Country&gt;&gt;, status: Swift.Bool, message: Swift.String) -&gt; ()"
-                  moduleName = "NamazVakitleri"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/suhakarakaya/NamazVakitleri-iOS/NamazVakitleri/Views/FirstSelect/FirstSelectViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "75"
-                  endingLineNumber = "75"
-                  offsetFromSymbolStart = "480">
-               </Location>
-               <Location
-                  uuid = "72393DA6-8EA1-4031-B9B8-765BDC7E52A3 - 84275436e521de59"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (NamazVakitleri.Country) -&gt; Swift.Bool in NamazVakitleri.FirstSelectViewController.getCountyListHandler(list: Swift.Optional&lt;Swift.Array&lt;NamazVakitleri.Country&gt;&gt;, status: Swift.Bool, message: Swift.String) -&gt; ()"
-                  moduleName = "NamazVakitleri"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/suhakarakaya/NamazVakitleri-iOS/NamazVakitleri/Views/FirstSelect/FirstSelectViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "75"
-                  endingLineNumber = "75"
-                  offsetFromSymbolStart = "120">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "699BD951-D47E-475C-99D6-EEF68161176C"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"

@@ -180,7 +180,7 @@ class HomeViewController: UIViewController {
                     //                  geride kalmış yeni zaman çek
                     self.locationDataId = locDocumentID
                     self.favoriteSelectedLocation = locData
-                    ApiClient.getVakitler(districtId: locData.districtId, completion: self.getVakitlerHandler)
+                    ApiClient.shared.fetchPrayerTime(districtId: locData.districtId, completion: self.getVakitlerHandler)
                 } else {
                     //                  zaman güncel bunu bas
                     self.getCurrentDay(locData)

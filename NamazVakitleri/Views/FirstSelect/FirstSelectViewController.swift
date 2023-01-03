@@ -142,7 +142,7 @@ class FirstSelectViewController: UIViewController {
     
     func getVakitlerListener(_isUpdate: Bool, _locationsShortDocumentId: String, _vakitsDocumentId: String) {
         guard let country = self.countrySelect, let city = self.citySelect, let district = self.districtSelect else { return alert("Lütfen konumunuzu seçiniz!") }
-        ApiClient.getVakitler(districtId: district.strId, completion: self.getVakitlerHandler)
+        ApiClient.shared.fetchPrayerTime(districtId: district.strId, completion: self.getVakitlerHandler)
         isUpdate = _isUpdate
         vakitsDocumentId = _vakitsDocumentId
         locationsShortDocumentId = _locationsShortDocumentId
@@ -272,6 +272,7 @@ class FirstSelectViewController: UIViewController {
     }
     
     func alert(_ message: String) {
+        LoadingIndicatorView.hide()
         showOneButtonAlert(title: "Uyarı", message: message, buttonTitle: "Tamam", view: self) { confirm in
             
         }
@@ -295,18 +296,18 @@ extension FirstSelectViewController: PickerDelegate{
         switch(type){
         case .country:
             LoadingIndicatorView.show(self.view)
-            ApiClient.getCountry(completion: self.getCountyListHandler)
+            ApiClient.shared.fetchCountry(completion: self.getCountyListHandler)
             break
         case .city:
             LoadingIndicatorView.show(self.view)
             guard let country = self.countrySelect else { return alert("Lütfen ülke seçiniz!") }
-            ApiClient.getCity(countyId: country.strId, completion: self.getCityListHandler)
+            ApiClient.shared.fetchCity(countyId: country.strId, completion: self.getCityListHandler)
             break
         case .district:
             LoadingIndicatorView.show(self.view)
             guard let country = self.countrySelect else { return alert("Lütfen ülke seçiniz!") }
             guard let city = self.citySelect else { return alert("Lütfen şehir seçiniz!") }
-            ApiClient.getDistrict(countyId: country.strId, cityId: city.strId, completion: self.getDistrictListHandler)
+            ApiClient.shared.fetchDistrict(countyId: country.strId, cityId: city.strId, completion: self.getDistrictListHandler)
             break
         }
     }

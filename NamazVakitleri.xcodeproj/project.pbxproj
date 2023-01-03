@@ -12,6 +12,7 @@
 		02156B9627D3803E00679FA2 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02156B9527D3803E00679FA2 /* HomeViewController.swift */; };
 		02156B9827D3812200679FA2 /* colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02156B9727D3812200679FA2 /* colors.xcassets */; };
 		02156BAF27D39C1500679FA2 /* TimeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02156BAE27D39C1500679FA2 /* TimeTableViewController.swift */; };
+		0247E5D629645F4400FB6ECE /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0247E5D529645F4400FB6ECE /* ServiceManager.swift */; };
 		0250D62227F1D7F2004C7EEA /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0250D62127F1D7F1004C7EEA /* HomeCollectionViewCell.swift */; };
 		0250D62427F1DEE8004C7EEA /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0250D62327F1DEE8004C7EEA /* HomeScreen.swift */; };
 		0251803E27BE5F5400C29F76 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0251803D27BE5F5400C29F76 /* ApiClient.swift */; };
@@ -54,6 +55,7 @@
 		02156B9527D3803E00679FA2 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		02156B9727D3812200679FA2 /* colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = colors.xcassets; sourceTree = "<group>"; };
 		02156BAE27D39C1500679FA2 /* TimeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableViewController.swift; sourceTree = "<group>"; };
+		0247E5D529645F4400FB6ECE /* ServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceManager.swift; sourceTree = "<group>"; };
 		0250D62127F1D7F1004C7EEA /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		0250D62327F1DEE8004C7EEA /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		0251803D27BE5F5400C29F76 /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
@@ -280,6 +282,7 @@
 			children = (
 				0251803F27BE98C000C29F76 /* FirebaseClient.swift */,
 				0251803D27BE5F5400C29F76 /* ApiClient.swift */,
+				0247E5D529645F4400FB6ECE /* ServiceManager.swift */,
 			);
 			path = ServiceClient;
 			sourceTree = "<group>";
@@ -473,6 +476,7 @@
 				02DF761D27F7AF74002E7D6F /* QiblaViewController.swift in Sources */,
 				0280834327F5A722001132BF /* KayitliZikirTableViewCell.swift in Sources */,
 				02F2679C27F4DB7C00EE4DBE /* ZikirmatikViewController.swift in Sources */,
+				0247E5D629645F4400FB6ECE /* ServiceManager.swift in Sources */,
 				02F2679E27F4DB8900EE4DBE /* ZikirOlusturViewController.swift in Sources */,
 				0251803E27BE5F5400C29F76 /* ApiClient.swift in Sources */,
 				02F267A427F4E68400EE4DBE /* ZikirSecTableViewCell.swift in Sources */,
@@ -647,7 +651,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = F24GSTF28W;
+				DEVELOPMENT_TEAM = H45HF84T2B;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NamazVakitleri/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Namaz Vakitleri";
@@ -681,7 +685,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = F24GSTF28W;
+				DEVELOPMENT_TEAM = H45HF84T2B;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NamazVakitleri/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Namaz Vakitleri";
