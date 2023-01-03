@@ -33,8 +33,9 @@ class TimeTableViewController: UIViewController {
     }
     
     func getData() {
+        tempDicsList = []
         LoadingIndicatorView.show(self.view)
-        FirebaseClient.getDocTwoWhereCondt("UserInfo", "deviceId", FirstSelectViewController.deviceId, "isFavorite", true) { result, status, response in
+        FirebaseClient.getDocTwoWhereCondt("UserInfo", "deviceId", FirstSelectViewController.deviceId, "isFavorite", true) { [weak self] (result, status, response) in
             if result {
                 guard let tempObj1 = Mapper<UserInfo>().map(JSON:  response[0].document) else { return }
                 FirebaseClient.getDocRefData("LocationsShort", tempObj1.locationId) { result, locDocumentID, response in
@@ -48,15 +49,15 @@ class TimeTableViewController: UIViewController {
                                 let _dateArr = tempObj3.location.components(separatedBy: ",")
                                 let _city = _dateArr[0]
                                 let _district = _dateArr[1]
-                                self.labelLocation.text = _city == _district ? _city : tempObj3.location
+                                self?.labelLocation.text = _city == _district ? _city : tempObj3.location
                                 for item in tempObj3.vakitList {
                                     let lastUpdateTimeDate = DateManager.strToDateSuha(strDate: item.MiladiTarihKisa)
                                     let temp = DateManager.checkDate(date: Date(), endDate: lastUpdateTimeDate)
                                     if temp != .orderedAscending{
-                                        self.tempDicsList.append(item)
+                                        self?.tempDicsList.append(item)
                                     }
                                 }
-                                self.tableView.reloadData()
+                                self?.tableView.reloadData()
                             }
                             
                         }

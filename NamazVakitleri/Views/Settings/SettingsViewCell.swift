@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol SettingsDelegate: class {
+protocol SettingsDelegate: AnyObject {
     func setFavorite(_ selected: Bool, _ index: Int)
     func toTrash(_ selected: Bool, _ index: Int)
 }

@@ -52,5 +52,148 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BE6ADA1B-2FCF-4D00-8615-771426D7787E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NamazVakitleri/Views/Home/HomeViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "224"
+            endingLineNumber = "224"
+            landmarkName = "getVakitlerHandler(list:status:message:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CDE47010-3DFD-4D10-B143-6DE22654EAD5"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NamazVakitleri/Views/Home/HomeViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "226"
+            endingLineNumber = "226"
+            landmarkName = "getVakitlerHandler(list:status:message:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "53630044-A889-4304-B7D5-23DD95D250D1"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NamazVakitleri/Views/Home/HomeViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "238"
+            endingLineNumber = "238"
+            landmarkName = "setLocationsShortData()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "664B42E9-D2F3-4AA8-A0D1-B68FD9CE8DCD"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NamazVakitleri/Views/Home/HomeViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "240"
+            endingLineNumber = "240"
+            landmarkName = "setLocationsShortData()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "72393DA6-8EA1-4031-B9B8-765BDC7E52A3"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NamazVakitleri/Views/FirstSelect/FirstSelectViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
+            landmarkName = "getCountyListHandler(list:status:message:)"
+            landmarkType = "9">
+            <Locations>
+               <Location
+                  uuid = "72393DA6-8EA1-4031-B9B8-765BDC7E52A3 - 45c533f724e84b17"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "NamazVakitleri.FirstSelectViewController.getCountyListHandler(list: Swift.Optional&lt;Swift.Array&lt;NamazVakitleri.Country&gt;&gt;, status: Swift.Bool, message: Swift.String) -&gt; ()"
+                  moduleName = "NamazVakitleri"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/suhakarakaya/NamazVakitleri-iOS/NamazVakitleri/Views/FirstSelect/FirstSelectViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "75"
+                  endingLineNumber = "75"
+                  offsetFromSymbolStart = "304">
+               </Location>
+               <Location
+                  uuid = "72393DA6-8EA1-4031-B9B8-765BDC7E52A3 - 45c533f724e84b17"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "NamazVakitleri.FirstSelectViewController.getCountyListHandler(list: Swift.Optional&lt;Swift.Array&lt;NamazVakitleri.Country&gt;&gt;, status: Swift.Bool, message: Swift.String) -&gt; ()"
+                  moduleName = "NamazVakitleri"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/suhakarakaya/NamazVakitleri-iOS/NamazVakitleri/Views/FirstSelect/FirstSelectViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "75"
+                  endingLineNumber = "75"
+                  offsetFromSymbolStart = "480">
+               </Location>
+               <Location
+                  uuid = "72393DA6-8EA1-4031-B9B8-765BDC7E52A3 - 84275436e521de59"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (NamazVakitleri.Country) -&gt; Swift.Bool in NamazVakitleri.FirstSelectViewController.getCountyListHandler(list: Swift.Optional&lt;Swift.Array&lt;NamazVakitleri.Country&gt;&gt;, status: Swift.Bool, message: Swift.String) -&gt; ()"
+                  moduleName = "NamazVakitleri"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/suhakarakaya/NamazVakitleri-iOS/NamazVakitleri/Views/FirstSelect/FirstSelectViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "75"
+                  endingLineNumber = "75"
+                  offsetFromSymbolStart = "120">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "699BD951-D47E-475C-99D6-EEF68161176C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NamazVakitleri/ServiceClient/FirebaseClient.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "setVakitListRef(_:_:_:_:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

@@ -9,13 +9,8 @@ import Foundation
 import UIKit
 
 func showOneButtonAlert(title: String, message: String, buttonTitle: String, view: UIViewController, completion: @escaping (Bool) -> Void){
-    let attributedString = NSAttributedString(string: title, attributes: [
-        NSAttributedString.Key.font : UIFont(name: "Future", size: 15),
-        NSAttributedString.Key.foregroundColor : UIColor(named: "kabeBlack")
-    ])
 
     let alert = UIAlertController.init(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
-    alert.setValue(attributedString, forKey: "attributedTitle")
     let okButton = UIAlertAction(title: buttonTitle, style: UIAlertAction.Style.default, handler: { UIAlertAction in
         completion(true)
     })

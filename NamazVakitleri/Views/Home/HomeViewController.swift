@@ -233,6 +233,7 @@ class HomeViewController: UIViewController {
     
     func setLocationsShortData() {
         guard let tempObj = self.favoriteSelectedLocation else { return }
+        tempObj.lastUpdateTime = DateManager.dateToStringUgur(date: Date())
         FirebaseClient.setDocRefData( self.locationDataId ?? "", "LocationsShort", tempObj.toJSON()) {
             result, locId in
             if result {
