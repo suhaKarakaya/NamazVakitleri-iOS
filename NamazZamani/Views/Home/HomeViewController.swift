@@ -194,6 +194,7 @@ class HomeViewController: UIViewController {
     }
     
     func getCurrentDay(_ locData:Locations){
+        favoriteLocationList = []
         FirebaseClient.getDocRefData("Vakits", locData.vakitId) { result, locDocumentID, response in
             if result {
                 LoadingIndicatorView.hide()
