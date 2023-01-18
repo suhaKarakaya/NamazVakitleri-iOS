@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+//
 typealias KayitliZikirSecTrashHandler = (ZikirObj) -> Void
 typealias KayitliZikirSelectHandler = (ZikirObj) -> Void
 
