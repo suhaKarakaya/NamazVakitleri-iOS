@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		02611C542972E84B000419DB /* TimeTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02611C532972E84B000419DB /* TimeTableViewModel.swift */; };
 		02C448D1296889270045E849 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C80EED27F235D300AC1E60 /* UIView+Extensions.swift */; };
 		02C448D2296889270045E849 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E194C927F302FC00A700AB /* Date+Extensions.swift */; };
 		02C448D3296889270045E849 /* ResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A3090827BD73B4001CAFF9 /* ResponseModel.swift */; };
@@ -64,6 +65,7 @@
 		0250D62327F1DEE8004C7EEA /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		0251803D27BE5F5400C29F76 /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 		0251803F27BE98C000C29F76 /* FirebaseClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseClient.swift; sourceTree = "<group>"; };
+		02611C532972E84B000419DB /* TimeTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableViewModel.swift; sourceTree = "<group>"; };
 		0272E487295F88C60038B219 /* DailyPrayTimeViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyPrayTimeViewCell.swift; sourceTree = "<group>"; };
 		0272E488295F88C60038B219 /* DailyPrayTimeViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DailyPrayTimeViewCell.xib; sourceTree = "<group>"; };
 		0272E48C295F8DA40038B219 /* DailyPrayerTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyPrayerTimeView.swift; sourceTree = "<group>"; };
@@ -280,6 +282,7 @@
 			children = (
 				025BC609295F878D00BD386F /* Xib */,
 				02156BAE27D39C1500679FA2 /* TimeTableViewController.swift */,
+				02611C532972E84B000419DB /* TimeTableViewModel.swift */,
 			);
 			path = TimeTable;
 			sourceTree = "<group>";
@@ -429,6 +432,7 @@
 				02C448D1296889270045E849 /* UIView+Extensions.swift in Sources */,
 				02C448D2296889270045E849 /* Date+Extensions.swift in Sources */,
 				02C448D3296889270045E849 /* ResponseModel.swift in Sources */,
+				02611C542972E84B000419DB /* TimeTableViewModel.swift in Sources */,
 				02C448D4296889270045E849 /* QiblaViewController.swift in Sources */,
 				02C448D5296889270045E849 /* KayitliZikirTableViewCell.swift in Sources */,
 				02C448D6296889270045E849 /* ZikirmatikViewController.swift in Sources */,
