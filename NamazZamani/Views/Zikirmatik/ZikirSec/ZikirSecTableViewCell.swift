@@ -46,6 +46,13 @@ class ZikirSecTableViewCell: UITableViewCell {
         selectHandler?(cellData)
     }
     
+    @IBAction func customSelectZikirAction(_ sender: Any) {
+        if cellData.data.deletable {
+            infoHandler?(cellData)
+        }
+    }
+    
+    
     func setup(_ data: ZikirObj) {
         cellData = data
         cellView.setViewBorder(color: UIColor.brown.cgColor, borderWith: 1, borderRadius: 8)

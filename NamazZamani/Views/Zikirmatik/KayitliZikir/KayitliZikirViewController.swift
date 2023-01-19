@@ -45,7 +45,11 @@ class KayitliZikirViewController: UIViewController {
             } else {
                 // hata elerti ver
                 self.tableView.reloadData()
-                self.handler?(true)
+                showOneButtonAlert(title: "Bilgi", message: "Kayıtlı zikiriniz bulunmamaktadır.", buttonTitle: "Tamam", view: self) { confirm in
+                    if confirm {
+                        self.dismiss(animated: true)
+                    }
+                }
             }
             
         }

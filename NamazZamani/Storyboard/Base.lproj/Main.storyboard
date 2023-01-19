@@ -66,10 +66,9 @@
                                             <constraint firstAttribute="width" constant="40" id="PBw-r4-3ZS"/>
                                             <constraint firstAttribute="height" constant="40" id="S3B-rO-WAE"/>
                                         </constraints>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="chevron.backward" catalog="system">
-                                            <color key="baseForegroundColor" name="kabeYellow"/>
-                                        </buttonConfiguration>
+                                        <color key="tintColor" name="kabeYellow"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="chevron.backward" catalog="system"/>
                                         <connections>
                                             <action selector="buttonBackAction:" destination="cEY-Lm-MzZ" eventType="touchUpInside" id="AA8-65-K8v"/>
                                         </connections>
@@ -184,7 +183,7 @@
                                 <color key="backgroundColor" name="background"/>
                             </pickerView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aW6-ad-obQ">
-                                <rect key="frame" x="0.0" y="638" width="430" height="44"/>
+                                <rect key="frame" x="0.0" y="633" width="430" height="49"/>
                                 <color key="backgroundColor" name="background"/>
                                 <items>
                                     <barButtonItem title="Item" id="Y88-Dm-XdN">
@@ -242,7 +241,6 @@
                         <segue destination="Oqm-Zz-ToS" kind="relationship" relationship="viewControllers" id="4Lh-qb-HVk"/>
                         <segue destination="gNj-W9-ebU" kind="relationship" relationship="viewControllers" id="RUr-O5-Nvi"/>
                         <segue destination="Ui9-Th-BK7" kind="relationship" relationship="viewControllers" id="r7H-Fy-ngb"/>
-                        <segue destination="Xtr-7C-83k" kind="relationship" relationship="viewControllers" id="jvD-RP-9L1"/>
                         <segue destination="iFd-Id-zAv" kind="relationship" relationship="viewControllers" id="JAE-B6-ixH"/>
                     </connections>
                 </tabBarController>
@@ -790,8 +788,8 @@
                                     <constraint firstAttribute="height" constant="40" id="199-Oi-Bdl"/>
                                 </constraints>
                                 <color key="tintColor" name="kabeYellow"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="chevron.down" catalog="system"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="chevron.down" catalog="system"/>
                                 <connections>
                                     <action selector="backButtonAction:" destination="HvH-or-6fN" eventType="touchUpInside" id="juE-Z5-q0v"/>
                                 </connections>
@@ -818,8 +816,15 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="odI-Wa-4f4">
                                                     <rect key="frame" x="10" y="10" width="410" height="70"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yoc-w1-T22">
-                                                            <rect key="frame" x="20" y="25.333333333333336" width="190" height="19.666666666666664"/>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uaT-rU-pwd">
+                                                            <rect key="frame" x="0.0" y="0.0" width="290" height="70"/>
+                                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                            <connections>
+                                                                <action selector="customSelectZikirAction:" destination="VD2-pl-K3D" eventType="touchUpInside" id="rXq-80-qd7"/>
+                                                            </connections>
+                                                        </button>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yoc-w1-T22">
+                                                            <rect key="frame" x="20" y="5" width="190" height="60"/>
                                                             <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
                                                             <color key="textColor" name="kabeBlack"/>
                                                             <nil key="highlightedColor"/>
@@ -831,8 +836,8 @@
                                                                 <constraint firstAttribute="width" constant="40" id="mW4-J3-Lbg"/>
                                                             </constraints>
                                                             <color key="tintColor" name="kabeYellow"/>
-                                                            <state key="normal" title="Button"/>
-                                                            <buttonConfiguration key="configuration" style="plain" image="trash" catalog="system"/>
+                                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                            <state key="normal" image="trash" catalog="system"/>
                                                             <connections>
                                                                 <action selector="trashButtonAction:" destination="VD2-pl-K3D" eventType="touchUpInside" id="yyJ-am-9lU"/>
                                                             </connections>
@@ -844,8 +849,8 @@
                                                                 <constraint firstAttribute="height" constant="40" id="jsj-BE-LLA"/>
                                                             </constraints>
                                                             <color key="tintColor" name="kabeYellow"/>
-                                                            <state key="normal" title="Button"/>
-                                                            <buttonConfiguration key="configuration" style="plain" image="info.circle" catalog="system"/>
+                                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                            <state key="normal" image="info.circle" catalog="system"/>
                                                             <connections>
                                                                 <action selector="infoButtonAction:" destination="VD2-pl-K3D" eventType="touchUpInside" id="LLB-2e-iZo"/>
                                                             </connections>
@@ -874,16 +879,22 @@
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
+                                                        <constraint firstItem="uaT-rU-pwd" firstAttribute="top" secondItem="odI-Wa-4f4" secondAttribute="top" id="EaM-Yz-DJb"/>
                                                         <constraint firstAttribute="trailing" secondItem="lq0-Zb-jGP" secondAttribute="trailing" constant="20" id="Gg8-Va-eI3"/>
+                                                        <constraint firstItem="yoc-w1-T22" firstAttribute="top" secondItem="odI-Wa-4f4" secondAttribute="top" constant="5" id="HpL-sw-jo4"/>
                                                         <constraint firstItem="lq0-Zb-jGP" firstAttribute="leading" secondItem="E9X-QC-g98" secondAttribute="trailing" constant="20" id="PVD-jY-7ED"/>
                                                         <constraint firstItem="E9X-QC-g98" firstAttribute="centerY" secondItem="odI-Wa-4f4" secondAttribute="centerY" id="PcD-cZ-TEN"/>
                                                         <constraint firstItem="yoc-w1-T22" firstAttribute="leading" secondItem="odI-Wa-4f4" secondAttribute="leading" constant="20" id="Ra6-7U-eFl"/>
+                                                        <constraint firstItem="lq0-Zb-jGP" firstAttribute="leading" secondItem="uaT-rU-pwd" secondAttribute="trailing" id="UpY-xE-2ad"/>
+                                                        <constraint firstAttribute="bottom" secondItem="yoc-w1-T22" secondAttribute="bottom" constant="5" id="XRO-wg-uCD"/>
+                                                        <constraint firstAttribute="bottom" secondItem="uaT-rU-pwd" secondAttribute="bottom" id="cMH-k1-v3L"/>
                                                         <constraint firstItem="DFc-8A-blu" firstAttribute="leading" secondItem="yoc-w1-T22" secondAttribute="trailing" constant="20" id="coi-na-NuX"/>
                                                         <constraint firstAttribute="height" constant="70" id="fyI-3K-8aN"/>
                                                         <constraint firstItem="E9X-QC-g98" firstAttribute="leading" secondItem="yoc-w1-T22" secondAttribute="trailing" constant="20" id="gQ9-Ct-tE7"/>
                                                         <constraint firstItem="yoc-w1-T22" firstAttribute="centerY" secondItem="odI-Wa-4f4" secondAttribute="centerY" id="jJc-9b-cdh"/>
                                                         <constraint firstItem="DFc-8A-blu" firstAttribute="centerY" secondItem="odI-Wa-4f4" secondAttribute="centerY" id="knE-Rj-fWp"/>
                                                         <constraint firstItem="lq0-Zb-jGP" firstAttribute="centerY" secondItem="odI-Wa-4f4" secondAttribute="centerY" id="uT1-zl-m6G"/>
+                                                        <constraint firstItem="uaT-rU-pwd" firstAttribute="leading" secondItem="odI-Wa-4f4" secondAttribute="leading" id="yTN-A7-H0y"/>
                                                         <constraint firstItem="lq0-Zb-jGP" firstAttribute="leading" secondItem="DFc-8A-blu" secondAttribute="trailing" constant="20" id="zXr-qF-oef"/>
                                                     </constraints>
                                                 </view>
@@ -1094,7 +1105,7 @@
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YtQ-O7-c2u">
                                 <rect key="frame" x="10" y="166" width="410" height="140"/>
-                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="0.0"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -1103,8 +1114,7 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wbw-8Y-cof">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <connections>
                                             <action selector="counterZikirButtonAction:" destination="Ui9-Th-BK7" eventType="touchUpInside" id="ZfP-2c-L8v"/>
                                         </connections>
@@ -1153,6 +1163,7 @@
                     <connections>
                         <outlet property="counterZikirLabel" destination="dTS-3l-ax8" id="Ghc-qf-bsa"/>
                         <outlet property="counterZikirView" destination="PJM-gT-ZtP" id="19r-tF-GET"/>
+                        <outlet property="lblTitle" destination="0IX-gy-xad" id="4Fl-n3-THg"/>
                         <outlet property="selectedZikirLabel" destination="YtQ-O7-c2u" id="R8O-2B-Shf"/>
                         <segue destination="HvH-or-6fN" kind="showDetail" identifier="sg_toZikirSec" id="t2e-Zo-Apn"/>
                         <segue destination="umj-NQ-uHm" kind="showDetail" identifier="sg_toKayitliZikir" id="gkp-l9-ndE"/>
@@ -1183,7 +1194,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rny-Ts-gmB">
                                         <rect key="frame" x="370" y="43" width="40" height="40"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zcF-xb-IH6">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zcF-xb-IH6">
                                                 <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                                                 <color key="tintColor" name="kabeBlack"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -1239,10 +1250,9 @@
                                                                     <rect key="frame" x="0.0" y="-0.66666666666666785" width="35" height="35"/>
                                                                     <color key="tintColor" name="kabeBlack"/>
                                                                 </imageView>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Wr-xb-hvs">
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Wr-xb-hvs">
                                                                     <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
-                                                                    <state key="normal" title="Button"/>
-                                                                    <buttonConfiguration key="configuration" style="plain"/>
+                                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                                     <connections>
                                                                         <action selector="buttonTrashAction:" destination="yDy-Hx-w69" eventType="touchUpInside" id="gPO-f8-lDv"/>
                                                                     </connections>
@@ -1269,10 +1279,9 @@
                                                                     <rect key="frame" x="0.0" y="-0.33333333333333215" width="35" height="34.666666666666657"/>
                                                                     <color key="tintColor" name="kabeBlack"/>
                                                                 </imageView>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aFd-g8-eHm">
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aFd-g8-eHm">
                                                                     <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
-                                                                    <state key="normal" title="Button"/>
-                                                                    <buttonConfiguration key="configuration" style="plain"/>
+                                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                                     <connections>
                                                                         <action selector="buttonSelectAction:" destination="yDy-Hx-w69" eventType="touchUpInside" id="NiT-jL-vj3"/>
                                                                     </connections>
@@ -1391,8 +1400,8 @@
                                     <constraint firstAttribute="height" constant="40" id="FWb-bq-J0p"/>
                                 </constraints>
                                 <color key="tintColor" name="kabeYellow"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="chevron.down" catalog="system"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="chevron.down" catalog="system"/>
                                 <connections>
                                     <action selector="backButtonAction:" destination="umj-NQ-uHm" eventType="touchUpInside" id="GKo-V0-oym"/>
                                 </connections>
@@ -1420,7 +1429,7 @@
                                                     <rect key="frame" x="10" y="10" width="410" height="70"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GBx-Se-1dg">
-                                                            <rect key="frame" x="10" y="24" width="210" height="22.333333333333329"/>
+                                                            <rect key="frame" x="10" y="5" width="210" height="60"/>
                                                             <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                                                             <color key="textColor" name="kabeBlack"/>
                                                             <nil key="highlightedColor"/>
@@ -1432,8 +1441,8 @@
                                                                 <constraint firstAttribute="height" constant="40" id="vbE-WJ-HGT"/>
                                                             </constraints>
                                                             <color key="tintColor" name="kabeYellow"/>
-                                                            <state key="normal" title="Button"/>
-                                                            <buttonConfiguration key="configuration" style="plain" image="trash" catalog="system"/>
+                                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                            <state key="normal" image="trash" catalog="system"/>
                                                             <connections>
                                                                 <action selector="trashButtonAction:" destination="dgL-iv-LIx" eventType="touchUpInside" id="Beg-Sg-Ayn"/>
                                                             </connections>
@@ -1462,8 +1471,10 @@
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
+                                                        <constraint firstItem="GBx-Se-1dg" firstAttribute="top" secondItem="Nap-xt-4U9" secondAttribute="top" constant="5" id="7IV-rQ-mm4"/>
                                                         <constraint firstItem="zja-bh-Lw7" firstAttribute="leading" secondItem="GBx-Se-1dg" secondAttribute="trailing" constant="20" id="7Jp-mp-1d0"/>
                                                         <constraint firstItem="zja-bh-Lw7" firstAttribute="centerY" secondItem="Nap-xt-4U9" secondAttribute="centerY" id="GND-Ja-YLU"/>
+                                                        <constraint firstAttribute="bottom" secondItem="GBx-Se-1dg" secondAttribute="bottom" constant="5" id="IUb-qK-P5G"/>
                                                         <constraint firstAttribute="trailing" secondItem="a0M-9k-OdS" secondAttribute="trailing" constant="10" id="RwK-cJ-gre"/>
                                                         <constraint firstAttribute="height" constant="70" id="X9o-VQ-W4f"/>
                                                         <constraint firstItem="GBx-Se-1dg" firstAttribute="leading" secondItem="Nap-xt-4U9" secondAttribute="leading" constant="10" id="Yv0-9s-QoB"/>
@@ -1530,8 +1541,8 @@
                                     <constraint firstAttribute="height" constant="40" id="jna-R6-fCh"/>
                                 </constraints>
                                 <color key="tintColor" name="kabeYellow"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="chevron.down" catalog="system"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="chevron.down" catalog="system"/>
                                 <connections>
                                     <action selector="backButtonAction:" destination="AH8-k3-fMW" eventType="touchUpInside" id="4aY-k8-VTU"/>
                                 </connections>
@@ -1560,7 +1571,7 @@
                                         </constraints>
                                         <color key="textColor" name="kabeBlack"/>
                                         <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                                     </textView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>

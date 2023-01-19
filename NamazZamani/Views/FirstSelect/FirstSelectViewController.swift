@@ -142,7 +142,7 @@ class FirstSelectViewController: UIViewController {
     
     func getVakitlerListener(_isUpdate: Bool, _locationsShortDocumentId: String, _vakitsDocumentId: String) {
         guard let country = self.countrySelect, let city = self.citySelect, let district = self.districtSelect else { return alert("Lütfen konumunuzu seçiniz!") }
-        ApiClient.getVakitler(districtId: district.strId, completion: self.getVakitlerHandler)
+        ApiClient.shared.fetchPrayerTime(districtId: district.strId, completion: self.getVakitlerHandler)
         isUpdate = _isUpdate
         vakitsDocumentId = _vakitsDocumentId
         locationsShortDocumentId = _locationsShortDocumentId
@@ -296,18 +296,18 @@ extension FirstSelectViewController: PickerDelegate{
         switch(type){
         case .country:
             LoadingIndicatorView.show(self.view)
-            ApiClient.getCountry(completion: self.getCountyListHandler)
+            ApiClient.shared.fetchCountry(completion: self.getCountyListHandler)
             break
         case .city:
             LoadingIndicatorView.show(self.view)
             guard let country = self.countrySelect else { return alert("Lütfen ülke seçiniz!") }
-            ApiClient.getCity(countyId: country.strId, completion: self.getCityListHandler)
+            ApiClient.shared.fetchCity(countyId: country.strId, completion: self.getCityListHandler)
             break
         case .district:
             LoadingIndicatorView.show(self.view)
             guard let country = self.countrySelect else { return alert("Lütfen ülke seçiniz!") }
             guard let city = self.citySelect else { return alert("Lütfen şehir seçiniz!") }
-            ApiClient.getDistrict(countyId: country.strId, cityId: city.strId, completion: self.getDistrictListHandler)
+            ApiClient.shared.fetchDistrict(countyId: country.strId, cityId: city.strId, completion: self.getDistrictListHandler)
             break
         }
     }
@@ -323,10 +323,16 @@ extension FirstSelectViewController: PickerViewControllerDelegate {
         case .country:
             countryPickerView.selectLabel.text = selected.value
             self.countrySelect = selected
+            self.citySelect = nil
+            self.districtSelect = nil
+            cityPickerView.selectLabel.text = "Seçiniz"
+            districtPickerView.selectLabel.text = "Seçiniz"
             break
         case .city:
             cityPickerView.selectLabel.text = selected.value
             self.citySelect = selected
+            self.districtSelect = nil
+            districtPickerView.selectLabel.text = "Seçiniz"
             break
         case .district:
             districtPickerView.selectLabel.text = selected.value
@@ -335,5 +341,3 @@ extension FirstSelectViewController: PickerViewControllerDelegate {
         }
     }
 }
-
-

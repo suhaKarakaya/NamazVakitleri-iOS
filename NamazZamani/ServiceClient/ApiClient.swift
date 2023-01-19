@@ -9,178 +9,59 @@ import Foundation
 import Alamofire
 import ObjectMapper
 
-public class ApiClient {
+typealias countryCallBack = ([Country]?, Bool, String) -> Void
+fileprivate var baseUrl = "https://ezanvakti.herokuapp.com/"
+typealias cityCallBack = ([City]?, Bool, String) -> Void
+typealias districtCallBack = ([District]?, Bool, String) -> Void
+typealias vakitlerCallBack2 = ([[String]]?, Bool, String) -> Void
+typealias vakitlerCallBack = ([Vakit]?, Bool, String) -> Void
+typealias errorHandler = (AFError) -> Void
+
+protocol ApiClientProtocol {
+    //    func fetchCountry(onSuccess: @escaping([Country]?) -> (), onError: @escaping(AFError) -> ())
+//    func fetchCountry(completion: @escaping countryCallBack, onError: errorHandler)
+    func fetchCountry(completion: @escaping countryCallBack)
+    func fetchCity(countyId: String, completion: @escaping cityCallBack)
+    func fetchDistrict(countyId: String, cityId: String, completion: @escaping districtCallBack)
+    func fetchPrayerTime(districtId: String, completion: @escaping vakitlerCallBack)
+}
+
+public class ApiClient:ApiClientProtocol {
     
-    static fileprivate var baseUrl = "https://ezanvakti.herokuapp.com/"
-    typealias countryCallBack = ([Country]?, Bool, String) -> Void
-    typealias cityCallBack = ([City]?, Bool, String) -> Void
-    typealias districtCallBack = ([District]?, Bool, String) -> Void
-    typealias vakitlerCallBack2 = ([[String]]?, Bool, String) -> Void
-    typealias vakitlerCallBack = ([Vakit]?, Bool, String) -> Void
+    static let shared: ApiClient = ApiClient()
+}
+
+extension ApiClient {
     
-    
-    
-    static func getCountry(completion: @escaping countryCallBack){
-        AF.request(baseUrl + "ulkeler", method: .get, encoding: URLEncoding.default, headers: nil, interceptor: nil).response { (responseData) in
-            
-            guard let data = responseData.data else { return }
-            
-            do{
-                let data = try JSONDecoder().decode([Country].self, from: data)
-                completion(data, true, "Success")
-            } catch {
-                completion([], false, "Failure")
-            }
-            
+    func fetchCountry(completion: @escaping countryCallBack) {
+        ServiceManager.shared.fetch(path: String(format: "%@%@", baseUrl, "ulkeler")) { (response: [Country]) in
+            completion(response, true, "Success")
+        } onError: { error in
+            completion([], false, "Failure")
         }
     }
     
-    
-    static func getCity(countyId: String, completion: @escaping cityCallBack){
-        //        kurallı endpoint
-        //        var param:[String:Any] = [:]
-        //        param["country"] = countyId
-        //        AF.request(String(format: "%@%@", baseUrl, "sehirler"),
-        //            method: .get,
-        //                   parameters: param,
-        //                   encoding: URLEncoding.default, headers: nil, interceptor: nil).response { (responseData) in
-        //
-        //            guard let data = responseData.data else { return }
-        //
-        //            do{
-        //                let data = try JSONDecoder().decode([City].self, from: data)
-        //                completion(data, true, "Success")
-        //            } catch {
-        //                completion([], false, "Failure")
-        //            }
-        //
-        //        }
-        
-        AF.request(String(format: "%@%@/%@", baseUrl, "sehirler", countyId),
-                   method: .get,
-                   parameters: nil,
-                   encoding: URLEncoding.default, headers: nil, interceptor: nil).response { (responseData) in
-            
-            guard let data = responseData.data else { return }
-            
-            do{
-                let data = try JSONDecoder().decode([City].self, from: data)
-                completion(data, true, "Success")
-            } catch {
-                completion([], false, "Failure")
-            }
-            
+    func fetchCity(countyId: String, completion: @escaping cityCallBack) {
+        ServiceManager.shared.fetch(path: String(format: "%@%@/%@", baseUrl, "sehirler", countyId)) { (response: [City]) in
+            completion(response, true, "Success")
+        } onError: { error in
+            completion([], false, "Failure")
         }
     }
     
-    static func getDistrict(countyId: String, cityId: String, completion: @escaping districtCallBack){
-        //        var param:[String:Any] = [:]
-        //        param["country"] = countyId
-        //        param["city"] = cityId
-        //        AF.request(
-        //            String(format: "%@%@", baseUrl, "regions"), method: .get,
-        //                   parameters: param,
-        //                   encoding: URLEncoding.default, headers: nil, interceptor: nil).response { (responseData) in
-        //
-        //            guard let data = responseData.data else { return }
-        //
-        //            do{
-        //                let data = try JSONDecoder().decode([District].self, from: data)
-        //                completion(data, true, "Success")
-        //            } catch {
-        //                completion([], false, "Failure")
-        //            }
-        //
-        //        }
-        
-        AF.request(
-            String(format: "%@%@/%@", baseUrl, "ilceler", cityId), method: .get,
-            parameters: nil,
-            encoding: URLEncoding.default, headers: nil, interceptor: nil).response { (responseData) in
-                
-                guard let data = responseData.data else { return }
-                
-                do{
-                    let data = try JSONDecoder().decode([District].self, from: data)
-                    completion(data, true, "Success")
-                } catch {
-                    completion([], false, "Failure")
-                }
-                
-            }
-    }
-    
-    static func getVakitler(districtId: String, completion: @escaping vakitlerCallBack) {
-        //        var param:[String:Any] = [:]
-        //        param["region"] = districtId
-        //        AF.request(String(format: "%@%@", baseUrl, "data"), method: .get,parameters: param, encoding: URLEncoding.default, headers: nil, interceptor: nil).response { (responseData) in
-        //
-        //            guard let data = responseData.data else { return }
-        //
-        //
-        //
-        //            do{
-        //                let data = try JSONDecoder().decode([[String]].self, from: data)
-        ////                var arr: [Vakit] = []
-        ////                data.forEach { (value) in
-        ////                if let record = Mapper<Vakit>().map(JSON: value as? [String: Any] ?? [:]) {
-        ////                    arr.append(record)
-        ////                    }
-        ////                }
-        //
-        //
-        //                completion(data, true, "Success")
-        //            } catch {
-        //                completion([], false, "Failure")
-        //            }
-        //
-        //        }
-        
-        AF.request(String(format: "%@%@/%@", baseUrl, "vakitler", districtId), method: .get, parameters: nil, encoding: URLEncoding.default, headers: nil, interceptor: nil).response { (responseData) in
-            
-            guard let data = responseData.data else { return }
-            
-            
-            
-            do{
-                //                let data2 = try JSONDecoder().decode([[String]].self, from: data)
-                let data = try JSONDecoder().decode([Vakit].self, from: data)
-                
-                //                var arr: [Vakit] = []
-                //                data.forEach { (value) in
-                //                if let record = Mapper<Vakit>().map(JSON: value as? [String: Any] ?? [:]) {
-                //                    arr.append(record)
-                //                    }
-                //                }
-                
-                
-                completion(data, true, "Success")
-            } catch {
-                completion([], false, "Failure")
-            }
-            
+    func fetchDistrict(countyId: String, cityId: String, completion: @escaping districtCallBack) {
+        ServiceManager.shared.fetch(path: String(format: "%@%@/%@", baseUrl, "ilceler", cityId)) { (response: [District]) in
+            completion(response, true, "Success")
+        } onError: { error in
+            completion([], false, "Failure")
         }
-        
-        
     }
     
-    
-    static func getVakitler2(districtId: String, completion: @escaping vakitlerCallBack) async{
-        
-        try? await AF.request(String(format: "%@%@/%@", baseUrl, "vakitler", districtId), method: .get, parameters: nil, encoding: URLEncoding.default, headers: nil, interceptor: nil).response { (responseData) in
-            
-            guard let data = responseData.data else { return }
-            do{
-                let data = try JSONDecoder().decode([Vakit].self, from: data)
-                
-                completion(data, true, "Success")
-            } catch {
-                completion([], false, "Failure")
-            }
-            
+    func fetchPrayerTime(districtId: String, completion: @escaping vakitlerCallBack) {
+        ServiceManager.shared.fetch(path: String(String(format: "%@%@/%@", baseUrl, "vakitler", districtId))) { (response: [Vakit]) in
+            completion(response, true, "Success")
+        } onError: { error in
+            completion([], false, "Failure")
         }
-        
-        
     }
-    
 }
