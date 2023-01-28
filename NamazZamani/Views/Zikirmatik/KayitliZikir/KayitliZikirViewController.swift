@@ -47,6 +47,7 @@ class KayitliZikirViewController: UIViewController {
                 self.tableView.reloadData()
                 showOneButtonAlert(title: "Bilgi", message: "Kayıtlı zikiriniz bulunmamaktadır.", buttonTitle: "Tamam", view: self) { confirm in
                     if confirm {
+                        self.handler?(true)
                         self.dismiss(animated: true)
                     }
                 }
@@ -60,10 +61,16 @@ class KayitliZikirViewController: UIViewController {
         dismiss(animated: true)
     }
     
+    private func viewZikr(data: ZikirObj){
+        showOneButtonAlert(title: "Bilgi", message: data.data.zikir, buttonTitle: "Tamam", view: self) { confirm in
+            
+        }
+    }
     
     
     
-    func toTrash(index: ZikirObj){
+    
+    private func toTrash(index: ZikirObj){
         showTwoButtonAlert(title: "Uyarı", message: "Seçmiş olduğunuz zikiri silmek istediğinizden emin misiniz?", button1Title: "Evet", button2Title: "Hayır", view: self){ confirm in
             if confirm {
                 FirebaseClient.delete("UserZikr", index.id) { result, status in
@@ -92,7 +99,7 @@ class KayitliZikirViewController: UIViewController {
     }
     
     
-    func selectZikir(data: ZikirObj){
+    private func selectZikir(data: ZikirObj){
         setOtherZikr {
             let tempZikr = data
             tempZikr.data.isSelected = true
@@ -127,6 +134,7 @@ extension KayitliZikirViewController: UITableViewDelegate, UITableViewDataSource
             cell.index = indexPath.row
             cell.trashHandler = self.toTrash
             cell.selectHandler = self.selectZikir
+            cell.viewZikrHandler = self.viewZikr
         }
         return cell
     }
