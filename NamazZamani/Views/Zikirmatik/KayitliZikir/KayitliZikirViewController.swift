@@ -105,13 +105,8 @@ class KayitliZikirViewController: UIViewController {
             tempZikr.data.isSelected = true
             FirebaseClient.setDocRefData(data.id, "UserZikr", tempZikr.data.toJSON()){ result, id in
                 if result {
-                    showOneButtonAlert(title: "Uyarı", message: "Zikir seçim başarılı", buttonTitle: "Tamam", view: self) { confirm in
-                        if confirm {
-                            self.handler?(true)
-                            self.dismiss(animated: true)
-                        }
-                    }
-                    
+                    self.handler?(true)
+                    self.dismiss(animated: true)
                 } else {
                     showOneButtonAlert(title: "Uyarı", message: "İşlem sırasında bir hata oluştur", buttonTitle: "Tamam", view: self) { confirm in
                     }
