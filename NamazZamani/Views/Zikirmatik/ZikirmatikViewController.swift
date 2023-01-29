@@ -13,6 +13,7 @@ class ZikirmatikViewController: UIViewController {
     @IBOutlet weak var counterZikirView: UIView!
     @IBOutlet weak var counterZikirLabel: UILabel!
     @IBOutlet weak var selectedZikirLabel: UILabel!
+    @IBOutlet weak var lblTitle: UILabel!
     var userZikrList: [ZikirObj]?
     var selectedZikr: ZikirObj? {
         didSet {
@@ -33,6 +34,7 @@ class ZikirmatikViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        lblTitle.text = "Zikirmatik"
         getData()
     }
 

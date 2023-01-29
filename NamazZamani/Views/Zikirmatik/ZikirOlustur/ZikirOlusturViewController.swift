@@ -18,7 +18,7 @@ class ZikirOlusturViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        textView.delegate = self
         textSuperView.setViewBorder(color: UIColor.brown.cgColor, borderWith: 1, borderRadius: 8)
     }
     
@@ -73,6 +73,18 @@ class ZikirOlusturViewController: UIViewController {
                     }
                 }
             }
+        }
+    }
+}
+
+extension ZikirOlusturViewController: UITextViewDelegate {
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if(text == "\n") {
+            view.endEditing(true)
+            return false
+        } else {
+            return true
+
         }
     }
 }

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		02531D4C2978707000716CF0 /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02531D4B2978707000716CF0 /* ServiceManager.swift */; };
+		02531D50297876D300716CF0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 02531D4F297876D300716CF0 /* GoogleService-Info.plist */; };
+		02611C542972E84B000419DB /* TimeTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02611C532972E84B000419DB /* TimeTableViewModel.swift */; };
 		02C448D1296889270045E849 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C80EED27F235D300AC1E60 /* UIView+Extensions.swift */; };
 		02C448D2296889270045E849 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E194C927F302FC00A700AB /* Date+Extensions.swift */; };
 		02C448D3296889270045E849 /* ResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A3090827BD73B4001CAFF9 /* ResponseModel.swift */; };
@@ -45,7 +48,6 @@
 		02C448F5296889270045E849 /* FirebaseFirestoreCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 02C448C6296889270045E849 /* FirebaseFirestoreCombine-Community */; };
 		02C448F6296889270045E849 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 02C448C7296889270045E849 /* FirebaseFirestoreSwift */; };
 		02C448F8296889270045E849 /* DailyPrayerTimeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0272E48E295F8DC50038B219 /* DailyPrayerTimeView.xib */; };
-		02C448F9296889270045E849 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 02C4487F296874290045E849 /* GoogleService-Info.plist */; };
 		02C448FA296889270045E849 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02D6824627B9A40C009CE351 /* LaunchScreen.storyboard */; };
 		02C448FB296889270045E849 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02D6824427B9A40C009CE351 /* Assets.xcassets */; };
 		02C448FC296889270045E849 /* DailyPrayTimeViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0272E488295F88C60038B219 /* DailyPrayTimeViewCell.xib */; };
@@ -64,6 +66,9 @@
 		0250D62327F1DEE8004C7EEA /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		0251803D27BE5F5400C29F76 /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 		0251803F27BE98C000C29F76 /* FirebaseClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseClient.swift; sourceTree = "<group>"; };
+		02531D4B2978707000716CF0 /* ServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceManager.swift; sourceTree = "<group>"; };
+		02531D4F297876D300716CF0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		02611C532972E84B000419DB /* TimeTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableViewModel.swift; sourceTree = "<group>"; };
 		0272E487295F88C60038B219 /* DailyPrayTimeViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyPrayTimeViewCell.swift; sourceTree = "<group>"; };
 		0272E488295F88C60038B219 /* DailyPrayTimeViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DailyPrayTimeViewCell.xib; sourceTree = "<group>"; };
 		0272E48C295F8DA40038B219 /* DailyPrayerTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyPrayerTimeView.swift; sourceTree = "<group>"; };
@@ -73,7 +78,6 @@
 		02A3090427BD04B9001CAFF9 /* Picker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Picker.swift; sourceTree = "<group>"; };
 		02A3090627BD1D40001CAFF9 /* PickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
 		02A3090827BD73B4001CAFF9 /* ResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseModel.swift; sourceTree = "<group>"; };
-		02C4487F296874290045E849 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		02C44903296889270045E849 /* NamazZamani.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NamazZamani.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02C44904296889280045E849 /* NamazZamani Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "NamazZamani Info.plist"; path = "/Users/suhakarakaya/NamazVakitleri-iOS/NamazZamani Info.plist"; sourceTree = "<absolute>"; };
 		02C80EED27F235D300AC1E60 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
@@ -209,7 +213,7 @@
 				02D6824427B9A40C009CE351 /* Assets.xcassets */,
 				02156B9727D3812200679FA2 /* colors.xcassets */,
 				02D6824927B9A40C009CE351 /* Info.plist */,
-				02C4487F296874290045E849 /* GoogleService-Info.plist */,
+				02531D4F297876D300716CF0 /* GoogleService-Info.plist */,
 			);
 			path = NamazZamani;
 			sourceTree = "<group>";
@@ -280,6 +284,7 @@
 			children = (
 				025BC609295F878D00BD386F /* Xib */,
 				02156BAE27D39C1500679FA2 /* TimeTableViewController.swift */,
+				02611C532972E84B000419DB /* TimeTableViewModel.swift */,
 			);
 			path = TimeTable;
 			sourceTree = "<group>";
@@ -289,6 +294,7 @@
 			children = (
 				0251803F27BE98C000C29F76 /* FirebaseClient.swift */,
 				0251803D27BE5F5400C29F76 /* ApiClient.swift */,
+				02531D4B2978707000716CF0 /* ServiceManager.swift */,
 			);
 			path = ServiceClient;
 			sourceTree = "<group>";
@@ -409,7 +415,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				02C448F8296889270045E849 /* DailyPrayerTimeView.xib in Resources */,
-				02C448F9296889270045E849 /* GoogleService-Info.plist in Resources */,
+				02531D50297876D300716CF0 /* GoogleService-Info.plist in Resources */,
 				02C448FA296889270045E849 /* LaunchScreen.storyboard in Resources */,
 				02C448FB296889270045E849 /* Assets.xcassets in Resources */,
 				02C448FC296889270045E849 /* DailyPrayTimeViewCell.xib in Resources */,
@@ -429,6 +435,7 @@
 				02C448D1296889270045E849 /* UIView+Extensions.swift in Sources */,
 				02C448D2296889270045E849 /* Date+Extensions.swift in Sources */,
 				02C448D3296889270045E849 /* ResponseModel.swift in Sources */,
+				02611C542972E84B000419DB /* TimeTableViewModel.swift in Sources */,
 				02C448D4296889270045E849 /* QiblaViewController.swift in Sources */,
 				02C448D5296889270045E849 /* KayitliZikirTableViewCell.swift in Sources */,
 				02C448D6296889270045E849 /* ZikirmatikViewController.swift in Sources */,
@@ -452,6 +459,7 @@
 				02C448E8296889270045E849 /* AppDelegate.swift in Sources */,
 				02C448E9296889270045E849 /* ZikirSecViewController.swift in Sources */,
 				02C448EA296889270045E849 /* SceneDelegate.swift in Sources */,
+				02531D4C2978707000716CF0 /* ServiceManager.swift in Sources */,
 				02C448EB296889270045E849 /* SettingsViewCell.swift in Sources */,
 				02C448EC296889270045E849 /* HomeViewController.swift in Sources */,
 				02C448ED296889270045E849 /* MySplashViewController.swift in Sources */,
@@ -493,19 +501,22 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "NamazZamani Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Namaz Vakitleri";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = always;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = whenInUse;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ifloop.suhaPrayerTime;
+				MARKETING_VERSION = 1.3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ifloop.shaPrayerTime;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -526,19 +537,22 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "NamazZamani Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Namaz Vakitleri";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = always;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = whenInUse;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ifloop.suhaPrayerTime;
+				MARKETING_VERSION = 1.3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ifloop.shaPrayerTime;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -598,6 +612,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -653,6 +668,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;

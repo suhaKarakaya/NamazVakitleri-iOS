@@ -45,7 +45,12 @@ class KayitliZikirViewController: UIViewController {
             } else {
                 // hata elerti ver
                 self.tableView.reloadData()
-                self.handler?(true)
+                showOneButtonAlert(title: "Bilgi", message: "Kayıtlı zikiriniz bulunmamaktadır.", buttonTitle: "Tamam", view: self) { confirm in
+                    if confirm {
+                        self.handler?(true)
+                        self.dismiss(animated: true)
+                    }
+                }
             }
             
         }
@@ -56,10 +61,16 @@ class KayitliZikirViewController: UIViewController {
         dismiss(animated: true)
     }
     
+    private func viewZikr(data: ZikirObj){
+        showOneButtonAlert(title: "Bilgi", message: data.data.zikir, buttonTitle: "Tamam", view: self) { confirm in
+            
+        }
+    }
     
     
     
-    func toTrash(index: ZikirObj){
+    
+    private func toTrash(index: ZikirObj){
         showTwoButtonAlert(title: "Uyarı", message: "Seçmiş olduğunuz zikiri silmek istediğinizden emin misiniz?", button1Title: "Evet", button2Title: "Hayır", view: self){ confirm in
             if confirm {
                 FirebaseClient.delete("UserZikr", index.id) { result, status in
@@ -88,19 +99,14 @@ class KayitliZikirViewController: UIViewController {
     }
     
     
-    func selectZikir(data: ZikirObj){
+    private func selectZikir(data: ZikirObj){
         setOtherZikr {
             let tempZikr = data
             tempZikr.data.isSelected = true
             FirebaseClient.setDocRefData(data.id, "UserZikr", tempZikr.data.toJSON()){ result, id in
                 if result {
-                    showOneButtonAlert(title: "Uyarı", message: "Zikir seçim başarılı", buttonTitle: "Tamam", view: self) { confirm in
-                        if confirm {
-                            self.handler?(true)
-                            self.dismiss(animated: true)
-                        }
-                    }
-                    
+                    self.handler?(true)
+                    self.dismiss(animated: true)
                 } else {
                     showOneButtonAlert(title: "Uyarı", message: "İşlem sırasında bir hata oluştur", buttonTitle: "Tamam", view: self) { confirm in
                     }
@@ -123,6 +129,7 @@ extension KayitliZikirViewController: UITableViewDelegate, UITableViewDataSource
             cell.index = indexPath.row
             cell.trashHandler = self.toTrash
             cell.selectHandler = self.selectZikir
+            cell.viewZikrHandler = self.viewZikr
         }
         return cell
     }

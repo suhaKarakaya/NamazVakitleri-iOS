@@ -86,3 +86,67 @@ extension UIAlertController {
         self.view.tintColor = color
     }
 }
+
+/*
+ 
+ //
+ //  AlertUtils.swift
+ //  NamazVakitleri
+ //
+ //  Created by Süha Karakaya on 31.12.2022.
+ //
+
+ import Foundation
+ import UIKit
+
+ protocol AlertShowable {
+     func showOneButtonAlert(title: String, message: String, buttonTitle: String)
+     func showOneButtonConfirmAlert(title: String, message: String, buttonTitle: String, completion: @escaping () -> ())
+     func showTwoButtonAlert(title: String, message: String, button1Title: String, button2Title: String, completion: @escaping (Bool) -> ())
+ }
+ extension AlertShowable where Self: UIViewController {
+     func showOneButtonAlert(title: String, message: String, buttonTitle: String) {
+         let alert = UIAlertController.init(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+         let okButton = UIAlertAction(title: buttonTitle, style: UIAlertAction.Style.default, handler: { UIAlertAction in
+         })
+         okButton.setValue(UIColor(named: "kabeYellow"), forKey: "titleTextColor")
+         alert.addAction(okButton)
+         
+         self.present(alert, animated: true, completion: nil)
+     }
+     
+     func showOneButtonConfirmAlert(title: String, message: String, buttonTitle: String, completion: @escaping () -> ()) {
+         let alert = UIAlertController.init(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+         let okButton = UIAlertAction(title: buttonTitle, style: UIAlertAction.Style.default, handler: { UIAlertAction in
+             completion()
+         })
+         okButton.setValue(UIColor(named: "kabeYellow"), forKey: "titleTextColor")
+         alert.addAction(okButton)
+         
+         self.present(alert, animated: true, completion: nil)
+     }
+     
+     func showTwoButtonAlert(title: String, message: String, button1Title: String, button2Title: String, completion: @escaping (Bool) -> ()){
+         let alert = UIAlertController.init(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+         let acceptButton = UIAlertAction(title: button1Title, style: UIAlertAction.Style.default, handler: { UIAlertAction in
+             completion(true)
+         })
+         acceptButton.setValue(UIColor(named: "kabeYellow"), forKey: "titleTextColor")
+         alert.addAction(acceptButton)
+         
+         let cancelButton = UIAlertAction(title: button2Title, style: UIAlertAction.Style.default, handler: { UIAlertAction in
+             completion(false)
+         })
+         cancelButton.setValue(UIColor(named: "kabeYellow"), forKey: "titleTextColor")
+         alert.addAction(cancelButton)
+         
+         self.present(alert, animated: true, completion: nil)
+     }
+ }
+
+
+
+
+ 
+ 
+ */

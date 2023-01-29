@@ -33,6 +33,7 @@ class ZikirSecViewController: UIViewController {
     }
     
     func getDefaultsZikirList(completion: @escaping () -> Void){
+        LoadingIndicatorView.show(self.view)
         FirebaseClient.getAllData("DefaultZikrs") { flag, documentID, response in
             if flag {
                 self.zikirList = []
@@ -51,6 +52,7 @@ class ZikirSecViewController: UIViewController {
     func getUserSavedZikirList(){
         FirebaseClient.getDocWhereCondt("UserCustomZikir", "deviceId", FirstSelectViewController.deviceId) {
             result, status, _response in
+            LoadingIndicatorView.hide()
             if result {
                 for item in _response {
                     guard let myZikir = Mapper<Zikir>().map(JSON: item.document) else { return }
@@ -71,7 +73,9 @@ class ZikirSecViewController: UIViewController {
     }
     
     func setInfo(data: ZikirObj){
-        showOneButtonAlert(title: data.data.zikir, message: String(format: "%@\n%@%@", data.data.aciklamasi,"Kaynak: ", data.data.kaynak), buttonTitle: "Tamam", view: self) { confirm in
+        var kaynak: String = ""
+        if !data.data.deletable {kaynak = String(format: "%@: %@", "Kaynak", data.data.kaynak)}
+        showOneButtonAlert(title: data.data.zikir, message: String(format: "%@\n%@", data.data.aciklamasi,kaynak), buttonTitle: "Tamam", view: self) { confirm in
             
         }
     }
@@ -93,11 +97,14 @@ class ZikirSecViewController: UIViewController {
     
     private func setOtherZikr(completion: @escaping () -> Void) {
         if selectedZikr != nil {
+            LoadingIndicatorView.show()
             selectedZikr?.data.isSelected = false
             FirebaseClient.setDocRefData(selectedZikr?.id ?? "", "UserZikr", selectedZikr?.data.toJSON() ?? ["":""]) {
                 result, status in
                 if result {
                     completion()
+                } else {
+                    LoadingIndicatorView.hide()
                 }
             }
         } else {
@@ -116,14 +123,18 @@ class ZikirSecViewController: UIViewController {
             tempZikr.deviceId = FirstSelectViewController.deviceId
             FirebaseClient.setAllData("UserZikr", tempZikr.toJSON()) { result, id in
                 if result {
-                    showOneButtonAlert(title: "Uyarı", message: "Zikir seçim başarılı", buttonTitle: "Tamam", view: self) { confirm in
-                        if confirm {
-                            self.handler?(true)
-                            self.dismiss(animated: true)
-                        }
-                    }
+                    LoadingIndicatorView.hide()
+                    self.handler?(true)
+                    self.dismiss(animated: true)
+//                    showOneButtonAlert(title: "Uyarı", message: "Zikir seçim başarılı", buttonTitle: "Tamam", view: self) { confirm in
+//                        if confirm {
+//                            self.handler?(true)
+//                            self.dismiss(animated: true)
+//                        }
+//                    }
                     
                 } else {
+                    LoadingIndicatorView.hide()
                     showOneButtonAlert(title: "Uyarı", message: "İşlem sırasında bir hata oluştur", buttonTitle: "Tamam", view: self) { confirm in
                     }
                 }
