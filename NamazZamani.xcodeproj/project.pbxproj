@@ -501,6 +501,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "NamazZamani Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Namaz Vakitleri";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = always;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = whenInUse;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -536,6 +537,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "NamazZamani Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Namaz Vakitleri";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = always;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = whenInUse;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
