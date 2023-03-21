@@ -12,9 +12,8 @@ import ObjectMapper
 class SettingsViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
-    var locationList: [UserInfo] = []
-    var documentIdList: [LocationList] = []
-    
+    var locationList: [UserLocationList] = []
+    var userInfoId = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
@@ -33,32 +32,24 @@ class SettingsViewController: UIViewController {
         FirebaseClient.getDocWhereCondt("UserInfo", "deviceId", FirstSelectViewController.deviceId) { result, status, response in
             if result {
                 LoadingIndicatorView.hide()
-                self.documentIdList = []
+                guard let myLocation = Mapper<UserInfo>().map(JSON: response[0].document) else { return }
+                self.userInfoId = response[0].documentId
                 self.locationList = []
-                for item in response {
-                    guard let myLocation = Mapper<UserInfo>().map(JSON: item.document) else { return }
-                    let obj:UserInfo = myLocation
-                    self.locationList.append(obj)
-                    self.documentIdList.append(LocationList.init(documentId: item.documentId, userLocation: obj))
-                }
+                self.locationList = myLocation.locationList
                 self.tableView.reloadData()
             }
         }
     }
     
     
-    func setData(_ documentList: [LocationList]){
-        for item in documentList {
-            LoadingIndicatorView.show(self.view)
-            FirebaseClient.setDocRefData(item.documentId, "UserInfo", item.userLocation.toJSON()) { result, status in
-                if result {
-                    LoadingIndicatorView.hide()
-                }
+    func setData(_ documentList: [UserLocationList]){
+        LoadingIndicatorView.show(self.view)
+        FirebaseClient.update("UserInfo", userInfoId, documentList.toJSON()) { result, status in
+            if result {
+                LoadingIndicatorView.hide()
+                self.getData()
             }
         }
-        getData()
-     
-
     }
     
     
@@ -69,7 +60,7 @@ class SettingsViewController: UIViewController {
             if let data = sender as? Bool {
                 let view = segue.destination as! FirstSelectViewController
                 view.backVisible = data
-                view.documentIdList = documentIdList
+                view.locationList = locationList
             }
         }
         
@@ -94,19 +85,19 @@ class SettingsViewController: UIViewController {
                 showOneButtonAlert(title: "Uyarı", message: "En fazla 1 adet favori konum bulunmalıdır!", buttonTitle: "Tamam", view: self) { confirm in
                 }
             } else {
-                for var item in documentIdList {
-                    item.userLocation.isFavorite = false
+                for item in locationList {
+                    item.isFavorite = false
                 }
-                documentIdList[index].userLocation.isFavorite = !isSelected
-                setData(documentIdList)
+                locationList[index].isFavorite = !isSelected
+                setData(locationList)
             }
         } else {
             if !isSelected {
-                for i in 0...documentIdList.count - 1 {
-                    documentIdList[i].userLocation.isFavorite = false
+                for i in 0...locationList.count - 1 {
+                    locationList[i].isFavorite = false
                 }
-                documentIdList[index].userLocation.isFavorite = !isSelected
-                setData(documentIdList)
+                locationList[index].isFavorite = !isSelected
+                setData(locationList)
             }
 
         }
@@ -150,21 +141,8 @@ extension SettingsViewController: SettingsDelegate {
                 showOneButtonAlert(title: "Uyarı", message: "Favori konum silemezsiniz!", buttonTitle: "Tamam", view: self) { confirm in
                 }
             } else {
-//                self.locationList.remove(at: index)
-//                if self.locationList.count == 1 {
-//                    self.locationList[0].isFavorite = true
-//                }
-                LoadingIndicatorView.show(self.view)
-                FirebaseClient.delete("UserInfo", documentIdList[index].documentId) { result, status in
-                    if result {
-                        LoadingIndicatorView.hide()
-                        showOneButtonAlert(title: "Bilgi", message: "İşleminiz başarılı bir şekilde gerçekleştirildi", buttonTitle: "Tamam", view: self) { confirm in
-                            if confirm {
-                                self.getData()
-                            }
-                        }
-                    }
-                }
+                locationList.remove(at: index)
+                setData(locationList)
             }
 
         }

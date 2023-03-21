@@ -75,7 +75,7 @@ class ZikirSecViewController: UIViewController {
     func setInfo(data: ZikirObj){
         var kaynak: String = ""
         if !data.data.deletable {kaynak = String(format: "%@: %@", "Kaynak", data.data.kaynak)}
-        showOneButtonAlert(title: data.data.zikir, message: String(format: "%@\n%@", data.data.aciklamasi,kaynak), buttonTitle: "Tamam", view: self) { confirm in
+        showOneButtonAlert(title: data.data.zikir, message: String(format: "%@\n\n%@", data.data.aciklamasi,kaynak), buttonTitle: "Tamam", view: self) { confirm in
             
         }
     }

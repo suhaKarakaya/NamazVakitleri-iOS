@@ -8,70 +8,49 @@
 import Foundation
 import ObjectMapper
 
-class UserDevice: NSObject,Mappable {
-    
+class UserInfo: NSObject,Mappable {
+    var deviceModel: String = ""
     var deviceId: String = ""
-    var deviceType: String = ""
+    var locationList: [UserLocationList] = []
     
-    override init() {
-        super.init()
-    }
+    override init() { super.init() }
     
-    required init?(map: Map) {
-       
-    }
+    required init?(map: Map) {}
     
     func mapping(map: Map){
-        
+        deviceModel <- map["deviceModel"]
         deviceId <- map["deviceId"]
-        deviceType <- map["deviceType"]
+        locationList <- map["locationList"]
     }
-
 }
 
-class UserInfo: NSObject,Mappable {
-    
-    var deviceId: String = ""
-    var locationId: String = ""
+class UserLocationList: NSObject,Mappable {
     var uniqName: String = ""
     var isFavorite: Bool = false
     
-    override init() {
-        super.init()
-    }
+    override init() { super.init() }
     
-    required init?(map: Map) {
-       
-    }
+    required init?(map: Map) {}
     
     func mapping(map: Map){
-        deviceId <- map["deviceId"]
-        locationId <- map["locationId"]
         uniqName <- map["uniqName"]
         isFavorite <- map["isFavorite"]
     }
-    
-    
 }
 
-class Locations: NSObject,Mappable {
+class LocationDetail: NSObject,Mappable,Codable {
+    var uniqName: String = ""
+    var lastUpdateTime: String = ""
+    var vakitList: [Vakit] = []
     var countryId: String = ""
     var countyName: String = ""
     var cityId: String = ""
     var cityName: String = ""
     var districtId: String = ""
     var districtName: String = ""
-    var lastUpdateTime: String = ""
-    var vakitId: String = ""
-    var uniqName: String = ""
     
-    override init() {
-        super.init()
-    }
-    
-    required init?(map: Map) {
-       
-    }
+    override init() { super.init() }
+    required init?(map: Map) {}
     
     func mapping(map: Map){
         countryId <- map["countryId"]
@@ -81,11 +60,9 @@ class Locations: NSObject,Mappable {
         districtId <- map["districtId"]
         districtName <- map["districtName"]
         lastUpdateTime <- map["lastUpdateTime"]
-        vakitId <- map["vakitId"]
         uniqName <- map["uniqName"]
+        vakitList <- map["vakitList"]
     }
-    
-    
 }
 
 class VakitMain: NSObject,Mappable {

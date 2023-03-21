@@ -45,6 +45,20 @@ public class FirebaseClient {
         
     }
     
+    static func setVakitData(_ documentId: String, _ tableName: String, _ data: LocationDetail, completion: @escaping firebaseSetCallBack) {
+        if documentId == "" {
+            setAllData(tableName, data.toJSON()) { result, status in
+                completion(result, status)
+            }
+        } else {
+            setDocRefData(documentId, tableName, data.toJSON()) { result, status in
+                completion(result, status)
+            }
+        }
+       
+    }
+    
+    
     static func setVakitList(_ tableName: String, _ data: [Vakit], _ location: String, completion: @escaping firebaseSetCallBack){
         
         let ref = firestore.collection(tableName)
@@ -183,6 +197,18 @@ public class FirebaseClient {
     
     static func delete(_ collectionName: String, _ documentId: String, completion: @escaping firebaseSetCallBack){
         firestore.collection(collectionName).document(documentId).delete() { err in
+            if err != nil {
+                completion(false, "Failure")
+            } else {
+                completion(true, "Success")
+            }
+        }
+    }
+    
+    static func update(_ collectionName: String, _ documentName: String, _ data: [[String:Any]], completion: @escaping firebaseSetCallBack){
+        firestore.collection(collectionName).document(documentName).updateData([
+            "locationList": data
+        ]) { err in
             if err != nil {
                 completion(false, "Failure")
             } else {

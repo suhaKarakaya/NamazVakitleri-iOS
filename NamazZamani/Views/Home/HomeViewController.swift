@@ -33,13 +33,15 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var miladiTimeKeyLabel: UILabel!
     @IBOutlet weak var hicriTimeValueLabel: UILabel!
     @IBOutlet weak var miladiTimeValueLabel: UILabel!
+    var locationData: LocationDetail?
     var locationDataId: String?
-    var favoriteSelectedLocation: Locations?
+//    var favoriteSelectedLocation: Locations?
     var timer: Timer?
     var favoriteLocationList: [Vakit] = []
     var nextDay = Vakit()
     var strRemainingKey = ""
     var strRemainingValue = ""
+    var note: LocationDetail?
     var favoriteLocation: Vakit? = nil {
         didSet {
             guard let data = favoriteLocation else { return }
@@ -78,7 +80,42 @@ class HomeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        getData()
+//        getData()
+//        // Read/Get Data
+//        if let data = UserDefaults.standard.data(forKey: "vakit") {
+//            do {
+//                // Create JSON Decoder
+//                let decoder = JSONDecoder()
+//
+//                // Decode Note
+//              note  = try decoder.decode(LocationDetail.self, from: data)
+//
+//            } catch {
+//                print("Unable to Decode Note (\(error))")
+//            }
+//        }
+        LoadingIndicatorView.show()
+        PrayerTimeOrganize.getMyLocationData { data, result in
+            if result {
+                LoadingIndicatorView.hide()
+                self.favoriteLocationList = []
+                for item in data.vakitList {
+                    let lastUpdateTimeDate = DateManager.strToDateSuha(strDate: item.MiladiTarihKisa)
+                    let temp = DateManager.checkDate(date: Date(), endDate: lastUpdateTimeDate)
+                    if temp != .orderedAscending{
+                        self.favoriteLocationList.append(item)
+                    }
+                }
+                self.nextDay = self.favoriteLocationList[1]
+                self.favoriteLocation = self.favoriteLocationList[0]
+                let tempLoc = data.uniqName.components(separatedBy: ",")
+                let city    = tempLoc[0]
+                let district = tempLoc[1]
+                self.selectedLocationTitleLabel.text = city == district ? city : String(format: "%@\n%@", city, district)
+            }
+        }
+
+        
         
     }
     
@@ -152,98 +189,99 @@ class HomeViewController: UIViewController {
         
     }
     
-    func getData(){
-        LoadingIndicatorView.show(self.view)
-        FirebaseClient.getDocWhereCondt("UserInfo", "deviceId", FirstSelectViewController.deviceId) { result, status, response in
-            if result {
-                for item in response {
-                    guard let myLocation = Mapper<UserInfo>().map(JSON: item.document) else { return }
-                    if myLocation.isFavorite {
-                        self.getVakitsByLocationId(myLocation.locationId)
-                        return
-                    }
-                }
-            } else {
-//                bir sorun oluştu alerti
-                LoadingIndicatorView.hide()
-            }
-        }
-    }
-    
-    func getVakitsByLocationId(_ locationId: String){
-        FirebaseClient.getDocRefData("LocationsShort", locationId) { result, locDocumentID, response in
-            if result {
-                guard let locData = Mapper<Locations>().map(JSON: response) else { return }
-                let lastUpdateTimeDate = DateManager.strToDateUgur(strDate: locData.lastUpdateTime)
-                let temp = DateManager.checkDate(date: Date(), endDate: lastUpdateTimeDate)
-                if temp == .orderedAscending {
-                    //                  geride kalmış yeni zaman çek
-                    self.locationDataId = locDocumentID
-                    self.favoriteSelectedLocation = locData
-                    ApiClient.shared.fetchPrayerTime(districtId: locData.districtId, completion: self.getVakitlerHandler)
-                } else {
-                    //                  zaman güncel bunu bas
-                    self.getCurrentDay(locData)
-                }
-            } else {
-//                bir sorun oluştu alerti
-                LoadingIndicatorView.hide()
-            }
-        }
-        
-    }
-    
-    func getCurrentDay(_ locData:Locations){
-        FirebaseClient.getDocRefData("Vakits", locData.vakitId) { result, locDocumentID, response in
-            if result {
-                LoadingIndicatorView.hide()
-                guard let tempObj3 = Mapper<VakitMain>().map(JSON: response) else { return }
-                let tempLoc = tempObj3.location.components(separatedBy: ",")
-                let city    = tempLoc[0]
-                let district = tempLoc[1]
-                self.selectedLocationTitleLabel.text = city == district ? city : tempObj3.location
-                for item in tempObj3.vakitList {
-                    let lastUpdateTimeDate = DateManager.strToDateSuha(strDate: item.MiladiTarihKisa)
-                    let temp = DateManager.checkDate(date: Date(), endDate: lastUpdateTimeDate)
-                    if temp != .orderedAscending{
-                        self.favoriteLocationList.append(item)
-                    }
-                }
-                self.nextDay = self.favoriteLocationList[1]
-                self.favoriteLocation = self.favoriteLocationList[0]
-            } else {
-//                            bir sorun oluştu alerti
-                LoadingIndicatorView.hide()
-            }
-        }
-    }
-    
-    func getVakitlerHandler(list: [Vakit]?, status: Bool, message: String) {
-        guard status, let responseList = list else { return }
-        FirebaseClient.setVakitListRef(favoriteSelectedLocation?.vakitId ?? "", "Vakits", responseList, favoriteSelectedLocation?.uniqName ?? "") {
-            result, status in
-            if result {
-                self.setLocationsShortData()
-            } else {
-//                bir sorun oluştu alerti
-                LoadingIndicatorView.hide()
-            }
-        }
-    }
-    
-    func setLocationsShortData() {
-        guard let tempObj = self.favoriteSelectedLocation else { return }
-        tempObj.lastUpdateTime = DateManager.dateToStringUgur(date: Date())
-        FirebaseClient.setDocRefData( self.locationDataId ?? "", "LocationsShort", tempObj.toJSON()) {
-            result, locId in
-            if result {
-                self.getCurrentDay(tempObj)
-            } else {
-                //                bir sorun oluştu alerti
-            }
-        }
-    }
-    
+//    func getData(){
+//        LoadingIndicatorView.show(self.view)
+//        FirebaseClient.getDocWhereCondt("UserInfo", "deviceId", FirstSelectViewController.deviceId) { result, status, response in
+//            if result {
+//                for item in response {
+//                    guard let myLocation = Mapper<UserInfo>().map(JSON: item.document) else { return }
+//                    if myLocation.isFavorite {
+//                        self.getVakitsByLocationId(myLocation.locationId)
+//                        return
+//                    }
+//                }
+//            } else {
+////                bir sorun oluştu alerti
+//                LoadingIndicatorView.hide()
+//            }
+//        }
+//    }
+//
+//    func getVakitsByLocationId(_ locationId: String){
+//        FirebaseClient.getDocRefData("LocationsShort", locationId) { result, locDocumentID, response in
+//            if result {
+//                guard let locData = Mapper<Locations>().map(JSON: response) else { return }
+//                let lastUpdateTimeDate = DateManager.strToDateUgur(strDate: locData.lastUpdateTime)
+//                let temp = DateManager.checkDate(date: Date(), endDate: lastUpdateTimeDate)
+//                if temp == .orderedAscending {
+//                    //                  geride kalmış yeni zaman çek
+//                    self.locationDataId = locDocumentID
+//                    self.favoriteSelectedLocation = locData
+//                    ApiClient.shared.fetchPrayerTime(districtId: locData.districtId, completion: self.getVakitlerHandler)
+//                } else {
+//                    //                  zaman güncel bunu bas
+//                    self.getCurrentDay(locData)
+//                }
+//            } else {
+////                bir sorun oluştu alerti
+//                LoadingIndicatorView.hide()
+//            }
+//        }
+//
+//    }
+//
+//    func getCurrentDay(_ locData:Locations){
+//        self.favoriteLocationList = []
+//        FirebaseClient.getDocRefData("Vakits", locData.vakitId) { result, locDocumentID, response in
+//            if result {
+//                LoadingIndicatorView.hide()
+//                guard let tempObj3 = Mapper<VakitMain>().map(JSON: response) else { return }
+//                let tempLoc = tempObj3.location.components(separatedBy: ",")
+//                let city    = tempLoc[0]
+//                let district = tempLoc[1]
+//                self.selectedLocationTitleLabel.text = city == district ? city : String(format: "%@\n%@", city, district)
+//                for item in tempObj3.vakitList {
+//                    let lastUpdateTimeDate = DateManager.strToDateSuha(strDate: item.MiladiTarihKisa)
+//                    let temp = DateManager.checkDate(date: Date(), endDate: lastUpdateTimeDate)
+//                    if temp != .orderedAscending{
+//                        self.favoriteLocationList.append(item)
+//                    }
+//                }
+//                self.nextDay = self.favoriteLocationList[1]
+//                self.favoriteLocation = self.favoriteLocationList[0]
+//            } else {
+////                            bir sorun oluştu alerti
+//                LoadingIndicatorView.hide()
+//            }
+//        }
+//    }
+//
+//    func getVakitlerHandler(list: [Vakit]?, status: Bool, message: String) {
+//        guard status, let responseList = list else { return }
+//        FirebaseClient.setVakitListRef(favoriteSelectedLocation?.vakitId ?? "", "Vakits", responseList, favoriteSelectedLocation?.uniqName ?? "") {
+//            result, status in
+//            if result {
+//                self.setLocationsShortData()
+//            } else {
+////                bir sorun oluştu alerti
+//                LoadingIndicatorView.hide()
+//            }
+//        }
+//    }
+//
+//    func setLocationsShortData() {
+//        guard let tempObj = self.favoriteSelectedLocation else { return }
+//        tempObj.lastUpdateTime = DateManager.dateToStringUgur(date: Date())
+//        FirebaseClient.setDocRefData( self.locationDataId ?? "", "LocationsShort", tempObj.toJSON()) {
+//            result, locId in
+//            if result {
+//                self.getCurrentDay(tempObj)
+//            } else {
+//                //                bir sorun oluştu alerti
+//            }
+//        }
+//    }
+//
     
     
     
