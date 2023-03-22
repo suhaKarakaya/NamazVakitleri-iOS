@@ -22,14 +22,14 @@ class Picker: UIView {
     weak var delegate: PickerDelegate?
     
     class func instance() -> Picker {
-            guard let view = UINib(
-                nibName: String(describing: self), bundle: nil
-            ).instantiate(withOwner: nil, options: nil).first as? Picker else {
-                fatalError("Could not initalize view")
-            }
-            view.mysetup()
-            return view
+        guard let view = UINib(
+            nibName: String(describing: self), bundle: nil
+        ).instantiate(withOwner: nil, options: nil).first as? Picker else {
+            fatalError("Could not initalize view")
         }
+        view.mysetup()
+        return view
+    }
     
     func mysetup(){
         borderView.setViewBorder(color:  UIColor.brown.cgColor, borderWith: 1, borderRadius: 8)

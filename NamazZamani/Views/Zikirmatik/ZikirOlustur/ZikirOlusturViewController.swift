@@ -26,7 +26,7 @@ class ZikirOlusturViewController: UIViewController {
         dismiss(animated: true)
     }
     
-//    sayfaya selected zikirle gelmiş isem
+    //    sayfaya selected zikirle gelmiş isem
     private func setOtherZikr(completion: @escaping () -> Void) {
         if selectedZikr != nil {
             selectedZikr?.data.isSelected = false
@@ -40,7 +40,7 @@ class ZikirOlusturViewController: UIViewController {
             completion()
         }
     }
-//    oluşturulan zikir selected yapılıyor
+    //    oluşturulan zikir selected yapılıyor
     private func setSelected(completion: @escaping () -> Void) {
         let tempZikir = Zikir()
         tempZikir.zikir = self.textView.text
@@ -53,8 +53,8 @@ class ZikirOlusturViewController: UIViewController {
             }
         }
     }
-
-//    kullanıcının kendine has oluşturduğu zikirler kayıt atılıyor
+    
+    //    kullanıcının kendine has oluşturduğu zikirler kayıt atılıyor
     @IBAction func saveButtonAction(_ sender: Any) {
         setOtherZikr {
             self.setSelected {
@@ -84,7 +84,7 @@ extension ZikirOlusturViewController: UITextViewDelegate {
             return false
         } else {
             return true
-
+            
         }
     }
 }

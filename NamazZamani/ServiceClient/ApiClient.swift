@@ -19,7 +19,7 @@ typealias errorHandler = (AFError) -> Void
 
 protocol ApiClientProtocol {
     //    func fetchCountry(onSuccess: @escaping([Country]?) -> (), onError: @escaping(AFError) -> ())
-//    func fetchCountry(completion: @escaping countryCallBack, onError: errorHandler)
+    //    func fetchCountry(completion: @escaping countryCallBack, onError: errorHandler)
     func fetchCountry(completion: @escaping countryCallBack)
     func fetchCity(countyId: String, completion: @escaping cityCallBack)
     func fetchDistrict(countyId: String, cityId: String, completion: @escaping districtCallBack)

@@ -149,7 +149,7 @@ class FirstSelectViewController: UIViewController {
         guard let country = self.countrySelect, let city = self.citySelect, let district = self.districtSelect else { return alert("Lütfen konumunuzu seçiniz!") }
         location = String(format: "%@,%@", city.value,district.value)
         if (locationList.filter({$0.uniqName == location }).count > 0) {
-//            Kullanıcı bu sayfaya setting üzerinden gelmiş ve daha önce kendisinde olan kaydı tekrar atmaya çalışırsa alert çıkar
+            //            Kullanıcı bu sayfaya setting üzerinden gelmiş ve daha önce kendisinde olan kaydı tekrar atmaya çalışırsa alert çıkar
             alert("Bu konum listenizde bulunmaktadır!")
             return
         }
@@ -157,26 +157,16 @@ class FirstSelectViewController: UIViewController {
         DispatchQueue.global(qos: .background).async {
             PrayerTimeOrganize.getFirebaseUserData(selectCountry: country, selectCity: city, selectDistrict: district, uniqName: self.location) {
                 data, result in
-                    if result {
-//                        let list = [country.strId, country.value, city.strId, city.value, district.strId, district.value, self.location]
-//                        let defaults = UserDefaults.standard
-//                        defaults.set(list, forKey: "savedLocationInfo")
-//                        do {
-//                            let encoder = JSONEncoder()
-//                            let _data = try encoder.encode(data)
-//                            UserDefaults.standard.set(_data, forKey: "vakit")
-//                        } catch {
-//                            print("Unable to Encode Note (\(error))")
-//                        }
-                        DispatchQueue.main.async {
-                            LoadingIndicatorView.hide()
-                            self.performSegue(withIdentifier: "sg_toTabPage", sender: data)
-                          }
+                if result {
+                    DispatchQueue.main.async {
+                        LoadingIndicatorView.hide()
+                        self.performSegue(withIdentifier: "sg_toTabPage", sender: data)
                     }
+                }
             }
-          }
+        }
         
-   
+        
     }
     
 }

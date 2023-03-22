@@ -10,9 +10,9 @@ import Foundation
 class DateManager {
     
     static let shared = DateManager()
-        
+    
     init(){}
-        
+    
     func getTodayString() -> String{
         let date = Date()
         let calender = Calendar.current
@@ -24,7 +24,7 @@ class DateManager {
         let minute = components.minute
         let second = components.second
         let today_string = String(year!) + "-" + String(month!) + "-" + String(day!) + " " + String(hour!)  + ":" + String(minute!) + ":" +  String(second!)
-
+        
         return today_string
     }
     
@@ -49,9 +49,9 @@ class DateManager {
     
     
     static func strToDate1(strDate: String) -> Date {
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "dd MMMM yyyy eeee"
-//        return dateFormatter.date(from: strDate)!
+        //        let dateFormatter = DateFormatter()
+        //        dateFormatter.dateFormat = "dd MMMM yyyy eeee"
+        //        return dateFormatter.date(from: strDate)!
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "tr_TR") // set locale to reliable US_POSIX
         dateFormatter.dateFormat = "dd MMMM yyyy eeee"
@@ -90,7 +90,7 @@ class DateManager {
         let gregorian = NSCalendar(calendarIdentifier: NSCalendar.Identifier.gregorian)!
         let now = Date()
         var components = gregorian.components([.year, .month, .day, .hour, .minute], from: now)
-    
+        
         components.hour = Int(hour)
         components.minute = Int(minute)
         components.day = Int(day)
@@ -98,8 +98,8 @@ class DateManager {
         components.year = Int(year)
         
         var time = gregorian.date(from: components)!
-//        time = time.addingTimeInterval(TimeInterval(30.0 * 60.0 * 6.0))
-
+        //        time = time.addingTimeInterval(TimeInterval(30.0 * 60.0 * 6.0))
+        
         return time.timeIntervalSince1970
     }
     
@@ -115,15 +115,15 @@ class DateManager {
     }
     
     static func stringFromTimeInterval(interval: TimeInterval) -> String {
-
-      let ti = NSInteger(interval)
+        
+        let ti = NSInteger(interval)
         let ms = Int(interval.truncatingRemainder(dividingBy: 1) * 1000)
-
-      let seconds = ti % 60
-      let minutes = (ti / 60) % 60
-      let hours = (ti / 3600)
-
-      return String(format: "%0.2d:%0.2d:%0.2d",hours,minutes,seconds)
+        
+        let seconds = ti % 60
+        let minutes = (ti / 60) % 60
+        let hours = (ti / 3600)
+        
+        return String(format: "%0.2d:%0.2d:%0.2d",hours,minutes,seconds)
     }
     
     static func checkSuhaDate(date: Date, endDate: Date) -> Bool {
@@ -135,35 +135,35 @@ class DateManager {
     
     
     static func checkDate(date: Date, endDate: Date) -> ComparisonResult {
-            let calendar = Calendar.current;
-            let components:Set<Calendar.Component> = [.day, .month, .year];
-            let date1Components = calendar.dateComponents(components, from: date);
-            let date2Components = calendar.dateComponents(components, from: endDate);
-
-            let firstDate = calendar.date(from: date1Components);
-            let secondDate = calendar.date(from: date2Components);
-
-            let result:ComparisonResult = secondDate!.compare(firstDate!);
-            switch result {
-            case .orderedAscending:
-                debugPrint(String(format: "%@ is in future from %@", date as CVarArg,endDate as CVarArg));
-                break;
-            case .orderedDescending:
-                debugPrint(String(format: "%@ is in past from %@", date as CVarArg,endDate as CVarArg));
-                break;
-            case .orderedSame:
-                debugPrint(String(format: "%@ is in same as %@", date as CVarArg,endDate as CVarArg));
-                break;
-            default:
-                debugPrint(String(format: "erorr dates %@, %@", date as CVarArg,endDate as CVarArg));
-                break;
-            }
-
-            return result;
-
+        let calendar = Calendar.current;
+        let components:Set<Calendar.Component> = [.day, .month, .year];
+        let date1Components = calendar.dateComponents(components, from: date);
+        let date2Components = calendar.dateComponents(components, from: endDate);
+        
+        let firstDate = calendar.date(from: date1Components);
+        let secondDate = calendar.date(from: date2Components);
+        
+        let result:ComparisonResult = secondDate!.compare(firstDate!);
+        switch result {
+        case .orderedAscending:
+            debugPrint(String(format: "%@ is in future from %@", date as CVarArg,endDate as CVarArg));
+            break;
+        case .orderedDescending:
+            debugPrint(String(format: "%@ is in past from %@", date as CVarArg,endDate as CVarArg));
+            break;
+        case .orderedSame:
+            debugPrint(String(format: "%@ is in same as %@", date as CVarArg,endDate as CVarArg));
+            break;
+        default:
+            debugPrint(String(format: "erorr dates %@, %@", date as CVarArg,endDate as CVarArg));
+            break;
         }
+        
+        return result;
+        
+    }
     
- 
+    
 }
 
 

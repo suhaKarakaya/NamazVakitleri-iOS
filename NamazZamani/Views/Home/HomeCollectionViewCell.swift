@@ -62,7 +62,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
         // Initialization code
         currentTimeTableView.setViewBorder(color: UIColor.brown.cgColor, borderWith: 1, borderRadius: 8)
     }
-
+    
     
     func setup() {
         self.currentDay = cellData.vakitList[0]

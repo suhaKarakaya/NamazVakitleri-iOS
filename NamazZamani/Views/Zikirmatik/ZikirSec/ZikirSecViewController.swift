@@ -126,12 +126,12 @@ class ZikirSecViewController: UIViewController {
                     LoadingIndicatorView.hide()
                     self.handler?(true)
                     self.dismiss(animated: true)
-//                    showOneButtonAlert(title: "Uyarı", message: "Zikir seçim başarılı", buttonTitle: "Tamam", view: self) { confirm in
-//                        if confirm {
-//                            self.handler?(true)
-//                            self.dismiss(animated: true)
-//                        }
-//                    }
+                    //                    showOneButtonAlert(title: "Uyarı", message: "Zikir seçim başarılı", buttonTitle: "Tamam", view: self) { confirm in
+                    //                        if confirm {
+                    //                            self.handler?(true)
+                    //                            self.dismiss(animated: true)
+                    //                        }
+                    //                    }
                     
                 } else {
                     LoadingIndicatorView.hide()

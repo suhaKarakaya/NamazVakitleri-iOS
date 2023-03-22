@@ -28,10 +28,10 @@ class ZikirSecTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     @IBAction func trashButtonAction(_ sender: Any) {
@@ -59,7 +59,7 @@ class ZikirSecTableViewCell: UITableViewCell {
         zikirNameLabel.text = data.data.zikir
         infoButton.isHidden = data.data.deletable
         trashButton.isHidden = !data.data.deletable
-
-   
+        
+        
     }
 }

@@ -13,7 +13,7 @@ protocol PickerViewControllerDelegate: AnyObject{
 }
 
 class PickerViewController: UIViewController {
-   
+    
     @IBOutlet weak var btnCancel: UIBarButtonItem!
     @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var btnTamam: UIBarButtonItem!
@@ -23,7 +23,7 @@ class PickerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         btnTamam.title = "Tamam"
         btnCancel.title = "İptal"
         btnTamam.tintColor = UIColor.systemBrown
@@ -55,7 +55,7 @@ class PickerViewController: UIViewController {
 
 extension PickerViewController: UIPickerViewDelegate, UIPickerViewDataSource{
     
-
+    
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         guard let title = arrData?.pickerList[row].value else { return "" }
         return title
@@ -72,9 +72,9 @@ extension PickerViewController: UIPickerViewDelegate, UIPickerViewDataSource{
     
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         var attributedString: NSAttributedString!
-
+        
         attributedString = NSAttributedString(string: arrData?.pickerList[row].value ?? "", attributes: [NSAttributedString.Key.foregroundColor : UIColor(named: "kabeBlack") ?? UIColor.white])
-
+        
         return attributedString
     }
     
@@ -88,7 +88,7 @@ class PickerSelectedData {
     init(pickerType: PickerType, pickerList: [SelectObje]) {
         self.pickerType  = pickerType
         self.pickerList = pickerList
-      }
+    }
     
 }
 class SelectObje {
@@ -98,7 +98,7 @@ class SelectObje {
     init (strId: String, value: String ) {
         self.strId = strId
         self.value = value
-      }
+    }
 }
 enum PickerType {
     case country

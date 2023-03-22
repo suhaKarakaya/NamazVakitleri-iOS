@@ -10,7 +10,7 @@ import Firebase
 import ObjectMapper
 
 class SettingsViewController: UIViewController {
-
+    
     @IBOutlet weak var tableView: UITableView!
     var locationList: [UserLocationList] = []
     var userInfoId = ""
@@ -64,7 +64,7 @@ class SettingsViewController: UIViewController {
             }
         }
         
-       
+        
     }
     
     @IBAction func buttonSelectedAction(_ sender: Any) {
@@ -77,7 +77,7 @@ class SettingsViewController: UIViewController {
     }
     
     
-   
+    
     
     func setFavo(isSelected: Bool, index: Int){
         if self.locationList.count < 2 {
@@ -99,7 +99,7 @@ class SettingsViewController: UIViewController {
                 locationList[index].isFavorite = !isSelected
                 setData(locationList)
             }
-
+            
         }
         
         
@@ -113,23 +113,23 @@ extension SettingsViewController: UITableViewDelegate,UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "settingsCell", for: indexPath) as! SettingsViewCell
         
         cell.delegate = self
         cell.favoritedHandler = setFavo
         cell.data = locationList[indexPath.row]
         cell.index = indexPath.row
-    
+        
         
         return cell
-    
+        
     }
 }
 
 extension SettingsViewController: SettingsDelegate {
     func setFavorite(_ selected: Bool, _ index: Int) {
-
+        
     }
     
     func toTrash(_ selected: Bool, _ index: Int) {
@@ -144,13 +144,13 @@ extension SettingsViewController: SettingsDelegate {
                 locationList.remove(at: index)
                 setData(locationList)
             }
-
+            
         }
         
-      
+        
     }
     
-   
+    
     
     
 }

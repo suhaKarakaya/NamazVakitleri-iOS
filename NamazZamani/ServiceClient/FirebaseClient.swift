@@ -12,7 +12,7 @@ import Alamofire
 public class FirebaseClient {
     
     static fileprivate var firestore = Firestore.firestore()
-
+    
     typealias firebaseGetCallBack = (Bool, String, [String:Any]) -> Void
     typealias firebaseGetCallBackList = (Bool, String, [FirebaseResponse]) -> Void
     typealias firebaseSetCallBack = (Bool, String) -> Void
@@ -55,7 +55,7 @@ public class FirebaseClient {
                 completion(result, status)
             }
         }
-       
+        
     }
     
     
@@ -94,7 +94,7 @@ public class FirebaseClient {
         
         
     }
-//    yorum
+    //    yorum
     static func getDocRefData(_ collectionName: String, _ documentName: String, completion: @escaping firebaseGetCallBack){
         
         let docRef = firestore.collection(collectionName).document(documentName)
@@ -110,18 +110,18 @@ public class FirebaseClient {
     static func getAllData(_ collectionName: String, completion: @escaping firebaseGetCallBack){
         
         firestore.collection(collectionName).getDocuments { (snapshot, error) in
-                 if let error = error {
-                     print(error.localizedDescription)
-                 } else {
-                     if let snapshot = snapshot {
-                         for document in snapshot.documents {
-                             completion(true, document.documentID, document.data())
-                         }
-                     } else {
-                         completion(false, "Failure", ["":""])
-                     }
-                 }
-             }
+            if let error = error {
+                print(error.localizedDescription)
+            } else {
+                if let snapshot = snapshot {
+                    for document in snapshot.documents {
+                        completion(true, document.documentID, document.data())
+                    }
+                } else {
+                    completion(false, "Failure", ["":""])
+                }
+            }
+        }
     }
     
     static func getDocWhereCondt(_ collectionName: String, _ whereField: String, _ whereCondition: Any, completion: @escaping firebaseGetCallBackList){
@@ -178,8 +178,8 @@ public class FirebaseClient {
                 completion(true, "Success")
             }
         }
-
-
+        
+        
     }
     
     static func updateString(_ collectionName: String, _ documentId: String, _ myWhere:String, _ updateData: String, completion: @escaping firebaseSetCallBack){
@@ -192,7 +192,7 @@ public class FirebaseClient {
                 completion(true, "Success")
             }
         }
-
+        
     }
     
     static func delete(_ collectionName: String, _ documentId: String, completion: @escaping firebaseSetCallBack){
@@ -217,5 +217,5 @@ public class FirebaseClient {
         }
     }
     
-
+    
 }

@@ -24,13 +24,13 @@ final class TimeTableViewController: UIViewController {
     
     private lazy var viewModel = TimeTableViewModel()
     private var tempDicsList: [Vakit] = []
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.view = self
         viewModel.viewDidLoad()
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         viewModel.viewWillAppear()
@@ -43,7 +43,7 @@ extension TimeTableViewController: TimeTableViewInterface,UITableViewDelegate,UI
     func startLoading() { LoadingIndicatorView.show(self.view) }
     
     func stopLoading() { LoadingIndicatorView.hide() }
-
+    
     func prepareGetData(tempDicsList: [Vakit]) {
         self.tempDicsList = tempDicsList
         tableView.reloadData()

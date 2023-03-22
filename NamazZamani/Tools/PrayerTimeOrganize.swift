@@ -11,17 +11,17 @@ import ObjectMapper
 
 class PrayerTimeOrganize {
     
-//    Kullanıcının device id bilgisine göre sistemdeki konumları çekilir
+    //    Kullanıcının device id bilgisine göre sistemdeki konumları çekilir
     static func getFirebaseUserData(selectCountry: SelectObje, selectCity: SelectObje, selectDistrict: SelectObje, uniqName: String,  completion: @escaping (LocationDetail, Bool) -> Void) {
         FirebaseClient.getDocWhereCondt("UserInfo", "deviceId", FirstSelectViewController.deviceId) { result, status, response in
-//            kullanıcının sisteme daha önce kayıt oluşturduğu lokasyonlar var
+            //            kullanıcının sisteme daha önce kayıt oluşturduğu lokasyonlar var
             if result {
                 guard let tempObj = Mapper<UserInfo>().map(JSON:  response[0].document) else { return }
                 vakitControl(selectCountry: selectCountry, selectCity: selectCity, selectDistrict: selectDistrict, documentId: response[0].documentId, uniqName: uniqName, locList: tempObj.locationList) { data, status in
                     if status { completion(data, true) }
                 }
             }
-//            kullanıcının sisteme daha önce kayıt oluşturduğu lokasyonlar yok(kullanıcım sıfır kullanıcı)
+            //            kullanıcının sisteme daha önce kayıt oluşturduğu lokasyonlar yok(kullanıcım sıfır kullanıcı)
             else {
                 vakitControl(selectCountry: selectCountry, selectCity: selectCity, selectDistrict: selectDistrict, documentId: "", uniqName: uniqName, locList: []) { data, status in
                     if status { completion(data, true) }
@@ -41,11 +41,11 @@ class PrayerTimeOrganize {
         data.countryId = selectCountry.strId
         data.countyName = selectCountry.value
         data.vakitList = vakitList
-
+        
         FirebaseClient.setVakitData(documentId, "Vakits", data) { result, status in
             if result { completion(data, result) }
         }
-       
+        
     }
     
     private static func setFirebaseUserInfoData(documentId: String, uniqName: String, list: [UserLocationList], completion: @escaping (Bool) -> Void) {
@@ -69,18 +69,18 @@ class PrayerTimeOrganize {
                 completion(result)
             }
         }
-     
+        
     }
     
     private static func vakitControl(selectCountry: SelectObje, selectCity: SelectObje, selectDistrict: SelectObje, documentId: String, uniqName: String, locList: [UserLocationList], completion: @escaping (LocationDetail, Bool) -> Void) {
         FirebaseClient.getDocWhereCondt("Vakits", "uniqName", uniqName) { result, status, response in
-//                    Kullanıcının belirtmiş olduğu lokasyon sistemde var
+            //                    Kullanıcının belirtmiş olduğu lokasyon sistemde var
             if result {
                 guard let vakitData = Mapper<LocationDetail>().map(JSON: response[0].document) else { return }
                 let lastUpdateTimeDate = DateManager.strToDateUgur(strDate: vakitData.lastUpdateTime)
                 let temp = DateManager.checkDate(date: Date(), endDate: lastUpdateTimeDate)
                 if temp == .orderedAscending {
-//                  geride kalmış yeni zaman çek
+                    //                  geride kalmış yeni zaman çek
                     getApiandSetFirebase(selectCountry: selectCountry, selectCity: selectCity, selectDistrict: selectDistrict, vakitDocumentId: response[0].documentId, userDocumentId: documentId, uniqName: uniqName, locList: locList) { data, status in
                         if status {completion(data, true)}
                     }
@@ -91,7 +91,7 @@ class PrayerTimeOrganize {
                     }
                 }
             }
-//                    kullanıcının belitmiş olduğu lokasyon sistemde yok
+            //                    kullanıcının belitmiş olduğu lokasyon sistemde yok
             else {
                 getApiandSetFirebase(selectCountry: selectCountry, selectCity: selectCity, selectDistrict: selectDistrict, vakitDocumentId: "", userDocumentId: documentId, uniqName: uniqName, locList: locList) { data, status in
                     if status {completion(data, true)}
@@ -102,10 +102,10 @@ class PrayerTimeOrganize {
     
     private static func getApiandSetFirebase(selectCountry: SelectObje, selectCity: SelectObje, selectDistrict: SelectObje, vakitDocumentId: String ,userDocumentId: String,  uniqName: String, locList: [UserLocationList], completion: @escaping (LocationDetail, Bool) -> Void ) {
         ApiClient.shared.fetchPrayerTime(districtId: selectDistrict.strId) { responseVakitList, result, status in
-//                    apiden servis başarılı döndü
+            //                    apiden servis başarılı döndü
             if result {
                 guard let responseList = responseVakitList else { return }
-//                        bu lokasyondaki vakit değerleri daha önce sisteme kayıt edilmemiş, kayıt edilmeli
+                //                        bu lokasyondaki vakit değerleri daha önce sisteme kayıt edilmemiş, kayıt edilmeli
                 setFirebaseVakitList(selectCountry: selectCountry, selectCity: selectCity, selectDistrict: selectDistrict, documentId: vakitDocumentId, uniqName: uniqName, vakitList: responseList) { data, result in
                     if result {
                         setFirebaseUserInfoData(documentId: userDocumentId, uniqName: uniqName, list: locList) { result in
@@ -114,7 +114,7 @@ class PrayerTimeOrganize {
                     }
                 }
             }
-//                    apiden servis başarısız döndü
+            //                    apiden servis başarısız döndü
             else {
                 
             }

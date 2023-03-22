@@ -50,21 +50,21 @@ class SettingsViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         borderView.setViewBorder(color: UIColor.brown.cgColor, borderWith: 1, borderRadius: 8)
-  
+        
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
     }
-
+    
     @IBAction func buttonTrashAction(_ sender: Any) {
         delegate?.toTrash(true, index)
     }
     @IBAction func buttonSelectAction(_ sender: Any) {
         guard let data = data else { return }
-//        delegate?.setFavorite(!data.isFavorite)
-//        data.isFavorite = !data.isFavorite
+        //        delegate?.setFavorite(!data.isFavorite)
+        //        data.isFavorite = !data.isFavorite
         favoritedHandler?(data.isFavorite, index)
     }
 }

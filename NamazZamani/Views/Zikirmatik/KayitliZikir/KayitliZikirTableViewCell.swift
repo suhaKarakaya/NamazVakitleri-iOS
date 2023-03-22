@@ -14,7 +14,7 @@ typealias KayitliZikirViewHandler = (ZikirObj) -> Void
 class KayitliZikirTableViewCell: UITableViewCell {
     
     static let identifier = String(describing: KayitliZikirTableViewCell.self)
-
+    
     @IBOutlet weak var viewSelectedPoint: UIView!
     @IBOutlet weak var zikirSelectedButton: UIButton!
     @IBOutlet weak var zikirNameLabel: UILabel!
@@ -30,10 +30,10 @@ class KayitliZikirTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
@@ -49,7 +49,7 @@ class KayitliZikirTableViewCell: UITableViewCell {
         } else {
             self.viewSelectedPoint.isHidden = true
         }
- 
+        
     }
     
     @IBAction func trashButtonAction(_ sender: Any) {

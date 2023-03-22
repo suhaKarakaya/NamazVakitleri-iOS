@@ -37,35 +37,35 @@ class ZikirmatikViewController: UIViewController {
         lblTitle.text = "Zikirmatik"
         getData()
     }
-
+    
     func getData(){
         LoadingIndicatorView.show(self.view)
-            FirebaseClient.getDocWhereCondt("UserZikr", "deviceId", FirstSelectViewController.deviceId) { result, status, response in
-                LoadingIndicatorView.hide()
-                if result {
-    //                kullanıcının içeride daha önceden seçmiş olduğu zikr var demek
-                    self.userZikrList = []
-                    for item in response {
-                        guard let tempObj = Mapper<Zikir>().map(JSON:  item.document) else { return }
-                        let zikr = ZikirObj()
-                        zikr.id = item.documentId
-                        zikr.data = tempObj
-                        self.userZikrList?.append(zikr)
-                    }
-                    for item in self.userZikrList ?? [] {
-                        if item.data.isSelected {
-                            self.selectedZikr = item
-                            return
-                        } else {
-                            self.selectedZikr = nil
-                        }
-                    }
-                } else {
-    //                kullanıcının içeride daha önce seçmiş olduğu zikr yok
-                    self.selectedZikr = nil
+        FirebaseClient.getDocWhereCondt("UserZikr", "deviceId", FirstSelectViewController.deviceId) { result, status, response in
+            LoadingIndicatorView.hide()
+            if result {
+                //                kullanıcının içeride daha önceden seçmiş olduğu zikr var demek
+                self.userZikrList = []
+                for item in response {
+                    guard let tempObj = Mapper<Zikir>().map(JSON:  item.document) else { return }
+                    let zikr = ZikirObj()
+                    zikr.id = item.documentId
+                    zikr.data = tempObj
+                    self.userZikrList?.append(zikr)
                 }
-                
+                for item in self.userZikrList ?? [] {
+                    if item.data.isSelected {
+                        self.selectedZikr = item
+                        return
+                    } else {
+                        self.selectedZikr = nil
+                    }
+                }
+            } else {
+                //                kullanıcının içeride daha önce seçmiş olduğu zikr yok
+                self.selectedZikr = nil
             }
+            
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -74,7 +74,7 @@ class ZikirmatikViewController: UIViewController {
             
         }
     }
-
+    
     func setMemory(data: Zikir){
         let defaults = UserDefaults.init()
         defaults.set(data.toJSON(), forKey: "userZikirModel")
@@ -104,7 +104,7 @@ class ZikirmatikViewController: UIViewController {
     
     func selectedHandler(flag: Bool) {
         if flag {
-//            gidilip geri gelinen sayfalarda işlem yapılmış demektir
+            //            gidilip geri gelinen sayfalarda işlem yapılmış demektir
             getData()
         }
     }
@@ -115,7 +115,7 @@ class ZikirmatikViewController: UIViewController {
                 if result {
                     completion()
                 } else {
-    //                bir problem çıktı alerti
+                    //                bir problem çıktı alerti
                 }
             }
         } else {
