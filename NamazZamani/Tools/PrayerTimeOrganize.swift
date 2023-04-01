@@ -129,8 +129,27 @@ class PrayerTimeOrganize {
                 var favLoc = tempObj.locationList.filter { $0.isFavorite }
                 FirebaseClient.getDocWhereCondt("Vakits", "uniqName", favLoc[0].uniqName) { result, status, response in
                     if result {
-                        guard let tempObj = Mapper<LocationDetail>().map(JSON:  response[0].document) else { return }
-                        completion(tempObj, true)
+                        guard let vakitData = Mapper<LocationDetail>().map(JSON: response[0].document) else { return }
+                        let lastUpdateTimeDate = DateManager.strToDateUgur(strDate: vakitData.lastUpdateTime)
+                        let temp = DateManager.checkDate(date: Date(), endDate: lastUpdateTimeDate)
+                        if temp == .orderedAscending {
+                            //                  geride kalmış yeni zaman çek
+                            ApiClient.shared.fetchPrayerTime(districtId: vakitData.districtId) { responseVakitList, result, status in
+                                //                    apiden servis başarılı döndü
+                                if result {
+                                    guard let responseList = responseVakitList else { return }
+                                    setFirebaseVakitList(selectCountry: SelectObje(strId: vakitData.countryId, value: vakitData.countyName ), selectCity: SelectObje(strId: vakitData.cityId, value: vakitData.cityName), selectDistrict: SelectObje(strId: vakitData.districtId, value: vakitData.districtName), documentId: response[0].documentId, uniqName: vakitData.uniqName, vakitList: responseList) { data, result in
+                                        if result {
+                                            completion(data, true)
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        else {
+                            guard let tempObj = Mapper<LocationDetail>().map(JSON:  response[0].document) else { return }
+                            completion(tempObj, true)
+                        }
                     }
                 }
             } else {

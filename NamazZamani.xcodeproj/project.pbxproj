@@ -7,9 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0231DEEA29CB33F40047704C /* ezan.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0231DEE929CB33F40047704C /* ezan.mp3 */; };
 		02531D4C2978707000716CF0 /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02531D4B2978707000716CF0 /* ServiceManager.swift */; };
 		02531D50297876D300716CF0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 02531D4F297876D300716CF0 /* GoogleService-Info.plist */; };
 		02611C542972E84B000419DB /* TimeTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02611C532972E84B000419DB /* TimeTableViewModel.swift */; };
+		02C3DAA729CF152F001F3D01 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 02C3DAA629CF152F001F3D01 /* FirebaseCrashlytics */; };
+		02C3DAA929CF152F001F3D01 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 02C3DAA829CF152F001F3D01 /* FirebaseDatabase */; };
+		02C3DAAB29CF152F001F3D01 /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 02C3DAAA29CF152F001F3D01 /* FirebaseDatabaseSwift */; };
+		02C3DAAD29CF152F001F3D01 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 02C3DAAC29CF152F001F3D01 /* FirebaseFirestore */; };
+		02C3DAAF29CF152F001F3D01 /* FirebaseFirestoreCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 02C3DAAE29CF152F001F3D01 /* FirebaseFirestoreCombine-Community */; };
+		02C3DAB129CF152F001F3D01 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 02C3DAB029CF152F001F3D01 /* FirebaseFirestoreSwift */; };
+		02C3DAB429CF281F001F3D01 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C3DAB329CF281F001F3D01 /* NotificationViewController.swift */; };
+		02C3DAB629D057A2001F3D01 /* ScheduleNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C3DAB529D057A2001F3D01 /* ScheduleNotification.swift */; };
 		02C448D1296889270045E849 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C80EED27F235D300AC1E60 /* UIView+Extensions.swift */; };
 		02C448D2296889270045E849 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E194C927F302FC00A700AB /* Date+Extensions.swift */; };
 		02C448D3296889270045E849 /* ResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A3090827BD73B4001CAFF9 /* ResponseModel.swift */; };
@@ -64,6 +73,7 @@
 		02156B9527D3803E00679FA2 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		02156B9727D3812200679FA2 /* colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = colors.xcassets; sourceTree = "<group>"; };
 		02156BAE27D39C1500679FA2 /* TimeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableViewController.swift; sourceTree = "<group>"; };
+		0231DEE929CB33F40047704C /* ezan.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = ezan.mp3; path = ../../../Downloads/ezan.mp3; sourceTree = "<group>"; };
 		0250D62127F1D7F1004C7EEA /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		0250D62327F1DEE8004C7EEA /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		0251803D27BE5F5400C29F76 /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
@@ -80,6 +90,8 @@
 		02A3090427BD04B9001CAFF9 /* Picker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Picker.swift; sourceTree = "<group>"; };
 		02A3090627BD1D40001CAFF9 /* PickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
 		02A3090827BD73B4001CAFF9 /* ResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseModel.swift; sourceTree = "<group>"; };
+		02C3DAB329CF281F001F3D01 /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
+		02C3DAB529D057A2001F3D01 /* ScheduleNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleNotification.swift; sourceTree = "<group>"; };
 		02C44903296889270045E849 /* NamazZamani.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NamazZamani.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02C44904296889280045E849 /* NamazZamani Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "NamazZamani Info.plist"; path = "/Users/suhakarakaya/NamazVakitleri-iOS/NamazZamani Info.plist"; sourceTree = "<absolute>"; };
 		02C4FBDE29C5C034007450C3 /* PrayerTimeOrganize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerTimeOrganize.swift; sourceTree = "<group>"; };
@@ -111,12 +123,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02C3DAAB29CF152F001F3D01 /* FirebaseDatabaseSwift in Frameworks */,
 				02C448F0296889270045E849 /* MBProgressHUD in Frameworks */,
 				02C448F1296889270045E849 /* FirebaseFirestore in Frameworks */,
 				02C448F2296889270045E849 /* ObjectMapper in Frameworks */,
 				02C448F3296889270045E849 /* Alamofire in Frameworks */,
 				02C448F4296889270045E849 /* netfox in Frameworks */,
+				02C3DAA729CF152F001F3D01 /* FirebaseCrashlytics in Frameworks */,
+				02C3DAB129CF152F001F3D01 /* FirebaseFirestoreSwift in Frameworks */,
+				02C3DAA929CF152F001F3D01 /* FirebaseDatabase in Frameworks */,
 				02C448F5296889270045E849 /* FirebaseFirestoreCombine-Community in Frameworks */,
+				02C3DAAF29CF152F001F3D01 /* FirebaseFirestoreCombine-Community in Frameworks */,
+				02C3DAAD29CF152F001F3D01 /* FirebaseFirestore in Frameworks */,
 				02C448F6296889270045E849 /* FirebaseFirestoreSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -124,6 +142,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0231DEE829CB33380047704C /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				0231DEE929CB33F40047704C /* ezan.mp3 */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
 		0250D61D27F1C21F004C7EEA /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -137,6 +163,7 @@
 		0250D61E27F1C22D004C7EEA /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				02C3DAB229CF2801001F3D01 /* Notification */,
 				02DF761B27F7AF54002E7D6F /* Kibla */,
 				02F2679727F4DAE600EE4DBE /* Zikirmatik */,
 				02EDA0C727F38FCA006A2A31 /* TimeTable */,
@@ -177,6 +204,14 @@
 			path = Xib;
 			sourceTree = "<group>";
 		};
+		02C3DAB229CF2801001F3D01 /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				02C3DAB329CF281F001F3D01 /* NotificationViewController.swift */,
+			);
+			path = Notification;
+			sourceTree = "<group>";
+		};
 		02C80EEC27F2358600AC1E60 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -215,6 +250,7 @@
 				02C80EEC27F2358600AC1E60 /* Extensions */,
 				0250D61E27F1C22D004C7EEA /* Views */,
 				0250D61D27F1C21F004C7EEA /* Models */,
+				0231DEE829CB33380047704C /* Sounds */,
 				02D6824427B9A40C009CE351 /* Assets.xcassets */,
 				02156B9727D3812200679FA2 /* colors.xcassets */,
 				02D6824927B9A40C009CE351 /* Info.plist */,
@@ -238,6 +274,7 @@
 				0214F97E27FAEA3700C8CC37 /* LoadingIndicatorView.swift */,
 				02FB1FF2296069900084BCEB /* AlertUtils.swift */,
 				02C4FBDE29C5C034007450C3 /* PrayerTimeOrganize.swift */,
+				02C3DAB529D057A2001F3D01 /* ScheduleNotification.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -375,6 +412,12 @@
 				02C448CA296889270045E849 /* ObjectMapper */,
 				02C448CC296889270045E849 /* MBProgressHUD */,
 				02C448CE296889270045E849 /* netfox */,
+				02C3DAA629CF152F001F3D01 /* FirebaseCrashlytics */,
+				02C3DAA829CF152F001F3D01 /* FirebaseDatabase */,
+				02C3DAAA29CF152F001F3D01 /* FirebaseDatabaseSwift */,
+				02C3DAAC29CF152F001F3D01 /* FirebaseFirestore */,
+				02C3DAAE29CF152F001F3D01 /* FirebaseFirestoreCombine-Community */,
+				02C3DAB029CF152F001F3D01 /* FirebaseFirestoreSwift */,
 			);
 			productName = NamazVakitleri;
 			productReference = 02C44903296889270045E849 /* NamazZamani.app */;
@@ -400,11 +443,11 @@
 			);
 			mainGroup = 02D6822F27B9A40B009CE351;
 			packageReferences = (
-				02C4486A29686F3E0045E849 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				02C4487129686F820045E849 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				02C4487429686FC40045E849 /* XCRemoteSwiftPackageReference "ObjectMapper" */,
 				02C44877296870070045E849 /* XCRemoteSwiftPackageReference "MBProgressHUD" */,
 				02C4487A296870700045E849 /* XCRemoteSwiftPackageReference "netfox" */,
+				02C3DAA529CF152F001F3D01 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 02D6823927B9A40B009CE351 /* Products */;
 			projectDirPath = "";
@@ -422,6 +465,7 @@
 			files = (
 				02C448F8296889270045E849 /* DailyPrayerTimeView.xib in Resources */,
 				02531D50297876D300716CF0 /* GoogleService-Info.plist in Resources */,
+				0231DEEA29CB33F40047704C /* ezan.mp3 in Resources */,
 				02C448FA296889270045E849 /* LaunchScreen.storyboard in Resources */,
 				02C448FB296889270045E849 /* Assets.xcassets in Resources */,
 				02C448FC296889270045E849 /* DailyPrayTimeViewCell.xib in Resources */,
@@ -447,7 +491,9 @@
 				02C448D4296889270045E849 /* QiblaViewController.swift in Sources */,
 				02C448D5296889270045E849 /* KayitliZikirTableViewCell.swift in Sources */,
 				02C448D6296889270045E849 /* ZikirmatikViewController.swift in Sources */,
+				02C3DAB629D057A2001F3D01 /* ScheduleNotification.swift in Sources */,
 				02C448D7296889270045E849 /* ZikirOlusturViewController.swift in Sources */,
+				02C3DAB429CF281F001F3D01 /* NotificationViewController.swift in Sources */,
 				02C448D8296889270045E849 /* ApiClient.swift in Sources */,
 				02C448D9296889270045E849 /* ZikirSecTableViewCell.swift in Sources */,
 				02C448DA296889270045E849 /* PickerViewController.swift in Sources */,
@@ -711,12 +757,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		02C4486A29686F3E0045E849 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+		02C3DAA529CF152F001F3D01 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 9.0.0;
+				branch = master;
+				kind = branch;
 			};
 		};
 		02C4487129686F820045E849 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
@@ -794,6 +840,36 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		02C3DAA629CF152F001F3D01 /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 02C3DAA529CF152F001F3D01 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+		02C3DAA829CF152F001F3D01 /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 02C3DAA529CF152F001F3D01 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		02C3DAAA29CF152F001F3D01 /* FirebaseDatabaseSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 02C3DAA529CF152F001F3D01 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabaseSwift;
+		};
+		02C3DAAC29CF152F001F3D01 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 02C3DAA529CF152F001F3D01 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		02C3DAAE29CF152F001F3D01 /* FirebaseFirestoreCombine-Community */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 02C3DAA529CF152F001F3D01 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseFirestoreCombine-Community";
+		};
+		02C3DAB029CF152F001F3D01 /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 02C3DAA529CF152F001F3D01 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
+		};
 		02C448C4296889270045E849 /* FirebaseFirestore */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 02C448C5296889270045E849 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

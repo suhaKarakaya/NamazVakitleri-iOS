@@ -55,3 +55,20 @@ class HomeScreen {
     
 
 }
+
+struct Notification: Codable {
+    var timeLang = 45
+    var repeatValue = 12
+    var sabahNotfyList: [String] = []
+    var sabahSelected = false
+    var ogleNotfyList: [String] = []
+    var ogleSelected = false
+    var ikindiNotfyList: [String] = []
+    var ikindiSelected = false
+    var aksamNotfyList: [String] = []
+    var aksamSelected = false
+    var yatsiNotfyList: [String] = []
+    var yatsiSelected = false
+    
+ 
+}

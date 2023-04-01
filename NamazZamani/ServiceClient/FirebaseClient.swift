@@ -8,10 +8,12 @@
 import Foundation
 import Firebase
 import Alamofire
+import FirebaseDatabase
 
 public class FirebaseClient {
     
     static fileprivate var firestore = Firestore.firestore()
+    static fileprivate var ref = Database.database().reference()
     
     typealias firebaseGetCallBack = (Bool, String, [String:Any]) -> Void
     typealias firebaseGetCallBackList = (Bool, String, [FirebaseResponse]) -> Void
@@ -217,5 +219,21 @@ public class FirebaseClient {
         }
     }
     
+    static func getCurrentVersion(completion: @escaping (String, Int) -> Void) {
+        ref.child("vsInfo").observe(.value) { snapshot in
+            let value = snapshot.value as? NSDictionary
+            let version = value?["version"] as? String ?? ""
+            let build = value?["build"] as? Int ?? 0
+            completion(version, build)
+        } withCancel: { error in
+            debugPrint(error.localizedDescription)
+            completion("", 0)
+        }
+    }
     
+    
+}
+struct vsInfo: Codable {
+    let version: Int
+    let build: Int
 }

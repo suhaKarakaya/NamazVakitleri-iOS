@@ -29,14 +29,18 @@ class SettingsViewController: UIViewController {
     
     func getData(){
         LoadingIndicatorView.show(self.view)
-        FirebaseClient.getDocWhereCondt("UserInfo", "deviceId", FirstSelectViewController.deviceId) { result, status, response in
-            if result {
-                LoadingIndicatorView.hide()
-                guard let myLocation = Mapper<UserInfo>().map(JSON: response[0].document) else { return }
-                self.userInfoId = response[0].documentId
-                self.locationList = []
-                self.locationList = myLocation.locationList
-                self.tableView.reloadData()
+        DispatchQueue.global(qos: .background).async {
+            FirebaseClient.getDocWhereCondt("UserInfo", "deviceId", FirstSelectViewController.deviceId) { result, status, response in
+                if result {
+                    DispatchQueue.main.async {
+                        LoadingIndicatorView.hide()
+                        guard let myLocation = Mapper<UserInfo>().map(JSON: response[0].document) else { return }
+                        self.userInfoId = response[0].documentId
+                        self.locationList = []
+                        self.locationList = myLocation.locationList
+                        self.tableView.reloadData()
+                    }
+                }
             }
         }
     }
@@ -44,10 +48,14 @@ class SettingsViewController: UIViewController {
     
     func setData(_ documentList: [UserLocationList]){
         LoadingIndicatorView.show(self.view)
-        FirebaseClient.update("UserInfo", userInfoId, documentList.toJSON()) { result, status in
-            if result {
-                LoadingIndicatorView.hide()
-                self.getData()
+        DispatchQueue.global(qos: .background).async {
+            FirebaseClient.update("UserInfo", self.userInfoId, documentList.toJSON()) { result, status in
+                if result {
+                    DispatchQueue.main.async {
+                        LoadingIndicatorView.hide()
+                        self.getData()
+                    }
+                }
             }
         }
     }

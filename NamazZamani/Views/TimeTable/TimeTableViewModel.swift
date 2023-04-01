@@ -23,21 +23,25 @@ final class TimeTableViewModel {
     func getData(completion: @escaping([Vakit]?) -> ()) {
         tempDicsList = []
         view?.startLoading()
-        PrayerTimeOrganize.getMyLocationData { [weak self] data, _result in
-            if _result {
-                self?.view?.stopLoading()
-                let _dateArr = data.uniqName.components(separatedBy: ",")
-                let _city = _dateArr[0]
-                let _district = _dateArr[1]
-                self?.view?.setLabelLocation(title: _city == _district ? _city : data.uniqName)
-                for item in data.vakitList {
-                    let lastUpdateTimeDate = DateManager.strToDateSuha(strDate: item.MiladiTarihKisa)
-                    let temp = DateManager.checkDate(date: Date(), endDate: lastUpdateTimeDate)
-                    if temp != .orderedAscending{
-                        self?.tempDicsList.append(item)
+        DispatchQueue.global(qos: .background).async {
+            PrayerTimeOrganize.getMyLocationData { [weak self] data, _result in
+                if _result {
+                    self?.view?.stopLoading()
+                    DispatchQueue.main.async {
+                        let _dateArr = data.uniqName.components(separatedBy: ",")
+                        let _city = _dateArr[0]
+                        let _district = _dateArr[1]
+                        self?.view?.setLabelLocation(title: _city == _district ? _city : data.uniqName)
+                        for item in data.vakitList {
+                            let lastUpdateTimeDate = DateManager.strToDateSuha(strDate: item.MiladiTarihKisa)
+                            let temp = DateManager.checkDate(date: Date(), endDate: lastUpdateTimeDate)
+                            if temp != .orderedAscending{
+                                self?.tempDicsList.append(item)
+                            }
+                        }
+                        completion(self?.tempDicsList)
                     }
                 }
-                completion(self?.tempDicsList)
             }
         }
     }

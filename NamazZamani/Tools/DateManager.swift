@@ -40,6 +40,12 @@ class DateManager {
         return dateFormatter.string(from: date)
     }
     
+    static func dateToString3(date: Date) -> String{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd.MM.YYYY HH:mm"
+        return dateFormatter.string(from: date)
+    }
+    
     
     static func dateToStringUgur(date: Date) -> String{
         let dateFormatter = DateFormatter()
@@ -146,16 +152,16 @@ class DateManager {
         let result:ComparisonResult = secondDate!.compare(firstDate!);
         switch result {
         case .orderedAscending:
-            debugPrint(String(format: "%@ is in future from %@", date as CVarArg,endDate as CVarArg));
+//            debugPrint(String(format: "%@ is in future from %@", date as CVarArg,endDate as CVarArg));
             break;
         case .orderedDescending:
-            debugPrint(String(format: "%@ is in past from %@", date as CVarArg,endDate as CVarArg));
+//            debugPrint(String(format: "%@ is in past from %@", date as CVarArg,endDate as CVarArg));
             break;
         case .orderedSame:
-            debugPrint(String(format: "%@ is in same as %@", date as CVarArg,endDate as CVarArg));
+//            debugPrint(String(format: "%@ is in same as %@", date as CVarArg,endDate as CVarArg));
             break;
         default:
-            debugPrint(String(format: "erorr dates %@, %@", date as CVarArg,endDate as CVarArg));
+//            debugPrint(String(format: "erorr dates %@, %@", date as CVarArg,endDate as CVarArg));
             break;
         }
         
