@@ -14,7 +14,7 @@ class MySplashViewController: UIViewController {
     static let notificationCenter = UNUserNotificationCenter.current()
     
     override func viewDidLoad() {
-        super.viewDidLoad()  
+        super.viewDidLoad()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -70,5 +70,4 @@ extension MySplashViewController: SKStoreProductViewControllerDelegate {
         viewController.dismiss(animated: true)
     }
 }
-
 

@@ -96,7 +96,7 @@ class ScheduleNotification {
             let content = UNMutableNotificationContent()
             content.title = "Namaz Vakitleri"
             content.body = "\(vakit) ezanına \(tL) dk kaldı"
-            content.sound = UNNotificationSound.defaultCritical
+            content.sound = UNNotificationSound.default
             
             let formatter = DateFormatter()
             formatter.dateFormat = "dd.MM.yyyy HH:mm"
@@ -132,6 +132,5 @@ extension Date {
         return targetDay
     }
 }
-
 
 
