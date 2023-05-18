@@ -65,6 +65,7 @@
 		02C448FF296889270045E849 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02D6824127B9A40B009CE351 /* Main.storyboard */; };
 		02C4FBDF29C5C034007450C3 /* PrayerTimeOrganize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C4FBDE29C5C034007450C3 /* PrayerTimeOrganize.swift */; };
 		02C4FBE129C5FAEC007450C3 /* UIDevice+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C4FBE029C5FAEC007450C3 /* UIDevice+Extensions.swift */; };
+		02D25B102A1601C600D8DE6D /* Filel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D25B0F2A1601C600D8DE6D /* Filel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -99,6 +100,7 @@
 		02C80EED27F235D300AC1E60 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		02C8600127D6909F00EEE8B2 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		02C8600327D6953E00EEE8B2 /* SettingsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewCell.swift; sourceTree = "<group>"; };
+		02D25B0F2A1601C600D8DE6D /* Filel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filel.swift; sourceTree = "<group>"; };
 		02D6823B27B9A40B009CE351 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		02D6823D27B9A40B009CE351 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		02D6824227B9A40B009CE351 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -255,6 +257,7 @@
 				02156B9727D3812200679FA2 /* colors.xcassets */,
 				02D6824927B9A40C009CE351 /* Info.plist */,
 				02531D4F297876D300716CF0 /* GoogleService-Info.plist */,
+				02D25B0F2A1601C600D8DE6D /* Filel.swift */,
 			);
 			path = NamazZamani;
 			sourceTree = "<group>";
@@ -492,6 +495,7 @@
 				02C448D5296889270045E849 /* KayitliZikirTableViewCell.swift in Sources */,
 				02C448D6296889270045E849 /* ZikirmatikViewController.swift in Sources */,
 				02C3DAB629D057A2001F3D01 /* ScheduleNotification.swift in Sources */,
+				02D25B102A1601C600D8DE6D /* Filel.swift in Sources */,
 				02C448D7296889270045E849 /* ZikirOlusturViewController.swift in Sources */,
 				02C3DAB429CF281F001F3D01 /* NotificationViewController.swift in Sources */,
 				02C448D8296889270045E849 /* ApiClient.swift in Sources */,
